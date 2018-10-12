@@ -1,7 +1,6 @@
 {
-  "name": "indivumed-sample-finder",
+  "name": "VACPLA",
   "version": "0.0.1",
-  "description": "Indivumed Sample Finder",
   "main": "''",
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
@@ -13,9 +12,7 @@
     "type": "git",
     "url": "*private*"
   },
-  "author": "arcus(x) GmbH",
   "license": "Proprietary",
-  "homepage": "https://www.indivumed.com",
   "dependencies": {
     "babel-preset-es2016": "^6.24.1",
     "copy-webpack-plugin": "^4.0.1",

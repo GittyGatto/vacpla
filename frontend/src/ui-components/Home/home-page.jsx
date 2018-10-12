@@ -1,11 +1,11 @@
 import '../../../styles/index.scss';
 import React from 'react';
-import {dispatcher} from '../util/mini-flux';
-import logout from "../actions/logout-action";
-import bgImage from "../assets/images/cc0-desktop-backgrounds-fog-7919.jpg";
+import {dispatcher} from '../../util/mini-flux';
+import logout from '../../actions/logout-action';
+import bgImage from '../../assets/images/cc0-desktop-backgrounds-fog-7919.jpg';
 import './Home-Page.css';
-import {Button, FormControl} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 export class HomePage extends React.Component {
     constructor(props) {
@@ -37,7 +37,7 @@ export class HomePage extends React.Component {
     }
 
     render() {
-        const {getUser, isAuthenticated} = this.state;
+        const {getUser} = this.state;
         const formStyle = {backgroundImage: 'url("' + bgImage + '")'};
 
         return <div className='HomePage' style={formStyle}>
@@ -46,7 +46,7 @@ export class HomePage extends React.Component {
                 <ul className="nav navbar-nav">
 
                     <li><Link to="/">Homes</Link></li>
-                    <li><Link to="/penis">About</Link></li>
+                    <li><Link to="/about">About</Link></li>
 
                 </ul>
             </nav>
@@ -55,11 +55,6 @@ export class HomePage extends React.Component {
                 <h2>Frankenstein Inc.</h2>
                 <h3>hi {getUser ? getUser.userName : 'default user'}</h3>
                 <h3>your role is {getUser ? getUser.role : 'default role'}</h3>
-
-
-
-
-
 
                 <Button className="logout-button" bsSize='large'
                         onClick={() => logout()}>Logout</Button>
