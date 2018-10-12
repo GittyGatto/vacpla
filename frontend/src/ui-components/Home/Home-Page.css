@@ -1,0 +1,32 @@
+.HomePage {
+    font-family: 'Ubuntu', 'sans-serif';
+    font-size: 4vh;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-origin: content-box;
+    height: 100vh;
+}
+
+.HomePage_header h3 {
+    font-family: 'Ubuntu', 'sans-serif';
+    opacity: 0.8;
+    font-weight: 500;
+    font-size: 3vh;
+}
+
+.HomePage_header {
+    height: 40vh;
+    padding: 1.5em;
+    color: whitesmoke;
+}
+
+.HomePage_header Button{
+    margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    top:1vh;
+    right:1vh;
+    background-color: black;
+    color: whitesmoke;
+}
