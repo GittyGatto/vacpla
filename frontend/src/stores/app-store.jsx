@@ -1,20 +1,10 @@
 const LocalStorage = window.localStorage;
 const AUTH_DATA_KEY = "authenticationData";
 
-function emptyData() {
-	return {
-		countFilter: {},
-		countFilterTemplate: {},
-		version: {}
-	};
-}
-
 class AppStore {
 	constructor() {
-		this.data = emptyData();
 		this.message = undefined;
 		this.messageType = undefined;
-		this.loading = false;
 	}
 
 	isAuthenticated() {
@@ -82,9 +72,6 @@ class AppStore {
             }, 1250);
         }
     }
-
-
-
 
     appendDataTo(data) {
 		data.isAuthenticated = this.isAuthenticated();

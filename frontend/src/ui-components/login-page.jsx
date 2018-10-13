@@ -17,8 +17,8 @@ export default class LoginPage extends React.Component {
     }
 
     _onChange(ev) {
-        const {userName, password, message, messageType} = ev.login;
-        this.setState({userName, password, message, messageType});
+        const {userName, password, message} = ev.login;
+        this.setState({userName, password, message});
     }
 
     componentDidMount() {
@@ -59,7 +59,7 @@ export default class LoginPage extends React.Component {
         return <div className='LoginForm atLoginForm' style={formStyle}>
 
             <div className='LoginForm_header'>
-                <h2>Frankenstein Inc.</h2>
+                <h2>VAC PLA</h2>
                 <h3>Global Services</h3>
             </div>
 
