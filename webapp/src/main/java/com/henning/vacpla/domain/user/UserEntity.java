@@ -1,5 +1,7 @@
 package com.henning.vacpla.domain.user;
 
+import org.springframework.context.annotation.ComponentScan;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,6 +23,9 @@ public class UserEntity
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role")
 	private Role role;
+
+	@Column(name = "total_vacation")
+	private int totalVacation;
 
 	public long getId() {
 		return id;
@@ -48,5 +53,13 @@ public class UserEntity
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public int getTotalVacation() {
+		return totalVacation;
+	}
+
+	public void setTotalVacation(int totalVacation) {
+		this.totalVacation = totalVacation;
 	}
 }

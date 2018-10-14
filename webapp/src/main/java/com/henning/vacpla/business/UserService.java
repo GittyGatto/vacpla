@@ -33,6 +33,7 @@ public class UserService {
         user.setUserName(accountDto.userName);
         user.setPassword(passwordEncoder.encode(accountDto.password));
         user.setRole(Role.ADMIN);
+        user.setTotalVacation(10);
         UserEntity userEntity = userRepository.save(user);
         return new User(userEntity);
     }
