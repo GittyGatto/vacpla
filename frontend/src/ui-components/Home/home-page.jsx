@@ -38,9 +38,8 @@ export class HomePage extends React.Component {
 
     render() {
         const {getUser} = this.state;
-        const formStyle = {backgroundImage: 'url("' + bgImage + '")'};
 
-        return <div className='HomePage' style={formStyle}>
+        return <div className='HomePage'>
 
             <nav className="navbar navbar-light">
                 <ul className="nav navbar-nav">
@@ -52,9 +51,7 @@ export class HomePage extends React.Component {
             </nav>
 
             <div className='HomePage_header'>
-                <h2>Frankenstein Inc.</h2>
-                <h3>hi {getUser ? getUser.userName : 'default user'}</h3>
-                <h3>your role is {getUser ? getUser.role : 'default role'}</h3>
+                <h2>Vacation planner</h2>
 
                 <Button className="logout-button" bsSize='large'
                         onClick={() => logout()}>Logout</Button>

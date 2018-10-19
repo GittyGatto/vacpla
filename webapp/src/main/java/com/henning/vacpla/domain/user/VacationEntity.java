@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity(name="VacationEntity")
 @Table(name= "vacation")
-public class Vacation {
+public class VacationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -18,10 +18,12 @@ public class Vacation {
     @Column(name = "vacation_day")
     private Date vacationDay;
 
-    public Vacation(UserEntity uzer, Date vacationDay) {
+    public VacationEntity(UserEntity uzer, Date vacationDay) {
         this.uzer = uzer;
         this.vacationDay = vacationDay;
     }
+
+    public VacationEntity() {}
 
     public long getVacationId() {
         return vacationId;
