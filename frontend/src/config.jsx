@@ -1,5 +1,5 @@
 var Config = {
-	apiBaseUrl: "http://" + window.location.host
+    apiBaseUrl: window.location.protocol + "//" + window.location.host
 }
 
 if (/.*localhost:8888.*/.test(window.location.href)) {
