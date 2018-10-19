@@ -1,8 +1,8 @@
 import React from 'react';
-import {dispatcher} from "../util/mini-flux";
-import login from '../actions/login-action';
-import changeLoginField from '../actions/change-login-field-action';
-import bgImage from '../assets/images/M8FaIr1.jpg';
+import {dispatcher} from "../../util/mini-flux";
+import login from '../../actions/login-action';
+import changeLoginField from '../../actions/change-login-field-action';
+import bgImage from '../../assets/images/M8FaIr1.jpg';
 import './LoginForm.css'
 import {Button, FormControl, FormGroup, Label} from 'react-bootstrap';
 

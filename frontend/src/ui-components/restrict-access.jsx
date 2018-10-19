@@ -1,6 +1,6 @@
 import React from 'react';
 import {dispatcher} from "../util/mini-flux";
-import LoginPage from "./login-page";
+import LoginPage from "./Login/login-page";
 
 export default class RestrictAccess extends React.Component {
 	constructor(props) {
