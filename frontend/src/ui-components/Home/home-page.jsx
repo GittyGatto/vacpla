@@ -2,10 +2,10 @@ import '../../../styles/index.scss';
 import React from 'react';
 import {dispatcher} from '../../util/mini-flux';
 import logout from '../../actions/logout-action';
-import bgImage from '../../assets/images/cc0-desktop-backgrounds-fog-7919.jpg';
 import './Home-Page.css';
-import {Button} from 'react-bootstrap';
+import {Button, Label} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import loadVacation from "../../actions/load-vacation-action";
 
 export class HomePage extends React.Component {
     constructor(props) {
@@ -15,6 +15,8 @@ export class HomePage extends React.Component {
             isAuthenticated: props.isAuthenticated,
             getUser: props.getUser,
         };
+
+        loadVacation(props.userName);
 
         this._onChange = this._onChange.bind(this);
     }

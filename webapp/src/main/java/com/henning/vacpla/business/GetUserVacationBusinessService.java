@@ -2,8 +2,8 @@ package com.henning.vacpla.business;
 
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;
-import com.henning.vacpla.domain.user.VacationEntity;
-import com.henning.vacpla.domain.user.VacationRepository;
+import com.henning.vacpla.domain.vacation.VacationEntity;
+import com.henning.vacpla.domain.vacation.VacationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;

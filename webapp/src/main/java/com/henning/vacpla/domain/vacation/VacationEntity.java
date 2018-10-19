@@ -1,4 +1,6 @@
-package com.henning.vacpla.domain.user;
+package com.henning.vacpla.domain.vacation;
+
+import com.henning.vacpla.domain.user.UserEntity;
 
 import javax.persistence.*;
 import java.util.Date;

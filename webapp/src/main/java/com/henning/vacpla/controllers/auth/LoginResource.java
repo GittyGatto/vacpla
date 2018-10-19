@@ -24,8 +24,7 @@ public class LoginResource {
     private PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/api/login", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<User> login(
-            @RequestBody() LoginRequest loginRequest, HttpServletRequest httpRequest) throws IOException {
+    public ResponseEntity<User> login(@RequestBody() LoginRequest loginRequest, HttpServletRequest httpRequest) throws IOException {
         try {
             User user = userService.loadUserByUsername(loginRequest.userName);
             if (passwordEncoder.matches(loginRequest.password, user.password)) {

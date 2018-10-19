@@ -4,7 +4,6 @@ class LoginStore {
 			userName: '',
 			password: '',
 			message: '',
-			messageType: 'danger'
 		};
 	}
 

@@ -1,7 +1,5 @@
 package com.henning.vacpla.domain.user;
 
-import org.springframework.context.annotation.ComponentScan;
-
 import javax.persistence.*;
 
 @Entity

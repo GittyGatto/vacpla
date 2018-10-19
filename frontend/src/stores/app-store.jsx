@@ -5,9 +5,12 @@ class AppStore {
 	constructor() {
 		this.message = undefined;
 		this.messageType = undefined;
+		this.data = {
+		    totalVacation : 5
+        }
 	}
 
-	isAuthenticated() {
+        isAuthenticated() {
 		const user = this.getUser();
 		return !!user;
 	}
@@ -42,7 +45,6 @@ class AppStore {
         this.clearMessage();
         LocalStorage.removeItem(AUTH_DATA_KEY);
     }
-
 
     handleSetMessage(ev) {
         this.setMessage(ev.message, ev.messageType);
