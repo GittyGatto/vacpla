@@ -24,12 +24,8 @@ class VacationStore {
             const year = a.getFullYear();
             years.push(year);
         })
-        let result = years.filter( this._onlyUnique );
+        let result = Array.from(new Set(years))
         return result;
-    }
-
-    _onlyUnique(value, index, self) {
-        return self.indexOf(value) === index;
     }
 
     _transformToDate(sourceArray) {
