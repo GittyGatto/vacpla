@@ -6,6 +6,7 @@ import './Home-Page.css';
 import {Button, Label} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import loadVacation from "../../actions/load-vacation-action";
+import {VacationYear} from "./vacation-year";
 
 export class HomePage extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ export class HomePage extends React.Component {
             getUser: props.getUser,
             totalVacation: undefined,
             vacationDays: [],
+            vacationYears: [],
         };
         loadVacation();
         this._onChange = this._onChange.bind(this);
@@ -30,12 +32,12 @@ export class HomePage extends React.Component {
 
     _onChange(ev) {
         const {getUser} = ev;
-        const {totalVacation, vacationDays} = ev.vacation;
-        this.setState({getUser, totalVacation, vacationDays});
+        const {totalVacation, vacationDays, vacationYears} = ev.vacation;
+        this.setState({getUser, totalVacation, vacationDays, vacationYears});
     }
 
     render() {
-        const {getUser, totalVacation, vacationDays} = this.state;
+        const {getUser, totalVacation, vacationDays, vacationYears} = this.state;
 
         return <div className='HomePage'>
 
@@ -56,7 +58,7 @@ export class HomePage extends React.Component {
                 <p>Vacation total: <Label>{totalVacation ? totalVacation : 'loading...'}</Label></p>
                 <p>Planned: <Label>{vacationDays.length ? vacationDays.length : 'loading...'}</Label></p>
                 <p>Rest: <Label>{totalVacation-vacationDays.length ? totalVacation-vacationDays.length : 'loading...'}</Label></p>
-
+                <VacationYear vacationYears={this.state.vacationYears} />
 
             </div>
 
