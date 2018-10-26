@@ -7,6 +7,7 @@ import {Button, Label} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import vacationStore from "../../stores/vacation-store";
 import appStore from "../../stores/app-store";
+import loadVacation from "../../actions/load-vacation-action";
 
 export class HomePage extends React.Component {
     constructor(props) {
@@ -17,6 +18,7 @@ export class HomePage extends React.Component {
             totalVacation: undefined,
             vacationDays: [],
         };
+        loadVacation();
         this._onChange = this._onChange.bind(this);
     }
 
