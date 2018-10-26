@@ -24,7 +24,7 @@ public class VacationDto {
         this.totalVacation = totalVacation;
     }
 
-    @JsonSerialize(contentUsing = JsonDateSerializer.class)
+    //@JsonSerialize(contentUsing = JsonDateSerializer.class)
     public List<Date> getVacationDays() {
         return vacationDays;
     }
