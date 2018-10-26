@@ -1,6 +1,5 @@
 import React from 'react';
 import clearMessage from '../actions/clear-message-action';
-import spinner from '../assets/images/spinner.gif';
 
 export default class MyMessage extends React.Component {
 	constructor(props) {

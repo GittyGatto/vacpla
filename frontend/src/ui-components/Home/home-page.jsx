@@ -7,6 +7,7 @@ import {Button, Label} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import loadVacation from "../../actions/load-vacation-action";
 import {VacationYear} from "./vacation-year";
+import {VacationMonth} from "./vacation-month";
 
 export class HomePage extends React.Component {
     constructor(props) {
@@ -42,12 +43,12 @@ export class HomePage extends React.Component {
         return <div className='HomePage'>
 
             <div className='HomePage_header'>
-            <nav className="navbar navbar-light">
-                <ul className="nav navbar-nav">
+                <nav className="navbar navbar-light">
+                    <ul className="nav navbar-nav">
                         <li><Link to="/">Homes</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                </ul>
-            </nav>
+                        <li><Link to="/about">About</Link></li>
+                    </ul>
+                </nav>
                 <Button className="logout-button" bsSize='large'
                         onClick={() => logout()}>Logout</Button>
                 <h3>Vacation planner</h3>
@@ -57,9 +58,13 @@ export class HomePage extends React.Component {
                 <p>Hi {getUser ? getUser.userName : 'human'}</p>
                 <p>Vacation total: <Label>{totalVacation ? totalVacation : 'loading...'}</Label></p>
                 <p>Planned: <Label>{vacationDays.length ? vacationDays.length : 'loading...'}</Label></p>
-                <p>Rest: <Label>{totalVacation-vacationDays.length ? totalVacation-vacationDays.length : 'loading...'}</Label></p>
+                <p>Rest: <Label>{totalVacation - vacationDays.length ? totalVacation - vacationDays.length : 'loading...'}</Label>
+                </p>
+
                 <VacationYear vacationYears={vacationYears}
-                 vacationDays={vacationDays}/>
+                              vacationDays={vacationDays}/>
+
+                <VacationMonth vacationDays={vacationDays}/>
 
             </div>
 

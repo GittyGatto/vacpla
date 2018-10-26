@@ -1,6 +1,5 @@
 import '../../../styles/index.scss';
 import React from 'react';
-import {dispatcher} from '../../util/mini-flux';
 import {Button} from "react-bootstrap";
 
 export class VacationYear extends React.Component {
@@ -8,8 +7,8 @@ export class VacationYear extends React.Component {
 
         const {vacationYears, vacationDays} = this.props;
 
-        let years = vacationYears.map((year) => {
-            return (<span>{year}</span>);
+        let years = vacationYears.map((year, index) => {
+            return (<span key={index}>{year}</span>);
         });
 
         return (<div>

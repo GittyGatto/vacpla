@@ -5,7 +5,6 @@ import App from './ui-components/app';
 import {dispatcher} from "./util/mini-flux";
 import appStore from "./stores/app-store";
 import loginStore from "./stores/login-store";
-import loadVacation from "./actions/load-vacation-action";
 import vacationStore from "./stores/vacation-store";
 
 dispatcher.addStore(appStore);
