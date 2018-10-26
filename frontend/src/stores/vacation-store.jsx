@@ -2,30 +2,20 @@ class VacationStore {
     constructor() {
         this.data = {
             totalVacation: '',
-            vacationDates: [],
+            vacationDay: [],
         };
     }
 
-    handleLoginFieldChanged(action) {
-        const {field, value} = action.data;
-        this.data[field] = value;
-        this.data.message = '';
-    }
-
-    handleLoadVacationSucceeded(ev) {
-        this.data.password = '';
-        this.data.message = '';
-    }
-
-    handleAuthenticationFailed() {
-        this.data.message = "Login failed.";
+    handleLoadVacationSucceeded(ev){
+        this.data.vacationDays = ev.data.vacationDays;
+        this.data.totalVacation = ev.data.totalVacation;
     }
 
     appendDataTo(data) {
-        data.login = this.data;
+        data.vacation = this.data;
     }
 }
 
-const loginStore = new LoginStore();
+const vacationStore = new VacationStore();
 
-export default loginStore;
+export default vacationStore;

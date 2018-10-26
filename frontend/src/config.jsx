@@ -1,4 +1,4 @@
-var Config = {
+const Config = {
     apiBaseUrl: window.location.protocol + "//" + window.location.host
 }
 

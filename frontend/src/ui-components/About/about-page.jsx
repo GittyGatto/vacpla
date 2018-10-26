@@ -14,7 +14,7 @@ export class AboutPage extends React.Component {
 
             <nav className="navbar navbar-light">
                 <ul className="nav navbar-nav">
-                    <li><Link to="/">Homes</Link></li>
+                    <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                 </ul>
             </nav>

@@ -5,19 +5,18 @@ import logout from '../../actions/logout-action';
 import './Home-Page.css';
 import {Button, Label} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import loadVacation from "../../actions/load-vacation-action";
+import vacationStore from "../../stores/vacation-store";
+import appStore from "../../stores/app-store";
 
 export class HomePage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isAuthenticated: props.isAuthenticated,
             getUser: props.getUser,
+            totalVacation: undefined,
+            vacationDays: [],
         };
-
-        loadVacation(props.userName);
-
         this._onChange = this._onChange.bind(this);
     }
 
@@ -30,33 +29,34 @@ export class HomePage extends React.Component {
     }
 
     _onChange(ev) {
-        const {isAuthenticated, getUser} = ev;
-        const newState = {
-            isAuthenticated,
-            getUser,
-        };
-        this.setState(newState);
+        const {getUser} = ev;
+        const {totalVacation, vacationDays} = ev.vacation;
+        this.setState({getUser, totalVacation, vacationDays});
     }
 
     render() {
-        const {getUser} = this.state;
+        const {getUser, totalVacation, vacationDays} = this.state;
 
         return <div className='HomePage'>
 
+            <div className='HomePage_header'>
             <nav className="navbar navbar-light">
                 <ul className="nav navbar-nav">
-
-                    <li><Link to="/">Homes</Link></li>
+                        <li><Link to="/">Homes</Link></li>
                     <li><Link to="/about">About</Link></li>
-
                 </ul>
             </nav>
-
-            <div className='HomePage_header'>
-                <h2>Vacation planner</h2>
-
                 <Button className="logout-button" bsSize='large'
                         onClick={() => logout()}>Logout</Button>
+                <h3>Vacation planner</h3>
+            </div>
+
+            <div className="HomePage_dashboard">
+                <p>Hi {getUser ? getUser.userName : 'human'}</p>
+                <p>Vacation total:
+                    <Label>{totalVacation}</Label></p>
+                <p>Planned: <Label>{vacationDays.length}</Label></p>
+                <p>Rest: <Label>{totalVacation-vacationDays.length}</Label></p>
             </div>
         </div>;
     }

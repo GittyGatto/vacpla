@@ -6,9 +6,11 @@ import {dispatcher} from "./util/mini-flux";
 import appStore from "./stores/app-store";
 import loginStore from "./stores/login-store";
 import loadVacation from "./actions/load-vacation-action";
+import vacationStore from "./stores/vacation-store";
 
 dispatcher.addStore(appStore);
 dispatcher.addStore(loginStore);
+dispatcher.addStore(vacationStore);
 
 render(<AppContainer><App/></AppContainer>, document.querySelector("#app"));
 
@@ -20,9 +22,6 @@ render(<AppContainer><App/></AppContainer>, document.querySelector("#app"));
             user: userName
         });
     }
-
-    loadVacation(appStore.getUser().userName);
-
 })();
 
 

@@ -5,11 +5,11 @@ import java.util.List;
 
 public class VacationDto {
     private int totalVacation;
-    private List<Date> userVacations;
+    private List<Date> vacationDays;
 
-    public VacationDto(int totalVacation, List<Date> userVacations) {
+    public VacationDto(int totalVacation, List<Date> vacationDays) {
         this.totalVacation = totalVacation;
-        this.userVacations = userVacations;
+        this.vacationDays = vacationDays;
     }
 
     public int getTotalVacation() {
@@ -20,11 +20,11 @@ public class VacationDto {
         this.totalVacation = totalVacation;
     }
 
-    public List<Date> getUserVacations() {
-        return userVacations;
+    public List<Date> getVacationDays() {
+        return vacationDays;
     }
 
-    public void setUserVacations(List<Date> userVacations) {
-        this.userVacations = userVacations;
+    public void setVacationDays(List<Date> vacationDays) {
+        this.vacationDays = vacationDays;
     }
 }

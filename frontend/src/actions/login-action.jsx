@@ -1,6 +1,7 @@
 import xhr from 'xhr';
 import {dispatcher} from '../util/mini-flux'
 import Config from '../config';
+import loadVacation from "./load-vacation-action";
 
 export default function login(userName, password) {
 
@@ -24,6 +25,7 @@ export default function login(userName, password) {
                 type: "authenticationSucceeded",
                 user: body
             });
+            loadVacation();
         }
     });
 }
