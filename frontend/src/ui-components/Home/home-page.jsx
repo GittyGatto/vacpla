@@ -56,7 +56,11 @@ export class HomePage extends React.Component {
                 <p>Vacation total: <Label>{totalVacation ? totalVacation : 'loading...'}</Label></p>
                 <p>Planned: <Label>{vacationDays.length ? vacationDays.length : 'loading...'}</Label></p>
                 <p>Rest: <Label>{totalVacation-vacationDays.length ? totalVacation-vacationDays.length : 'loading...'}</Label></p>
+
+
             </div>
+
+
         </div>;
     }
 }
