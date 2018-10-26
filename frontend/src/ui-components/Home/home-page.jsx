@@ -5,8 +5,6 @@ import logout from '../../actions/logout-action';
 import './Home-Page.css';
 import {Button, Label} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import vacationStore from "../../stores/vacation-store";
-import appStore from "../../stores/app-store";
 import loadVacation from "../../actions/load-vacation-action";
 
 export class HomePage extends React.Component {
@@ -55,10 +53,9 @@ export class HomePage extends React.Component {
 
             <div className="HomePage_dashboard">
                 <p>Hi {getUser ? getUser.userName : 'human'}</p>
-                <p>Vacation total:
-                    <Label>{totalVacation}</Label></p>
-                <p>Planned: <Label>{vacationDays.length}</Label></p>
-                <p>Rest: <Label>{totalVacation-vacationDays.length}</Label></p>
+                <p>Vacation total: <Label>{totalVacation ? totalVacation : 'loading...'}</Label></p>
+                <p>Planned: <Label>{vacationDays.length ? vacationDays.length : 'loading...'}</Label></p>
+                <p>Rest: <Label>{totalVacation-vacationDays.length ? totalVacation-vacationDays.length : 'loading...'}</Label></p>
             </div>
         </div>;
     }
