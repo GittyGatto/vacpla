@@ -1,6 +1,7 @@
 package com.henning.vacpla.domain.user;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "uzer")
@@ -17,7 +18,6 @@ public class UserEntity
 	@Column(name = "password")
 	private String password;
 
-
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role")
 	private Role role;
@@ -25,9 +25,11 @@ public class UserEntity
 	@Column(name = "total_vacation")
 	private int totalVacation;
 
-	public long getId() {
-		return id;
-	}
+	@Column(name = "entry")
+	private Date entry;
+
+	@Column(name = "exit")
+	private Date exit;
 
 	public String getUserName() {
 		return userName;
@@ -59,5 +61,21 @@ public class UserEntity
 
 	public void setTotalVacation(int totalVacation) {
 		this.totalVacation = totalVacation;
+	}
+
+	public Date getEntry() {
+		return entry;
+	}
+
+	public void setEntry(Date entry) {
+		this.entry = entry;
+	}
+
+	public Date getExit() {
+		return exit;
+	}
+
+	public void setExit(Date exit) {
+		this.exit = exit;
 	}
 }

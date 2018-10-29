@@ -1,4 +1,5 @@
 package com.henning.vacpla.domain.vacation;
 
-public class Status {
+public enum Status {
+    REQUESTED, APPROVED, NOT_APPROVED,
 }

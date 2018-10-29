@@ -1,42 +1,41 @@
 package com.henning.vacpla.domain.vacation;
 
-import com.henning.vacpla.domain.user.UserEntity;
-
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name="VacationEntity")
-@Table(name= "vacation")
+@Entity(name = "VacationEntity")
+@Table(name = "vacation")
 public class VacationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "vacation_id")
     private long vacationId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity uzer;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "vacation_request_id")
+    private VacationRequestEntity vacationRequest;
 
     @Column(name = "vacation_day")
     private Date vacationDay;
 
-    public VacationEntity(UserEntity uzer, Date vacationDay) {
-        this.uzer = uzer;
+    @Column(name = "holiday")
+    private boolean holiday;
+
+    public VacationEntity() {
+    }
+
+    public VacationEntity(VacationRequestEntity vacationRequest, Date vacationDay, boolean holiday) {
+        this.vacationRequest = vacationRequest;
         this.vacationDay = vacationDay;
+        this.holiday = holiday;
     }
 
-    public VacationEntity() {}
-
-    public long getVacationId() {
-        return vacationId;
+    public VacationRequestEntity getVacationRequest() {
+        return vacationRequest;
     }
 
-    public UserEntity getUzer() {
-        return uzer;
-    }
-
-    public void setUzer(UserEntity uzer) {
-        this.uzer = uzer;
+    public void setVacationRequest(VacationRequestEntity vacationRequest) {
+        this.vacationRequest = vacationRequest;
     }
 
     public Date getVacationDay() {
@@ -46,4 +45,13 @@ public class VacationEntity {
     public void setVacationDay(Date vacationDay) {
         this.vacationDay = vacationDay;
     }
+
+    public boolean isHoliday() {
+        return holiday;
+    }
+
+    public void setHoliday(boolean holiday) {
+        this.holiday = holiday;
+    }
 }
+

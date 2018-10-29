@@ -32,6 +32,7 @@ public class UserService {
         UserEntity user = new UserEntity();
         user.setUserName(accountDto.userName);
         user.setPassword(passwordEncoder.encode(accountDto.password));
+        //TODO: role should be in params
         user.setRole(Role.ADMIN);
         user.setTotalVacation(10);
         UserEntity userEntity = userRepository.save(user);
