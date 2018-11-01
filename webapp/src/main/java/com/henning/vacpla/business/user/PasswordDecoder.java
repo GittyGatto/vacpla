@@ -1,4 +1,4 @@
-package com.henning.vacpla.business;
+package com.henning.vacpla.business.user;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

@@ -1,9 +1,11 @@
 package com.henning.vacpla.domain.vacation;
 
+import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
+
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "VacationEntity")
+@Entity
 @Table(name = "vacation")
 public class VacationEntity {
     @Id
@@ -11,8 +13,8 @@ public class VacationEntity {
     @Column(name = "vacation_id")
     private long vacationId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "vacation_request_id")
+    @ManyToOne
+    @JoinColumn(name = "vacation_request_id", nullable = false)
     private VacationRequestEntity vacationRequest;
 
     @Column(name = "vacation_day")

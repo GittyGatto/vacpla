@@ -1,7 +1,7 @@
 package com.henning.vacpla.controllers.auth;
 
 
-import com.henning.vacpla.business.UserService;
+import com.henning.vacpla.business.user.UserService;
 import com.henning.vacpla.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

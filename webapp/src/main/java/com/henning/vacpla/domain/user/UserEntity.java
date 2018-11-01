@@ -1,81 +1,100 @@
 package com.henning.vacpla.domain.user;
 
+import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "uzer")
-public class UserEntity
-{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
+public class UserEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long id;
 
-	@Column(name = "user_name")
-	private String userName;
+    @Column(name = "user_name")
+    private String userName;
 
-	@Column(name = "password")
-	private String password;
+    @Column(name = "password")
+    private String password;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "role")
-	private Role role;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
 
-	@Column(name = "total_vacation")
-	private int totalVacation;
+    @Column(name = "total_vacation")
+    private int totalVacation;
 
-	@Column(name = "entry")
-	private Date entry;
+    @Column(name = "entry")
+    private Date entry;
 
-	@Column(name = "exit")
-	private Date exit;
+    @Column(name = "exit")
+    private Date exit;
 
-	public String getUserName() {
-		return userName;
-	}
+    @OneToMany(cascade = ALL, mappedBy = "uzer")
+    private List<VacationRequestEntity> vacationRequestEntityList;
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public Role getRole() {
-		return role;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public int getTotalVacation() {
-		return totalVacation;
-	}
+    public Role getRole() {
+        return role;
+    }
 
-	public void setTotalVacation(int totalVacation) {
-		this.totalVacation = totalVacation;
-	}
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
-	public Date getEntry() {
-		return entry;
-	}
+    public int getTotalVacation() {
+        return totalVacation;
+    }
 
-	public void setEntry(Date entry) {
-		this.entry = entry;
-	}
+    public void setTotalVacation(int totalVacation) {
+        this.totalVacation = totalVacation;
+    }
 
-	public Date getExit() {
-		return exit;
-	}
+    public Date getEntry() {
+        return entry;
+    }
 
-	public void setExit(Date exit) {
-		this.exit = exit;
-	}
+    public void setEntry(Date entry) {
+        this.entry = entry;
+    }
+
+    public Date getExit() {
+        return exit;
+    }
+
+    public void setExit(Date exit) {
+        this.exit = exit;
+    }
+
+    public List<VacationRequestEntity> getVacationRequestEntityList() {
+        return vacationRequestEntityList;
+    }
+
+    public void setVacationRequestEntityList(List<VacationRequestEntity> vacationRequestEntityList) {
+        this.vacationRequestEntityList = vacationRequestEntityList;
+    }
 }

@@ -1,7 +1,8 @@
-package com.henning.vacpla.domain.user;
+package com.henning.vacpla.domain.comment;
 
 
-import com.henning.vacpla.domain.vacation.OorderEntity;
+import com.henning.vacpla.domain.user.UserEntity;
+import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -15,9 +16,10 @@ public class CommentEntity {
     @Column(name = "comment_id")
     private long vacationId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "order_id")
-    private OorderEntity vacationRequest;
+    @ManyToOne
+    @JoinColumn(name = "vacation_request_id", nullable = false)
+    private VacationRequestEntity vacationRequest;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
@@ -29,17 +31,26 @@ public class CommentEntity {
     @Column(name = "comment_date")
     private Timestamp timestamp;
 
-    public CommentEntity(UserEntity userId, Date vacationDay, Timestamp timestamp) {
+    public CommentEntity(VacationRequestEntity vacationRequest, UserEntity userId, Date vacationDay, Timestamp timestamp) {
+        this.vacationRequest = vacationRequest;
         this.userId = userId;
         this.vacationDay = vacationDay;
         this.timestamp = timestamp;
     }
 
-    public OorderEntity getVacationRequest() {
+    public long getVacationId() {
+        return vacationId;
+    }
+
+    public void setVacationId(long vacationId) {
+        this.vacationId = vacationId;
+    }
+
+    public VacationRequestEntity getVacationRequest() {
         return vacationRequest;
     }
 
-    public void setVacationRequest(OorderEntity vacationRequest) {
+    public void setVacationRequest(VacationRequestEntity vacationRequest) {
         this.vacationRequest = vacationRequest;
     }
 

@@ -1,4 +1,4 @@
-package com.henning.vacpla.business;
+package com.henning.vacpla.business.user;
 
 import com.henning.vacpla.controllers.auth.LoginRequest;
 import com.henning.vacpla.domain.user.Role;
