@@ -39,6 +39,8 @@ public class VacationRequestEntity {
     @OneToMany(cascade = ALL, mappedBy = "vacationRequest")
     private List<CommentEntity> comments;
 
+    public VacationRequestEntity(){}
+
     public VacationRequestEntity(UserEntity uzer, VacationRequestStatus vacationRequestStatus, Date approved, UserEntity approvedBy, List<VacationEntity> vacationRequests, List<CommentEntity> comments) {
         this.uzer = uzer;
         this.vacationRequestStatus = vacationRequestStatus;
