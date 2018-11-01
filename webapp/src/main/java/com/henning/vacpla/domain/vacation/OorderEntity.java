@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity(name = "VacationRequestEntity")
-@Table(name = "vacation_request")
-public class VacationRequestEntity {
+import static javax.persistence.CascadeType.ALL;
+
+@Entity(name = "OorderEntity")
+@Table(name = "oorder")
+public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "vacation_request_id")
+    @Column(name = "oorder_id")
     private long vacationRequestId;
 
     @ManyToOne
@@ -29,18 +31,18 @@ public class VacationRequestEntity {
     @Column(name = "approved_by_id")
     private UserEntity approvedBy;
 
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy="vacation_request")
-    private List<VacationEntity> xxxx = new ArrayList<VacationEntity>();
+    @OneToMany(cascade = ALL, mappedBy = "vacation_request")
+    private List<VacationEntity> vacationRequests = new ArrayList<VacationEntity>();
 
-    public VacationRequestEntity(UserEntity uzer, Status status, Date approved, UserEntity approvedBy, List<VacationEntity> xxxx) {
+    public OrderEntity(UserEntity uzer, Status status, Date approved, UserEntity approvedBy, List<VacationEntity> vacationRequests) {
         this.uzer = uzer;
         this.status = status;
         this.approved = approved;
         this.approvedBy = approvedBy;
-        this.xxxx = xxxx;
+        this.vacationRequests = vacationRequests;
     }
 
-    public VacationRequestEntity() {
+    public OrderEntity() {
     }
 
     public UserEntity getUzer() {
@@ -75,11 +77,11 @@ public class VacationRequestEntity {
         this.approvedBy = approvedBy;
     }
 
-    public List<VacationEntity> getXxxx() {
-        return xxxx;
+    public List<VacationEntity> getVacationRequests() {
+        return vacationRequests;
     }
 
-    public void setXxxx(List<VacationEntity> xxxx) {
-        this.xxxx = xxxx;
+    public void setVacationRequests(List<VacationEntity> vacationRequests) {
+        this.vacationRequests = vacationRequests;
     }
 }
