@@ -40,23 +40,34 @@ export class DashboardPage extends React.Component {
         return <div className='DashboardPage'>
             <Header getUser={getUser}/>
 
-            <Grid>
+            <Grid className='DashboardPage__Overview'>
                 <Row className="show-grid">
-                    <Col md={6} mdPush={6}>
-                        <code>{'<Col md={6} mdPush={6} />'}</code>
+                    <Col md={6} className='LeftCol'>
+                        <p>Vacation total: </p>
                     </Col>
-                    <Col md={6} mdPull={6}>
-                        <code>{'<Col md={6} mdPull={6} />'}</code>
+                    <Col md={6} className='RightCol'>
+                        <Label>{totalVacation ? totalVacation : 'loading...'}</Label>
+                    </Col>
+                </Row>
+                <Row className="show-grid">
+                    <Col md={6} className='LeftCol'>
+                        <p>Planned: </p>
+                    </Col>
+                    <Col md={6} className='RightCol'>
+                        <Label>{vacationDays.length ? vacationDays.length : 'loading...'}</Label>
+                    </Col>
+                </Row>
+                <Row className="show-grid">
+                    <Col md={6} className='LeftCol'>
+                        <p>Rest: </p>
+                    </Col>
+                    <Col md={6} className='RightCol'>
+                        <Label>{totalVacation - vacationDays.length ? totalVacation - vacationDays.length : 'loading...'}</Label>
                     </Col>
                 </Row>
             </Grid>
 
-
             <div className="DashboardPage_dashboard">
-                <p>Vacation total: <Label>{totalVacation ? totalVacation : 'loading...'}</Label></p>
-                <p>Planned: <Label>{vacationDays.length ? vacationDays.length : 'loading...'}</Label></p>
-                <p>Rest: <Label>{totalVacation - vacationDays.length ? totalVacation - vacationDays.length : 'loading...'}</Label>
-                </p>
                 <VacationYear vacationYears={vacationYears}
                               vacationDays={vacationDays}/>
                 <VacationMonth vacationDays={vacationDays}/>
