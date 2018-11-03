@@ -36,13 +36,27 @@ public class GetUserVacationBusinessService {
 
     private HashMap<Integer, List<VacationRequestDto>> fillVacationRequestDtos(List<VacationRequestEntity> vacationRequestEntities) {
         HashMap<Integer, List<VacationRequestDto>> vacationRequests = new HashMap<>();
+        HashSet<Integer> hashKeys = getHashKeys(vacationRequestEntities);
         List<VacationRequestDto> vacationRequestDtoList = new ArrayList<>();
-        for (VacationRequestEntity curr : vacationRequestEntities) {
-            VacationRequestDto requestDto = fillVacationRequestDto(curr);
-            vacationRequestDtoList.add(requestDto);
+        for (Integer key : hashKeys) {
+            for (VacationRequestEntity curr : vacationRequestEntities) {
+                if (getRequestYear(curr).equals(key)) {
+                    VacationRequestDto requestDto = fillVacationRequestDto(curr);
+                    vacationRequestDtoList.add(requestDto);
+                    vacationRequests.put(key, vacationRequestDtoList);
+                }
+            }
         }
-        vacationRequests.put(2018, vacationRequestDtoList);
         return vacationRequests;
+    }
+
+    private HashSet<Integer> getHashKeys(List<VacationRequestEntity> vacationRequestEntities) {
+        HashSet<Integer> keys = new HashSet<>();
+        for (VacationRequestEntity curr : vacationRequestEntities) {
+            Integer requestYear = getRequestYear(curr);
+            keys.add(requestYear);
+        }
+        return keys;
     }
 
     private Integer getRequestYear(VacationRequestEntity curr) {
@@ -74,6 +88,4 @@ public class GetUserVacationBusinessService {
         }
         return vacationDtos;
     }
-
-
 }
