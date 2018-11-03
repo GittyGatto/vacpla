@@ -9,32 +9,11 @@ class VacationStore {
 
     handleLoadVacationSucceeded(ev) {
         this.data.totalVacation = ev.data.totalVacation;
-        this.data.vacationDays = this._transformToDate(ev.data.vacationDays);
-        this.data.vacationYears = this._getVacationYears();
+        console.log("continue here human")
     }
 
     appendDataTo(data) {
         data.vacation = this.data;
-    }
-
-    _getVacationYears() {
-        const vacationDays = this.data.vacationDays;
-        let years = [];
-        vacationDays.forEach(a => {
-            const year = a.getFullYear();
-            years.push(year);
-        })
-        let result = Array.from(new Set(years))
-        return result;
-    }
-
-    _transformToDate(sourceArray) {
-        let result = [];
-        sourceArray.forEach(a => {
-            const date = new Date(a);
-            result.push(date);
-        });
-        return result;
     }
 }
 

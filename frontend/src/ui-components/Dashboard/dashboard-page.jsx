@@ -1,18 +1,16 @@
 import '../../../styles/index.scss';
 import React from 'react';
 import {dispatcher} from '../../util/mini-flux';
-import logout from '../../actions/logout-action';
-import './Home-Page.css';
-import {Button, Label} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import './Dashboard-Page.css';
+import {Col, Grid, Label, Row} from 'react-bootstrap';
 import loadVacation from "../../actions/load-vacation-action";
 import {VacationYear} from "./vacation-year";
 import {VacationMonth} from "./vacation-month";
+import {Header} from "../Header/Header";
 
-export class HomePage extends React.Component {
+export class DashboardPage extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             getUser: props.getUser,
             totalVacation: undefined,
@@ -39,36 +37,30 @@ export class HomePage extends React.Component {
 
     render() {
         const {getUser, totalVacation, vacationDays, vacationYears} = this.state;
+        return <div className='DashboardPage'>
+            <Header getUser={getUser}/>
 
-        return <div className='HomePage'>
+            <Grid>
+                <Row className="show-grid">
+                    <Col md={6} mdPush={6}>
+                        <code>{'<Col md={6} mdPush={6} />'}</code>
+                    </Col>
+                    <Col md={6} mdPull={6}>
+                        <code>{'<Col md={6} mdPull={6} />'}</code>
+                    </Col>
+                </Row>
+            </Grid>
 
-            <div className='HomePage_header'>
-                <nav className="navbar navbar-light">
-                    <ul className="nav navbar-nav">
-                        <li><Link to="/">Homes</Link></li>
-                        <li><Link to="/about">About</Link></li>
-                    </ul>
-                </nav>
-                <Button className="logout-button" bsSize='large'
-                        onClick={() => logout()}>Logout</Button>
-                <h3>Vacation planner</h3>
-            </div>
 
-            <div className="HomePage_dashboard">
-                <p>Hi {getUser ? getUser.userName : 'human'}</p>
+            <div className="DashboardPage_dashboard">
                 <p>Vacation total: <Label>{totalVacation ? totalVacation : 'loading...'}</Label></p>
                 <p>Planned: <Label>{vacationDays.length ? vacationDays.length : 'loading...'}</Label></p>
                 <p>Rest: <Label>{totalVacation - vacationDays.length ? totalVacation - vacationDays.length : 'loading...'}</Label>
                 </p>
-
                 <VacationYear vacationYears={vacationYears}
                               vacationDays={vacationDays}/>
-
                 <VacationMonth vacationDays={vacationDays}/>
-
             </div>
-
-
         </div>;
     }
 }

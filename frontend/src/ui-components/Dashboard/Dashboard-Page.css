@@ -1,31 +1,21 @@
-.HomePage {
+.DashboardPage {
     font-family: 'Ubuntu', 'sans-serif';
     font-size: 2vh;
     text-align: center;
     background-size: cover;
-    background-position: center;
     background-origin: content-box;
     background-color: whitesmoke;
     height: 100vh;
 }
 
-.HomePage_dashboard h3 {
+.DashboardPage_dashboard h3 {
     opacity: 0.8;
     font-weight: 500;
     font-size: 3vh;
 }
 
-.HomePage_dashboard {
+.DashboardPage_dashboard {
     height: 40vh;
     padding: 3em;
 }
 
-.HomePage_header Button{
-    margin-top: 1px;
-    margin-right: 2px;
-    position:absolute;
-    top:1vh;
-    right:1vh;
-    background-color: black;
-    color: whitesmoke;
-}

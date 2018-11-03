@@ -1,0 +1,33 @@
+.HeaderPage {
+    font-family: 'Ubuntu', 'sans-serif';
+    font-size: 2vh;
+    text-align: left;
+    background-size: cover;
+    background-origin: content-box;
+    height: 15vh;
+    padding: 1em;
+}
+
+.LogoutButton {
+    margin-top: 1px;
+    margin-right: 2px;
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
+    background-color: black;
+    color: whitesmoke;
+}
+
+.LoginName {
+    margin-top: 1px;
+    margin-right: 2px;
+    position: absolute;
+    top: 7vh;
+    right: 1vh;
+}
+
+.NavMenu {
+    position: absolute;
+    left: 22vh;
+    top: 7.7vh;
+}
