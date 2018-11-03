@@ -22,6 +22,9 @@ public class VacationRequestEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity uzer;
 
+    @Column(name = "requested")
+    private Date requested;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private VacationRequestStatus vacationRequestStatus;
@@ -34,19 +37,20 @@ public class VacationRequestEntity {
     private UserEntity approvedBy;
 
     @OneToMany(cascade = ALL, mappedBy = "vacationRequest")
-    private List<VacationEntity> vacationRequests;
+    private List<VacationEntity> vacations;
 
     @OneToMany(cascade = ALL, mappedBy = "vacationRequest")
     private List<CommentEntity> comments;
 
-    public VacationRequestEntity(){}
+    public VacationRequestEntity() {
+    }
 
-    public VacationRequestEntity(UserEntity uzer, VacationRequestStatus vacationRequestStatus, Date approved, UserEntity approvedBy, List<VacationEntity> vacationRequests, List<CommentEntity> comments) {
+    public VacationRequestEntity(UserEntity uzer, VacationRequestStatus vacationRequestStatus, Date approved, UserEntity approvedBy, List<VacationEntity> vacations, List<CommentEntity> comments) {
         this.uzer = uzer;
         this.vacationRequestStatus = vacationRequestStatus;
         this.approved = approved;
         this.approvedBy = approvedBy;
-        this.vacationRequests = vacationRequests;
+        this.vacations = vacations;
         this.comments = comments;
     }
 
@@ -64,6 +68,14 @@ public class VacationRequestEntity {
 
     public void setUzer(UserEntity uzer) {
         this.uzer = uzer;
+    }
+
+    public Date getRequested() {
+        return requested;
+    }
+
+    public void setRequested(Date requested) {
+        this.requested = requested;
     }
 
     public VacationRequestStatus getVacationRequestStatus() {
@@ -90,12 +102,12 @@ public class VacationRequestEntity {
         this.approvedBy = approvedBy;
     }
 
-    public List<VacationEntity> getVacationRequests() {
-        return vacationRequests;
+    public List<VacationEntity> getVacations() {
+        return vacations;
     }
 
-    public void setVacationRequests(List<VacationEntity> vacationRequests) {
-        this.vacationRequests = vacationRequests;
+    public void setVacations(List<VacationEntity> vacations) {
+        this.vacations = vacations;
     }
 
     public List<CommentEntity> getComments() {

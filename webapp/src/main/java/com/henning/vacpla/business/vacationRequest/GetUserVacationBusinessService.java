@@ -1,18 +1,15 @@
 package com.henning.vacpla.business.vacationRequest;
 
-import com.henning.vacpla.controllers.vacation.VacationRequest;
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;
+import com.henning.vacpla.domain.vacation.VacationEntity;
 import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
 import com.henning.vacpla.domain.vacationRequest.VacationRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class GetUserVacationBusinessService {
@@ -23,14 +20,60 @@ public class GetUserVacationBusinessService {
     @Autowired
     private VacationRequestRepository vacationRequestRepository;
 
-    public VacationRequestDto getUserVacation(String userName) {
+    public VacationOverviewDto getUserVacation(String userName) {
         UserEntity userEntity = userRepository.findByUserName(userName).orElseThrow(() -> new UsernameNotFoundException("No user found with username " + userName));
         List<VacationRequestEntity> vacationRequestEntities = vacationRequestRepository.findByUzer(Optional.ofNullable(userEntity)).orElse(null);
-        return fillVacationRequestDto(userEntity, vacationRequestEntities);
+        return fillVacationOverviewDto(userEntity, vacationRequestEntities);
     }
 
-    private VacationRequestDto fillVacationRequestDto(UserEntity userEntity, List<VacationRequestEntity> vacationRequestEntity) {
-        //ToDo create useful content
-        return null;
+    private VacationOverviewDto fillVacationOverviewDto(UserEntity userEntity, List<VacationRequestEntity> vacationRequestEntities) {
+        VacationOverviewDto overviewDto = new VacationOverviewDto();
+        overviewDto.userName = userEntity.getUserName();
+        overviewDto.totalVacation = userEntity.getTotalVacation();
+        overviewDto.vacationRequests = fillVacationRequestDtos(vacationRequestEntities);
+        return overviewDto;
     }
+
+    private HashMap<Integer, List<VacationRequestDto>> fillVacationRequestDtos(List<VacationRequestEntity> vacationRequestEntities) {
+        HashMap<Integer, List<VacationRequestDto>> vacationRequests = new HashMap<>();
+        List<VacationRequestDto> vacationRequestDtoList = new ArrayList<>();
+        for (VacationRequestEntity curr : vacationRequestEntities) {
+            VacationRequestDto requestDto = fillVacationRequestDto(curr);
+            vacationRequestDtoList.add(requestDto);
+        }
+        vacationRequests.put(2018, vacationRequestDtoList);
+        return vacationRequests;
+    }
+
+    private Integer getRequestYear(VacationRequestEntity curr) {
+        Date date = new Date();
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        return calendar.get(Calendar.YEAR);
+    }
+
+    private VacationRequestDto fillVacationRequestDto(VacationRequestEntity requestEntity) {
+        VacationRequestDto requestDto = new VacationRequestDto();
+        requestDto.vacationRequestStatus = requestEntity.getVacationRequestStatus().toString();
+        requestDto.requested = requestEntity.getRequested();
+        if (requestEntity.getApproved() != null) {
+            requestDto.approved = requestEntity.getApproved().toString();
+            requestDto.approvedBy = requestEntity.getApprovedBy().toString();
+        }
+        requestDto.vacations = fillVacationDtos(requestEntity.getVacations());
+        return requestDto;
+    }
+
+    private List<VacationDto> fillVacationDtos(List<VacationEntity> vacations) {
+        List<VacationDto> vacationDtos = new ArrayList<>();
+        for (VacationEntity curr : vacations) {
+            VacationDto vacationDto = new VacationDto();
+            vacationDto.vacationDay = curr.getVacationDay();
+            vacationDto.holiday = curr.isHoliday();
+            vacationDtos.add(vacationDto);
+        }
+        return vacationDtos;
+    }
+
+
 }

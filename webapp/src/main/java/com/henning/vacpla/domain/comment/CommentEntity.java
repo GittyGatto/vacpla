@@ -20,7 +20,6 @@ public class CommentEntity {
     @JoinColumn(name = "vacation_request_id", nullable = false)
     private VacationRequestEntity vacationRequest;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private UserEntity userId;
