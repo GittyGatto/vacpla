@@ -5,7 +5,7 @@ import {Header} from "../Header/Header";
 
 export class AboutPage extends React.Component {
     render() {
-        return <div>
+        return <div className='DashboardPage'>
             <Header/>
             <h1>under constructor</h1>
         </div>;
