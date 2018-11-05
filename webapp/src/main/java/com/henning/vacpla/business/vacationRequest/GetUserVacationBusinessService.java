@@ -28,7 +28,6 @@ public class GetUserVacationBusinessService {
 
     private VacationOverviewDto fillVacationOverviewDto(UserEntity userEntity, List<VacationRequestEntity> vacationRequestEntities) {
         VacationOverviewDto overviewDto = new VacationOverviewDto();
-        overviewDto.userName = userEntity.getUserName();
         overviewDto.totalVacation = userEntity.getTotalVacation();
         overviewDto.vacationRequests = fillVacationRequestDtos(vacationRequestEntities);
         return overviewDto;

@@ -4,8 +4,6 @@ import {dispatcher} from '../../util/mini-flux';
 import './Dashboard-Page.css';
 import {Col, Grid, Label, Row} from 'react-bootstrap';
 import loadVacation from "../../actions/load-vacation-action";
-import {VacationYear} from "./vacation-year";
-import {VacationMonth} from "./vacation-month";
 import {Header} from "../Header/Header";
 
 export class DashboardPage extends React.Component {
@@ -14,7 +12,7 @@ export class DashboardPage extends React.Component {
         this.state = {
             getUser: props.getUser,
             totalVacation: undefined,
-            vacationDays: [],
+            vacationLeft: [],
             vacationYears: [],
         };
         loadVacation();
@@ -31,19 +29,19 @@ export class DashboardPage extends React.Component {
 
     _onChange(ev) {
         const {getUser} = ev;
-        const {totalVacation, vacationDays, vacationYears} = ev.vacation;
-        this.setState({getUser, totalVacation, vacationDays, vacationYears});
+        const {totalVacation, vacationLeft, vacationTaken} = ev.vacation;
+        this.setState({getUser, totalVacation, vacationLeft, vacationTaken});
     }
 
     render() {
-        const {getUser, totalVacation, vacationDays, vacationYears} = this.state;
+        const {getUser, totalVacation, vacationLeft, vacationYears} = this.state;
         return <div className='DashboardPage'>
             <Header getUser={getUser}/>
 
             <Grid className='DashboardPage__Overview'>
                 <Row className="show-grid">
                     <Col md={6} className='LeftCol'>
-                        <p>Vacation total: </p>
+                        <p>Total:</p>
                     </Col>
                     <Col md={6} className='RightCol'>
                         <Label>{totalVacation ? totalVacation : '...'}</Label>
@@ -51,18 +49,18 @@ export class DashboardPage extends React.Component {
                 </Row>
                 <Row className="show-grid">
                     <Col md={6} className='LeftCol'>
-                        <p>Planned: </p>
+                        <p>Left:</p>
                     </Col>
                     <Col md={6} className='RightCol'>
-                        <Label>{vacationDays.length ? vacationDays.length : '...'}</Label>
+                        <Label>{vacationLeft ? vacationLeft : '...'}</Label>
                     </Col>
                 </Row>
                 <Row className="show-grid">
                     <Col md={6} className='LeftCol'>
-                        <p>Rest: </p>
+                        <p>Gone forever:</p>
                     </Col>
                     <Col md={6} className='RightCol'>
-                        <Label>{totalVacation - vacationDays.length ? totalVacation - vacationDays.length : '...'}</Label>
+                        <Label>{totalVacation - vacationLeft ? totalVacation - vacationLeft : '...'}</Label>
                     </Col>
                 </Row>
             </Grid>
