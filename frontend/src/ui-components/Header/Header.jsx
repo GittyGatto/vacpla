@@ -13,8 +13,8 @@ export class Header extends React.Component {
             <h4>vacation as a service</h4>
             <nav className="NavMenu navbar navbar-light">
                 <ul className="nav navbar-nav">
-                    <li><Link to="/">Dashboard</Link></li>
-                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/">dashboard</Link></li>
+                    <li><Link to="/about">new request</Link></li>
                 </ul>
             </nav>
             <p className='LoginName'>Hi {getUser ? getUser.userName : 'undefinedUser'}</p>

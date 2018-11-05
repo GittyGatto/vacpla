@@ -46,7 +46,7 @@ export class DashboardPage extends React.Component {
                         <p>Vacation total: </p>
                     </Col>
                     <Col md={6} className='RightCol'>
-                        <Label>{totalVacation ? totalVacation : 'loading...'}</Label>
+                        <Label>{totalVacation ? totalVacation : '...'}</Label>
                     </Col>
                 </Row>
                 <Row className="show-grid">
@@ -54,7 +54,7 @@ export class DashboardPage extends React.Component {
                         <p>Planned: </p>
                     </Col>
                     <Col md={6} className='RightCol'>
-                        <Label>{vacationDays.length ? vacationDays.length : 'loading...'}</Label>
+                        <Label>{vacationDays.length ? vacationDays.length : '...'}</Label>
                     </Col>
                 </Row>
                 <Row className="show-grid">
@@ -62,16 +62,10 @@ export class DashboardPage extends React.Component {
                         <p>Rest: </p>
                     </Col>
                     <Col md={6} className='RightCol'>
-                        <Label>{totalVacation - vacationDays.length ? totalVacation - vacationDays.length : 'loading...'}</Label>
+                        <Label>{totalVacation - vacationDays.length ? totalVacation - vacationDays.length : '...'}</Label>
                     </Col>
                 </Row>
             </Grid>
-
-            <div className="DashboardPage_dashboard">
-                <VacationYear vacationYears={vacationYears}
-                              vacationDays={vacationDays}/>
-                <VacationMonth vacationDays={vacationDays}/>
-            </div>
         </div>;
     }
 }
