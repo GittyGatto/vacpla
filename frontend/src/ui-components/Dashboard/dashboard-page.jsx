@@ -12,8 +12,8 @@ export class DashboardPage extends React.Component {
         this.state = {
             getUser: props.getUser,
             totalVacation: undefined,
-            vacationLeft: [],
-            vacationYears: [],
+            vacationLeft: undefined,
+            openRequests: undefined,
         };
         loadVacation();
         this._onChange = this._onChange.bind(this);
@@ -29,12 +29,12 @@ export class DashboardPage extends React.Component {
 
     _onChange(ev) {
         const {getUser} = ev;
-        const {totalVacation, vacationLeft, vacationTaken} = ev.vacation;
-        this.setState({getUser, totalVacation, vacationLeft, vacationTaken});
+        const {totalVacation, vacationLeft, openRequests} = ev.vacation;
+        this.setState({getUser, totalVacation, vacationLeft, openRequests});
     }
 
     render() {
-        const {getUser, totalVacation, vacationLeft, vacationYears} = this.state;
+        const {getUser, totalVacation, vacationLeft, openRequests} = this.state;
         return <div className='DashboardPage'>
             <Header getUser={getUser}/>
 
@@ -61,6 +61,14 @@ export class DashboardPage extends React.Component {
                     </Col>
                     <Col md={6} className='RightCol'>
                         <Label>{totalVacation - vacationLeft ? totalVacation - vacationLeft : '...'}</Label>
+                    </Col>
+                </Row>
+                <Row className="show-grid">
+                    <Col md={6} className='LeftCol'>
+                        <p>Open Requests:</p>
+                    </Col>
+                    <Col md={6} className='RightCol'>
+                        <Label>{openRequests ? openRequests : '...'}</Label>
                     </Col>
                 </Row>
             </Grid>
