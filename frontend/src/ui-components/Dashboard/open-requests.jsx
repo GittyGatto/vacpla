@@ -1,7 +1,6 @@
 import '../../../styles/index.scss';
 import React from 'react';
 import {Button} from "react-bootstrap";
-import loadVacation from "../../actions/load-vacation-action";
 
 export class OpenRequests extends React.Component {
 

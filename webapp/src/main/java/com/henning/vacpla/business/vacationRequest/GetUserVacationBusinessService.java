@@ -67,13 +67,13 @@ public class GetUserVacationBusinessService {
 
     private VacationRequestDto fillVacationRequestDto(VacationRequestEntity requestEntity) {
         VacationRequestDto requestDto = new VacationRequestDto();
-        requestDto.vacationRequestStatus = requestEntity.getVacationRequestStatus().toString();
-        requestDto.requested = requestEntity.getRequested();
+        requestDto.setVacationRequestStatus(requestEntity.getVacationRequestStatus().toString());
+        requestDto.setRequested(requestEntity.getRequested());
         if (requestEntity.getApproved() != null) {
-            requestDto.approved = requestEntity.getApproved().toString();
-            requestDto.approvedBy = requestEntity.getApprovedBy().toString();
+            requestDto.setApproved(requestEntity.getApproved().toString());
+            requestDto.setApprovedBy(requestEntity.getApprovedBy().getUserName());
         }
-        requestDto.vacations = fillVacationDtos(requestEntity.getVacations());
+        requestDto.setVacations(fillVacationDtos(requestEntity.getVacations()));
         return requestDto;
     }
 
