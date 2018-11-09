@@ -1,0 +1,8 @@
+.OpenRequest{
+    border: dotted black 2px;
+    height: 10vh;
+}
+
+.OpenRequests{
+    border: solid red 2px;
+}

@@ -1,19 +1,25 @@
 import '../../../styles/index.scss';
 import React from 'react';
-import {Button} from "react-bootstrap";
+import './Open-Requests.css'
+import {Jumbotron, Label} from "react-bootstrap";
 
 export class OpenRequests extends React.Component {
 
     render() {
         const {openRequests} = this.props;
-        let years = openRequests.map((curr, index) => {
-            return (<span key={index}>
-                 <Button>{curr.vacationRequestStatus} {curr.requested} {curr.vacations.lenght}</Button>
+        let requests = openRequests.map((curr, index) => {
+            return (<span className='OpenRequest' key={index}>
+                <Jumbotron>
+                    <h1>vacation request</h1>
+                    <p>status: <Label>{curr.vacationRequestStatus}</Label></p>
+                    <p>requested: <Label>{curr.requested}</Label></p>
+                    <p>days: <Label>{curr.vacations.length}</Label></p>
+                </Jumbotron>
                 </span>);
         });
 
-        return (<div>
-            {years}
+        return (<div className='OpenRequests'>
+            {requests}
         </div>);
     }
 }
