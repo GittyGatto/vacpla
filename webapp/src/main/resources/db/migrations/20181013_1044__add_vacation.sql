@@ -44,3 +44,12 @@ insert into vacation (vacation_request_id, vacation_day, holiday) VALUES
 (6, '2017-12-20', false);
 insert into vacation (vacation_request_id, vacation_day, holiday) VALUES
 (6, '2017-12-21', false);
+
+insert into vacation (vacation_request_id, vacation_day, holiday) VALUES
+(7, '2018-12-27', false);
+insert into vacation (vacation_request_id, vacation_day, holiday) VALUES
+(7, '2018-12-28', false);
+insert into vacation (vacation_request_id, vacation_day, holiday) VALUES
+(7, '2018-12-29', false);
+insert into vacation (vacation_request_id, vacation_day, holiday) VALUES
+(7, '2018-12-30', false);
