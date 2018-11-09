@@ -33,7 +33,7 @@ public class VacationRequestEntity {
     private Date approved;
 
     @ManyToOne
-    @JoinColumn(name = "approved_by_id", nullable = false)
+    @JoinColumn(name = "approved_by_id")
     private UserEntity approvedBy;
 
     @OneToMany(cascade = ALL, mappedBy = "vacationRequest")

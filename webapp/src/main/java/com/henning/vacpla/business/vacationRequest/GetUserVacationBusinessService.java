@@ -36,8 +36,9 @@ public class GetUserVacationBusinessService {
     private HashMap<Integer, List<VacationRequestDto>> fillVacationRequestDtos(List<VacationRequestEntity> vacationRequestEntities) {
         HashMap<Integer, List<VacationRequestDto>> vacationRequests = new HashMap<>();
         HashSet<Integer> hashKeys = getHashKeys(vacationRequestEntities);
-        List<VacationRequestDto> vacationRequestDtoList = new ArrayList<>();
+
         for (Integer key : hashKeys) {
+            List<VacationRequestDto> vacationRequestDtoList = new ArrayList<>();
             for (VacationRequestEntity curr : vacationRequestEntities) {
                 if (getRequestYear(curr).equals(key)) {
                     VacationRequestDto requestDto = fillVacationRequestDto(curr);
@@ -45,6 +46,7 @@ public class GetUserVacationBusinessService {
                     vacationRequests.put(key, vacationRequestDtoList);
                 }
             }
+
         }
         return vacationRequests;
     }
@@ -61,7 +63,7 @@ public class GetUserVacationBusinessService {
     private Integer getRequestYear(VacationRequestEntity curr) {
         Date date = new Date();
         Calendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
+        calendar.setTime(curr.getRequested());
         return calendar.get(Calendar.YEAR);
     }
 
@@ -81,8 +83,8 @@ public class GetUserVacationBusinessService {
         List<VacationDto> vacationDtos = new ArrayList<>();
         for (VacationEntity curr : vacations) {
             VacationDto vacationDto = new VacationDto();
-            vacationDto.vacationDay = curr.getVacationDay();
-            vacationDto.holiday = curr.isHoliday();
+            vacationDto.setHoliday(curr.isHoliday());
+            vacationDto.setVacationDay(curr.getVacationDay());
             vacationDtos.add(vacationDto);
         }
         return vacationDtos;

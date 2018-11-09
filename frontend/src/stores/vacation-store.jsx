@@ -4,7 +4,7 @@ class VacationStore {
             totalVacation: '',
             vacationLeftCount: '',
             openRequestsCount: undefined,
-            openRequests: undefined,
+            openRequests: [],
         };
     }
 
@@ -29,7 +29,7 @@ class VacationStore {
     }
 
     _getOpenRequestsCount(ev) {
-        const requests = this._getFilteredRequests(ev, 'NOT_APPROVED');
+        const requests = this._getFilteredRequests(ev, 'REQUESTED');
         return requests.length;
     }
 
@@ -55,7 +55,7 @@ class VacationStore {
     }
 
     _getOpenRequests(ev) {
-        let openRequests = this._getFilteredRequests(ev, 'NOT_APPROVED');
+        let openRequests = this._getFilteredRequests(ev, 'REQUESTED');
         return openRequests;
     }
 }

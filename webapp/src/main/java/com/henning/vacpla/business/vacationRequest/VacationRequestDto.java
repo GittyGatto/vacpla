@@ -23,11 +23,11 @@ public class VacationRequestDto {
         this.vacationRequestStatus = vacationRequestStatus;
     }
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public Date getRequested() {
         return requested;
     }
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public void setRequested(Date requested) {
         this.requested = requested;
     }
@@ -36,6 +36,7 @@ public class VacationRequestDto {
         return approved;
     }
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public void setApproved(String approved) {
         this.approved = approved;
     }
