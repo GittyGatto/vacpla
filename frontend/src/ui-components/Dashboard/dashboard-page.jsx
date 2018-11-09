@@ -5,7 +5,7 @@ import './Dashboard-Page.css';
 import {Col, Grid, Label, Row} from 'react-bootstrap';
 import loadVacation from "../../actions/load-vacation-action";
 import {Header} from "../Header/Header";
-import {OpenRequests} from "./open-requests";
+import {AllRequests} from "./all-requests";
 
 export class DashboardPage extends React.Component {
     constructor(props) {
@@ -15,7 +15,7 @@ export class DashboardPage extends React.Component {
             totalVacation: undefined,
             vacationLeftCount: undefined,
             openRequestsCount: undefined,
-            openRequests: [],
+            requests: [],
         };
         loadVacation();
         this._onChange = this._onChange.bind(this);
@@ -31,12 +31,12 @@ export class DashboardPage extends React.Component {
 
     _onChange(ev) {
         const {getUser} = ev;
-        const {totalVacation, vacationLeftCount, openRequestsCount, openRequests} = ev.vacation;
-        this.setState({getUser, totalVacation, vacationLeftCount, openRequestsCount, openRequests});
+        const {totalVacation, vacationLeftCount, openRequestsCount, requests} = ev.vacation;
+        this.setState({getUser, totalVacation, vacationLeftCount, openRequestsCount, requests});
     }
 
     render() {
-        const {getUser, totalVacation, vacationLeftCount, openRequestsCount, openRequests} = this.state;
+        const {getUser, totalVacation, vacationLeftCount, openRequestsCount, requests} = this.state;
         return <div className='DashboardPage'>
             <Header getUser={getUser}/>
 
@@ -70,16 +70,17 @@ export class DashboardPage extends React.Component {
                         <p>Open Requests:</p>
                     </Col>
                     <Col md={6} className='RightCol'>
-                        <Label>{openRequestsCount ? openRequestsCount : '...'}</Label>
+                        <Label bsStyle='warning'>{openRequestsCount ? openRequestsCount : '...'}</Label>
                     </Col>
                 </Row>
                 <Row className="show-grid">
                     <Col md={12}>
-                        <OpenRequests openRequests={openRequests}/>
+                        <h1>All requests</h1>
+                        <AllRequests requests={requests}/>
                     </Col>
                 </Row>
-            </Grid>
 
+            </Grid>
         </div>;
     }
 }

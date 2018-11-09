@@ -4,7 +4,7 @@ class VacationStore {
             totalVacation: '',
             vacationLeftCount: '',
             openRequestsCount: undefined,
-            openRequests: [],
+            requests: [],
         };
     }
 
@@ -12,7 +12,7 @@ class VacationStore {
         this.data.totalVacation = ev.data.totalVacation;
         this.data.vacationLeftCount = this._getVacationLeftCount(ev);
         this.data.openRequestsCount = this._getOpenRequestsCount(ev);
-        this.data.openRequests = this._getOpenRequests(ev);
+        this.data.requests = this._getAllRequests(ev);
         console.log("continue here human")
     }
 
@@ -57,6 +57,10 @@ class VacationStore {
     _getOpenRequests(ev) {
         let openRequests = this._getFilteredRequests(ev, 'REQUESTED');
         return openRequests;
+    }
+
+    _getAllRequests(ev) {
+        return this._getVacationRequests(ev);
     }
 }
 
