@@ -5,11 +5,15 @@ import {Button} from "react-bootstrap";
 export class OpenRequests extends React.Component {
 
     render() {
-        let result = this.props.openRequests.map((curr, index) => {
-            return (<span key={index}>{curr.vacationRequestStatus}</span>);
+        const {openRequests} = this.props;
+        let years = openRequests.map((curr, index) => {
+            return (<span key={index}>
+                 <Button>{curr.vacationRequestStatus} {curr.requested} {curr.vacations.lenght}</Button>
+                </span>);
         });
+
         return (<div>
-            <Button>{result}</Button>
+            {years}
         </div>);
     }
 }
