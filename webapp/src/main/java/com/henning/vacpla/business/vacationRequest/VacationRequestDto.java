@@ -7,7 +7,7 @@ import com.henning.vacpla.controllers.vacation.JsonDateSerializer;
 import java.util.Date;
 import java.util.List;
 
-public class VacationRequestDto {
+public class VacationRequestDto implements Comparable<VacationRequestDto> {
     private String vacationRequestStatus;
     private Date requested;
     private String approved;
@@ -63,5 +63,10 @@ public class VacationRequestDto {
 
     public void setComments(List<CommentDto> comments) {
         this.comments = comments;
+    }
+
+    @Override
+    public int compareTo(VacationRequestDto o) {
+        return getRequested().compareTo(o.getRequested());
     }
 }

@@ -46,7 +46,7 @@ public class GetUserVacationBusinessService {
                     vacationRequests.put(key, vacationRequestDtoList);
                 }
             }
-
+            Collections.sort(vacationRequestDtoList, Collections.reverseOrder());
         }
         return vacationRequests;
     }
