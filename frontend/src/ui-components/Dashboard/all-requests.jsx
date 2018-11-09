@@ -9,18 +9,14 @@ export class AllRequests extends React.Component {
         const {requests} = this.props;
         let allRequests = requests.map((curr, index) => {
 
-            let status = curr.vacationRequestStatus;
-            let requested = curr.requested;
-            let statusAndRequested = status + " on " + requested;
-
             let buttonStyle = this._getButtonStyle(curr.vacationRequestStatus);
 
-            return (<span className='OpenRequest' key={index}>
-                <ListGroupItem bsStyle={buttonStyle}>{statusAndRequested} Days: {curr.vacations.length}</ListGroupItem>
+            return (<span key={index}>
+                <ListGroupItem bsStyle={buttonStyle}> {curr.vacationRequestStatus} on {curr.requested} Days: {curr.vacations.length}</ListGroupItem>
                 </span>);
         });
 
-        return (<div className='OpenRequests'>
+        return (<div>
             <ListGroup>
                 {allRequests}
             </ListGroup>
