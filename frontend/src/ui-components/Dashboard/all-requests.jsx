@@ -1,6 +1,5 @@
 import '../../../styles/index.scss';
 import React from 'react';
-import './All-Requests.css'
 import {ListGroup, ListGroupItem} from "react-bootstrap";
 
 export class AllRequests extends React.Component {
