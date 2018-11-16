@@ -6,6 +6,9 @@ import Calendar from "react-calendar";
 import {dispatcher} from "../../util/mini-flux";
 import {Button, Col, Grid, Label, Row} from "react-bootstrap";
 import changedCalender from "../../actions/change-calendar-action";
+import addVacation from "../../actions/add-vacation-range-action";
+import {RequestedVacation} from "./requested-vacation";
+import sendRequest from "../../actions/send-request-action";
 
 export class NewRequestPage extends React.Component {
     constructor(props) {
@@ -16,7 +19,8 @@ export class NewRequestPage extends React.Component {
             date: [new Date(), new Date()],
             minDate: new Date(),
             getUser: props.getUser,
-            vacationLeftCount : undefined,
+            vacationLeftCount: undefined,
+            requestedVacations: undefined,
         };
         this._onChange = this._onChange.bind(this);
     }
@@ -31,13 +35,13 @@ export class NewRequestPage extends React.Component {
 
     _onChange(ev) {
         const {getUser} = ev;
-        const {range, requestedDays} = ev.newRequest;
-        const {vacationLeftCount}= ev.vacation;
-        this.setState({getUser, range, requestedDays, vacationLeftCount});
+        const {range, requestedDays, requestedVacations} = ev.newRequest;
+        const {vacationLeftCount} = ev.vacation;
+        this.setState({getUser, range, requestedDays, vacationLeftCount, requestedVacations});
     }
 
     render() {
-        const {getUser, date, minDate, range, requestedDays, vacationLeftCount} = this.state;
+        const {getUser, date, minDate, range, requestedDays, vacationLeftCount, requestedVacations} = this.state;
         return <div className='DashboardPage'>
             <Header getUser={getUser}/>
             <Grid className='DashboardPage__Overview'>
@@ -57,8 +61,17 @@ export class NewRequestPage extends React.Component {
                     </Col>
                     <Col xs={6} className='NewRequest__Status'>
 
-                        <Button bsStyle="success">Request</Button>
-                        <Button bsStyle="danger">Clear</Button>
+                        <Button bsStyle="success" onClick={(ev) => this._onAddClicked(ev)}>Add Vacation</Button>
+                        <Button bsStyle="warning" onClick={(ev) => this._onSendClicked(ev)}>Send Request</Button>
+
+                        <Row className="show-grid">
+                            <Col xs={6} className='LeftCol'>
+                                <p>Vacation left</p>
+                            </Col>
+                            <Col xs={6} className='RightCol'>
+                                <Label>{vacationLeftCount}</Label>
+                            </Col>
+                        </Row>
 
 
                         <Row className="show-grid">
@@ -93,7 +106,19 @@ export class NewRequestPage extends React.Component {
                                 <p>Days left: </p>
                             </Col>
                             <Col xs={6} className='RightCol'>
-                                <Label>{vacationLeftCount-requestedDays}</Label>
+                                <Label>{vacationLeftCount - requestedDays}</Label>
+                            </Col>
+                        </Row>
+
+                        <Row className="show-grid">
+                            <Col xs={12}>
+                                <p>Requested</p>
+                            </Col>
+                        </Row>
+
+                        <Row className="show-grid">
+                            <Col xs={12}>
+                                <RequestedVacation requestedVacations={requestedVacations}/>
                             </Col>
                         </Row>
 
@@ -105,5 +130,14 @@ export class NewRequestPage extends React.Component {
 
     _onCalendarChanged(ev) {
         changedCalender(ev);
+    }
+
+    _onAddClicked(ev) {
+        addVacation(ev);
+    }
+
+    _onSendClicked(ev) {
+        console.log('send clicked');
+        sendRequest();
     }
 }
