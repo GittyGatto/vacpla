@@ -42,6 +42,11 @@ export class DashboardPage extends React.Component {
 
             <Grid className='DashboardPage__Overview'>
                 <Row className="show-grid">
+                    <Col xs={12}>
+                        <h1>Dashboard</h1>
+                    </Col>
+                </Row>
+                <Row className="show-grid">
                     <Col md={6} className='LeftCol'>
                         <p>Total:</p>
                     </Col>

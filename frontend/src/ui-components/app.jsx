@@ -3,7 +3,7 @@ import React from 'react';
 import RestrictAccess from './restrict-access';
 import {HashRouter, Route, Switch} from 'react-router-dom';
 import {DashboardPage} from './Dashboard/dashboard-page';
-import {AboutPage} from './About/about-page'
+import {NewRequestPage} from './NewRequest/newRequest-page'
 
 export default class App extends React.Component {
     render() {
@@ -11,7 +11,7 @@ export default class App extends React.Component {
             <HashRouter>
                 <Switch>
                     <Route exact path="/" component={DashboardPage}/>
-                    <Route path="/About" component={AboutPage}/>
+                    <Route path="/About" component={NewRequestPage}/>
                 </Switch>
             </HashRouter>
         </RestrictAccess>);

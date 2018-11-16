@@ -6,10 +6,12 @@ import {dispatcher} from "./util/mini-flux";
 import appStore from "./stores/app-store";
 import loginStore from "./stores/login-store";
 import vacationStore from "./stores/vacation-store";
+import newRequestStore from "./stores/newRequest-store";
 
 dispatcher.addStore(appStore);
 dispatcher.addStore(loginStore);
 dispatcher.addStore(vacationStore);
+dispatcher.addStore(newRequestStore);
 
 render(<AppContainer><App/></AppContainer>, document.querySelector("#app"));
 

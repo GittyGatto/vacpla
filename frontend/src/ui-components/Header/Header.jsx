@@ -10,7 +10,7 @@ export class Header extends React.Component {
         const {getUser} = this.props;
         return <div className='HeaderPage'>
             <h1>vac pla</h1>
-            <h4>vacation as a service</h4>
+            <p>vacation as a service</p>
             <nav className="NavMenu navbar navbar-light">
                 <ul className="nav navbar-nav">
                     <li><Link to="/">dashboard</Link></li>

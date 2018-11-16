@@ -26,3 +26,7 @@
 .RightCol{
     text-align: left;
 }
+
+.NewRequest__Status Button{
+    margin-left: 0.2em;
+}
