@@ -137,7 +137,6 @@ export class NewRequestPage extends React.Component {
     }
 
     _onSendClicked(ev) {
-        console.log('send clicked');
         sendRequest();
     }
 }

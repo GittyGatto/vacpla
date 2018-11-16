@@ -21,10 +21,20 @@ public class GetUserVacationBusinessService {
     private VacationRequestRepository vacationRequestRepository;
 
     public VacationOverviewDto getUserVacation(String userName) {
-        UserEntity userEntity = userRepository.findByUserName(userName).orElseThrow(() -> new UsernameNotFoundException("No user found with username " + userName));
+        UserEntity userEntity = getUserEntity(userName);
         List<VacationRequestEntity> vacationRequestEntities = vacationRequestRepository.findByUzer(Optional.ofNullable(userEntity)).orElse(null);
         return fillVacationOverviewDto(userEntity, vacationRequestEntities);
     }
+
+    public VacationOverviewDto saveNewVacationRequest(String userName, String[] range) {
+        UserEntity userEntity = getUserEntity(userName);
+        return null;
+    }
+
+    private UserEntity getUserEntity(String userName) {
+        return userRepository.findByUserName(userName).orElseThrow(() -> new UsernameNotFoundException("No user found with username " + userName));
+    }
+
 
     private VacationOverviewDto fillVacationOverviewDto(UserEntity userEntity, List<VacationRequestEntity> vacationRequestEntities) {
         VacationOverviewDto overviewDto = new VacationOverviewDto();
