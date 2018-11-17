@@ -2,10 +2,11 @@ import '../../../styles/index.scss';
 import React from 'react';
 import {dispatcher} from '../../util/mini-flux';
 import './Dashboard-Page.css';
-import {Col, Grid, Label, Row} from 'react-bootstrap';
+import {Button, Col, Grid, Label, Row} from 'react-bootstrap';
 import loadVacation from "../../actions/load-vacation-action";
 import {Header} from "../Header/Header";
 import {AllRequests} from "./all-requests";
+import {Link} from "react-router-dom";
 
 export class DashboardPage extends React.Component {
     constructor(props) {
@@ -76,6 +77,12 @@ export class DashboardPage extends React.Component {
                     </Col>
                     <Col md={6} className='RightCol'>
                         <Label bsStyle='warning'>{openRequestsCount ? openRequestsCount : '...'}</Label>
+                    </Col>
+                </Row>
+                <Row className="show-grid">
+                    <Col md={12}>
+                        <Link to="/About"><Button bsStyle='danger'>Request some fine vacation</Button></Link>
+
                     </Col>
                 </Row>
                 <Row className="show-grid">

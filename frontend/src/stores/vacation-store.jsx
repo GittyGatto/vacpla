@@ -54,11 +54,6 @@ class VacationStore {
         return days;
     }
 
-    _getOpenRequests(ev) {
-        let openRequests = this._getFilteredRequests(ev, 'REQUESTED');
-        return openRequests;
-    }
-
     _getAllRequests(ev) {
         return this._getVacationRequests(ev);
     }
@@ -66,7 +61,6 @@ class VacationStore {
     _getVacationDayCount(vacationDays) {
         let count = 0;
         vacationDays.forEach(curr => {
-            console.log(curr);
             count += curr[0].vacationCount;
         });
         return count;
