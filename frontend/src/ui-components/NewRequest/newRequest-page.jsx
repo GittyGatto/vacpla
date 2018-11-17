@@ -9,6 +9,7 @@ import changedCalender from "../../actions/change-calendar-action";
 import addVacation from "../../actions/add-vacation-range-action";
 import {RequestedVacation} from "./requested-vacation";
 import sendRequest from "../../actions/send-request-action";
+import {Link} from "react-router-dom";
 
 export class NewRequestPage extends React.Component {
     constructor(props) {
@@ -63,6 +64,7 @@ export class NewRequestPage extends React.Component {
 
                         <Button bsStyle="success" onClick={(ev) => this._onAddClicked(ev)}>Add Vacation</Button>
                         <Button bsStyle="warning" onClick={(ev) => this._onSendClicked(ev)}>Send Request</Button>
+                        <Link to="/"><Button bsStyle='danger'>Back to dashboard</Button></Link>
 
                         <Row className="show-grid">
                             <Col xs={6} className='LeftCol'>

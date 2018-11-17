@@ -82,7 +82,6 @@ export class DashboardPage extends React.Component {
                 <Row className="show-grid">
                     <Col md={12}>
                         <Link to="/About"><Button bsStyle='danger'>Request some fine vacation</Button></Link>
-
                     </Col>
                 </Row>
                 <Row className="show-grid">
