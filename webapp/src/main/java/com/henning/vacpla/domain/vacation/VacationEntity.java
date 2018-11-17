@@ -17,19 +17,23 @@ public class VacationEntity {
     @JoinColumn(name = "vacation_request_id", nullable = false)
     private VacationRequestEntity vacationRequest;
 
-    @Column(name = "vacation_day")
-    private Date vacationDay;
+    @Column(name = "vac_from")
+    private Date from;
 
-    @Column(name = "holiday")
-    private boolean holiday;
+    @Column(name = "vac_to")
+    private Date to;
+
+    @Column(name = "vacation_count")
+    private long vacationCount;
 
     public VacationEntity() {
     }
 
-    public VacationEntity(VacationRequestEntity vacationRequest, Date vacationDay, boolean holiday) {
+    public VacationEntity(VacationRequestEntity vacationRequest, Date from, Date to, long vacationCount) {
         this.vacationRequest = vacationRequest;
-        this.vacationDay = vacationDay;
-        this.holiday = holiday;
+        this.from = from;
+        this.to = to;
+        this.vacationCount = vacationCount;
     }
 
     public VacationRequestEntity getVacationRequest() {
@@ -40,20 +44,27 @@ public class VacationEntity {
         this.vacationRequest = vacationRequest;
     }
 
-    public Date getVacationDay() {
-        return vacationDay;
+    public Date getFrom() {
+        return from;
     }
 
-    public void setVacationDay(Date vacationDay) {
-        this.vacationDay = vacationDay;
+    public void setFrom(Date from) {
+        this.from = from;
     }
 
-    public boolean isHoliday() {
-        return holiday;
+    public Date getTo() {
+        return to;
     }
 
-    public void setHoliday(boolean holiday) {
-        this.holiday = holiday;
+    public void setTo(Date to) {
+        this.to = to;
+    }
+
+    public long getVacationCount() {
+        return vacationCount;
+    }
+
+    public void setVacationCount(long vacationCount) {
+        this.vacationCount = vacationCount;
     }
 }
-

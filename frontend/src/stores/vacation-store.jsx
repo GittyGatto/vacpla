@@ -23,7 +23,7 @@ class VacationStore {
     _getVacationLeftCount(ev) {
         let approvedRequests = this._getFilteredRequests(ev, 'APPROVED')
         let vacationDays = this._getVacationDays(approvedRequests);
-        let taken = vacationDays[0].length;
+        let taken = this._getVacationDayCount(vacationDays);
         const total = ev.data.totalVacation;
         return total - taken;
     }
@@ -47,7 +47,7 @@ class VacationStore {
         return approvedRequests;
     }
 
-    _getVacationDays(requests){
+    _getVacationDays(requests) {
         let days = requests.map(function (curr) {
             return (curr.vacations)
         });
@@ -61,6 +61,15 @@ class VacationStore {
 
     _getAllRequests(ev) {
         return this._getVacationRequests(ev);
+    }
+
+    _getVacationDayCount(vacationDays) {
+        let count = 0;
+        vacationDays.forEach(curr => {
+            console.log(curr);
+            count += curr[0].vacationCount;
+        });
+        return count;
     }
 }
 

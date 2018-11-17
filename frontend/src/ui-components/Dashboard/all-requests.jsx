@@ -11,7 +11,7 @@ export class AllRequests extends React.Component {
             let buttonStyle = this._getButtonStyle(curr.vacationRequestStatus);
 
             return (<span key={index}>
-                <ListGroupItem bsStyle={buttonStyle}> {curr.vacationRequestStatus} on {curr.requested} Days: {curr.vacations.length}</ListGroupItem>
+                <ListGroupItem bsStyle={buttonStyle}> {curr.vacationRequestStatus} on {curr.requested} Days: {curr.vacations[0].vacationCount}</ListGroupItem>
                 </span>);
         });
 

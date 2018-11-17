@@ -5,23 +5,33 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 
 public class VacationDto {
-    private Date vacationDay;
-    private boolean holiday;
+    private Date from;
+    private Date to;
+    private long vacationCount;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    public Date getVacationDay() {
-        return vacationDay;
+    public Date getFrom() {
+        return from;
     }
 
-    public void setVacationDay(Date vacationDay) {
-        this.vacationDay = vacationDay;
+    public void setFrom(Date from) {
+        this.from = from;
     }
 
-    public boolean isHoliday() {
-        return holiday;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    public Date getTo() {
+        return to;
     }
 
-    public void setHoliday(boolean holiday) {
-        this.holiday = holiday;
+    public void setTo(Date to) {
+        this.to = to;
+    }
+
+    public long getVacationCount() {
+        return vacationCount;
+    }
+
+    public void setVacationCount(long vacationCount) {
+        this.vacationCount = vacationCount;
     }
 }

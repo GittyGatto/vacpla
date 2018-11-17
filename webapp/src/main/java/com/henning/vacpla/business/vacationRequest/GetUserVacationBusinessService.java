@@ -93,8 +93,9 @@ public class GetUserVacationBusinessService {
         List<VacationDto> vacationDtos = new ArrayList<>();
         for (VacationEntity curr : vacations) {
             VacationDto vacationDto = new VacationDto();
-            vacationDto.setHoliday(curr.isHoliday());
-            vacationDto.setVacationDay(curr.getVacationDay());
+            vacationDto.setFrom(curr.getFrom());
+            vacationDto.setTo(curr.getTo());
+            vacationDto.setVacationCount(curr.getVacationCount());
             vacationDtos.add(vacationDto);
         }
         return vacationDtos;
