@@ -26,14 +26,19 @@ public class VacationEntity {
     @Column(name = "vacation_count")
     private long vacationCount;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category")
+    private VacationCategory vacationCategory;
+
     public VacationEntity() {
     }
 
-    public VacationEntity(VacationRequestEntity vacationRequest, Date from, Date to, long vacationCount) {
+    public VacationEntity(VacationRequestEntity vacationRequest, Date from, Date to, long vacationCount, VacationCategory vacationCategory) {
         this.vacationRequest = vacationRequest;
         this.from = from;
         this.to = to;
         this.vacationCount = vacationCount;
+        this.vacationCategory = vacationCategory;
     }
 
     public VacationRequestEntity getVacationRequest() {
@@ -66,5 +71,13 @@ public class VacationEntity {
 
     public void setVacationCount(long vacationCount) {
         this.vacationCount = vacationCount;
+    }
+
+    public VacationCategory getVacationCategory() {
+        return vacationCategory;
+    }
+
+    public void setVacationCategory(VacationCategory vacationCategory) {
+        this.vacationCategory = vacationCategory;
     }
 }

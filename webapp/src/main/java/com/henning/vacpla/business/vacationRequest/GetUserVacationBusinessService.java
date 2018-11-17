@@ -96,6 +96,7 @@ public class GetUserVacationBusinessService {
             vacationDto.setFrom(curr.getFrom());
             vacationDto.setTo(curr.getTo());
             vacationDto.setVacationCount(curr.getVacationCount());
+            vacationDto.setCategory(curr.getVacationCategory().toString());
             vacationDtos.add(vacationDto);
         }
         return vacationDtos;

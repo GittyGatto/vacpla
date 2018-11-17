@@ -8,6 +8,15 @@ public class VacationDto {
     private Date from;
     private Date to;
     private long vacationCount;
+    private String category;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public Date getFrom() {
