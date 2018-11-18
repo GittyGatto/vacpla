@@ -1,5 +1,6 @@
 package com.henning.vacpla.business.vacationRequest;
 
+import com.henning.vacpla.business.util.DateUtil;
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;
 import com.henning.vacpla.domain.vacation.VacationCategory;
@@ -11,6 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -21,6 +26,9 @@ public class GetUserVacationBusinessService {
 
     @Autowired
     private VacationRequestRepository vacationRequestRepository;
+
+    @Autowired
+    private DateUtil dateUtil;
 
     public VacationOverviewDto getUserVacation(String userName) {
         UserEntity userEntity = getUserEntity(userName);
@@ -37,8 +45,10 @@ public class GetUserVacationBusinessService {
 
         List<VacationEntity> vacationEntities = new ArrayList<>();
         VacationEntity vacation = new VacationEntity();
-        vacation.setFrom(new Date(range[0]));
-        vacation.setTo(new Date(range[1]));
+
+        vacation.setFrom(dateUtil.parseDate(range[0]));
+        vacation.setTo(dateUtil.parseDate(range[1]));
+
         vacation.setVacationCategory(VacationCategory.PAID);
         vacation.setVacationRequest(vacRequest);
         vacationEntities.add(vacation);
