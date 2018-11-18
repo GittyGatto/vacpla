@@ -1,8 +1,6 @@
 package com.henning.vacpla.domain.vacationRequest;
 
-import com.henning.vacpla.controllers.vacation.VacationRequest;
 import com.henning.vacpla.domain.user.UserEntity;
-import com.henning.vacpla.domain.vacation.VacationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,4 +13,7 @@ public interface VacationRequestRepository extends JpaRepository<VacationRequest
 
     @Transactional
     Optional<List<VacationRequestEntity>> findByUzer(Optional<UserEntity> userEntity);
+
+    @Transactional
+    VacationRequestEntity save(VacationRequestEntity vacationRequestEntity);
 }

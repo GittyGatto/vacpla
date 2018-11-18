@@ -2,9 +2,11 @@ package com.henning.vacpla.business.vacationRequest;
 
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;
+import com.henning.vacpla.domain.vacation.VacationCategory;
 import com.henning.vacpla.domain.vacation.VacationEntity;
 import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
 import com.henning.vacpla.domain.vacationRequest.VacationRequestRepository;
+import com.henning.vacpla.domain.vacationRequest.VacationRequestStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -28,13 +30,32 @@ public class GetUserVacationBusinessService {
 
     public VacationOverviewDto saveNewVacationRequest(String userName, String[] range) {
         UserEntity userEntity = getUserEntity(userName);
-        return null;
+        VacationRequestEntity vacRequest = new VacationRequestEntity();
+        vacRequest.setUzer(userEntity);
+        vacRequest.setRequested(new Date());
+        vacRequest.setVacationRequestStatus(VacationRequestStatus.REQUESTED);
+
+        List<VacationEntity> vacationEntities = new ArrayList<>();
+        VacationEntity vacation = new VacationEntity();
+        vacation.setFrom(new Date(range[0]));
+        vacation.setTo(new Date(range[1]));
+        vacation.setVacationCategory(VacationCategory.PAID);
+        vacation.setVacationRequest(vacRequest);
+        vacationEntities.add(vacation);
+
+        vacRequest.setVacations(vacationEntities);
+
+        VacationRequestEntity savedEntity = vacationRequestRepository.save(vacRequest);
+
+        List<VacationRequestEntity> vacationRequestEntities = new ArrayList<>();
+        vacationRequestEntities.add(savedEntity);
+
+        return fillVacationOverviewDto(userEntity, vacationRequestEntities);
     }
 
     private UserEntity getUserEntity(String userName) {
         return userRepository.findByUserName(userName).orElseThrow(() -> new UsernameNotFoundException("No user found with username " + userName));
     }
-
 
     private VacationOverviewDto fillVacationOverviewDto(UserEntity userEntity, List<VacationRequestEntity> vacationRequestEntities) {
         VacationOverviewDto overviewDto = new VacationOverviewDto();
