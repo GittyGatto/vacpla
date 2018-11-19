@@ -2030,6 +2030,11 @@ date-now@^0.1.4:
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   integrity sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
 
+dates-between@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/dates-between/-/dates-between-1.1.0.tgz#d8c1d9a0077a3e97d9e2d127f1a0d5f6472d93c8"
+  integrity sha512-dSo86HRAv7gzpUJD9tUu7gRLG9JX85gs2oBsQ3iCe87pmbVlmc+KAXSJkYiMCPkRmJgZa0S6mELzHqIm7estnw==
+
 debug@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"

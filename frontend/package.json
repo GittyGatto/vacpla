@@ -21,6 +21,7 @@
     "@fortawesome/react-fontawesome": "^0.0.18",
     "babel-preset-es2016": "^6.24.1",
     "copy-webpack-plugin": "^4.0.1",
+    "dates-between": "^1.1.0",
     "font-awesome": "4.7.0",
     "node-sass": "^4.3.0",
     "postcss": "^5.2.16",

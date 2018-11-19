@@ -36,7 +36,7 @@ public class GetUserVacationBusinessService {
         return fillVacationOverviewDto(userEntity, vacationRequestEntities);
     }
 
-    public VacationOverviewDto saveNewVacationRequest(String userName, String[] range) {
+    public VacationOverviewDto saveNewVacationRequest(String userName, String[] range, long vacationDays) {
         UserEntity userEntity = getUserEntity(userName);
         VacationRequestEntity vacRequest = new VacationRequestEntity();
         vacRequest.setUzer(userEntity);
@@ -48,7 +48,7 @@ public class GetUserVacationBusinessService {
 
         vacation.setFrom(dateUtil.parseDate(range[0]));
         vacation.setTo(dateUtil.parseDate(range[1]));
-
+        vacation.setVacationCount(vacationDays);
         vacation.setVacationCategory(VacationCategory.PAID);
         vacation.setVacationRequest(vacRequest);
         vacationEntities.add(vacation);

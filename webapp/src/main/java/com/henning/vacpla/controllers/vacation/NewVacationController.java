@@ -16,7 +16,7 @@ public class NewVacationController {
     @RequestMapping(value = "/api/vacationRequest", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
     ResponseEntity<VacationOverviewDto> saveNewVacationRequest(@RequestBody NewVacationRequest newVacationRequest) {
-        return new ResponseEntity<>(getUserVacationBusinessService.saveNewVacationRequest(newVacationRequest.userName, newVacationRequest.range), HttpStatus.OK);
+        return new ResponseEntity<>(getUserVacationBusinessService.saveNewVacationRequest(newVacationRequest.userName, newVacationRequest.range, newVacationRequest.vacationDays), HttpStatus.OK);
     }
 
 }
