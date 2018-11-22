@@ -13,7 +13,6 @@ class VacationStore {
         this.data.vacationLeftCount = this._getVacationLeftCount(ev);
         this.data.openRequestsCount = this._getOpenRequestsCount(ev);
         this.data.requests = this._getAllRequests(ev);
-        console.log("continue here human")
     }
 
     appendDataTo(data) {
