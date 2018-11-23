@@ -5,19 +5,19 @@ import loadVacation from "./load-vacation-action";
 import appStore from "../stores/app-store";
 import newRequestStore from "../stores/newRequest-store";
 import datesBetween from 'dates-between';
+import {calculateVacationDays} from "../ui-components/NewRequest/vacation-service";
 
 
 export default function sendRequest() {
     const userName = appStore.getUser().userName;
     const range = newRequestStore.data.requestedVacations.range;
     const vacDays = Array.from(datesBetween(new Date(range[0]), new Date(range[1])));
-    const vacationDays = vacDays.length;
-    console.log(vacationDays);
+    const result = calculateVacationDays(vacDays);
 
     xhr({
         uri: Config.apiBaseUrl + '/api/vacationRequest',
         method: 'POST',
-        body: {"userName": userName, "range": range, "vacationDays": vacationDays},
+        body: {"userName": userName, "range": range, "vacationDays": result},
         json: true,
         headers: {
             "X-User": userName,
@@ -27,8 +27,7 @@ export default function sendRequest() {
             dispatcher.dispatch({
                 type: "requestVacationFailed",
             });
-        }
-        else {
+        } else {
             dispatcher.dispatch({
                 type: "requestVacationSucceeded",
                 user: body
