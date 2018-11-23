@@ -2,6 +2,7 @@ import xhr from 'xhr';
 import {dispatcher} from '../util/mini-flux'
 import Config from '../config';
 import loadVacation from "./load-vacation-action";
+import loadHolidays from "./load-holidays-action";
 
 export default function login(userName, password) {
     xhr({
@@ -24,6 +25,7 @@ export default function login(userName, password) {
                 user: body
             });
             loadVacation();
+            loadHolidays();
         }
     });
 }

@@ -6,6 +6,7 @@ class NewRequestStore {
             range: [],
             requestedDays: undefined,
             requestedVacations: undefined,
+            holidays: [],
         };
     }
 

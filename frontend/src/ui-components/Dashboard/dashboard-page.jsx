@@ -7,6 +7,7 @@ import loadVacation from "../../actions/load-vacation-action";
 import {Header} from "../Header/Header";
 import {AllRequests} from "./all-requests";
 import {Link} from "react-router-dom";
+import loadHolidays from "../../actions/load-holidays-action";
 
 export class DashboardPage extends React.Component {
     constructor(props) {
@@ -19,6 +20,7 @@ export class DashboardPage extends React.Component {
             requests: [],
         };
         loadVacation();
+        loadHolidays();
         this._onChange = this._onChange.bind(this);
     }
 
