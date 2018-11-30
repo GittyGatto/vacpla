@@ -31,3 +31,61 @@
     left: 22vh;
     top: 7.7vh;
 }
+
+.sideMenu li {
+    font-size: 1.2em;
+}
+
+.sideMenu h3 {
+    margin-left: 0.5em;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+    display: none;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+    background: #373a47;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+    background: #f6f6f6;
+}
+
+/* General sidebar styles */
+.bm-menu {
+    background: #eeeeee;
+    font-size: 1.15em;
+}
+
+button.list-group-item {
+    background: #eeeeee;
+    color: #00519e;
+}
+
+button.list-group-item:hover {
+    color: #337ab7;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.sidebarHeader {
+    width: 100%;
+    height: 100%;
+    background: #00519e;
+    color: #f6f6f6;
+    display: inline-block;
+}
+

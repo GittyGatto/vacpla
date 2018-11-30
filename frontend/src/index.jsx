@@ -8,12 +8,14 @@ import loginStore from "./stores/login-store";
 import vacationStore from "./stores/vacation-store";
 import newRequestStore from "./stores/newRequest-store";
 import holidayStore from "./stores/holiday-store";
+import burgerStore from "./stores/burger-store";
 
 dispatcher.addStore(appStore);
 dispatcher.addStore(loginStore);
 dispatcher.addStore(vacationStore);
 dispatcher.addStore(newRequestStore);
 dispatcher.addStore(holidayStore);
+dispatcher.addStore(burgerStore);
 
 render(<AppContainer><App/></AppContainer>, document.querySelector("#app"));
 
