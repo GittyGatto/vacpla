@@ -19,13 +19,17 @@ class NewRequestStore {
         this.data.requestedDays = this._getRequestedDays(ev.data.range);
     }
 
-    handleVacationAdded(ev){
+    handleVacationAdded(ev) {
         this.data.requestedVacations = this._createRequest();
         this._resetRequest();
     }
 
-    handleVacationDeleted(){
+    handleVacationDeleted(ev) {
         this.data.requestedVacations = undefined;
+    }
+
+    handleNewRequestPageResetted(ev) {
+        this._resetData();
     }
 
     _setRange(range) {
@@ -49,6 +53,13 @@ class NewRequestStore {
     _resetRequest() {
         this.data.range = [];
         this.data.requestedDays = undefined;
+    }
+
+    _resetData() {
+        this.data.range = [];
+        this.data.requestedDays = undefined;
+        this.data.requestedVacations = undefined;
+        this.data.holidays = [];
     }
 }
 

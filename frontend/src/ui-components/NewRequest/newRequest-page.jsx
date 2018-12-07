@@ -11,6 +11,7 @@ import {RequestedVacation} from "./requested-vacation";
 import sendRequest from "../../actions/send-request-action";
 import {Link} from "react-router-dom";
 import {setSidebarOpen} from "../../actions/show-sidebar-action";
+import resetNewRequestPage from "../../actions/reset-new-request-page-action";
 
 export class NewRequestPage extends React.Component {
     constructor(props) {
@@ -30,6 +31,7 @@ export class NewRequestPage extends React.Component {
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
         setSidebarOpen(false);
+        resetNewRequestPage();
     }
 
     componentWillUnmount() {
@@ -64,14 +66,9 @@ export class NewRequestPage extends React.Component {
                     </Col>
                     <Col xs={6} className='NewRequest__Status'>
 
-                        <Button bsStyle="success" onClick={(ev) => this._onAddClicked(ev)}>Add Vacation</Button>
-                        <Button bsStyle="warning" onClick={(ev) => this._onSendClicked(ev)}>Send Request</Button>
-                        <Link to="/"><Button bsStyle='danger'>Back to dashboard</Button></Link>
+                        <Button bsStyle="danger" onClick={(ev) => this._onSendClicked(ev)}>Send Request</Button>
 
                         <Row className="show-grid">
-                            <Col xs={6} className='LeftCol'>
-                                <p>Vacation left</p>
-                            </Col>
                             <Col xs={6} className='RightCol'>
                                 <Label>{vacationLeftCount}</Label>
                             </Col>
@@ -114,18 +111,6 @@ export class NewRequestPage extends React.Component {
                             </Col>
                         </Row>
 
-                        <Row className="show-grid">
-                            <Col xs={12}>
-                                <p>Requested</p>
-                            </Col>
-                        </Row>
-
-                        <Row className="show-grid">
-                            <Col xs={12}>
-                                <RequestedVacation requestedVacations={requestedVacations}/>
-                            </Col>
-                        </Row>
-
                     </Col>
                 </Row>
             </Grid>
@@ -136,11 +121,8 @@ export class NewRequestPage extends React.Component {
         changedCalender(ev);
     }
 
-    _onAddClicked(ev) {
-        addVacation(ev);
-    }
-
     _onSendClicked(ev) {
-        sendRequest();
+        addVacation(ev);
+        sendRequest(ev);
     }
 }
