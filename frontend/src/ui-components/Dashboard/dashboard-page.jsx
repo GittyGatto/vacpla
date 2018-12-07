@@ -8,6 +8,7 @@ import {Header} from "../Header/Header";
 import {AllRequests} from "./all-requests";
 import {Link} from "react-router-dom";
 import loadHolidays from "../../actions/load-holidays-action";
+import {setSidebarOpen} from "../../actions/show-sidebar-action";
 
 export class DashboardPage extends React.Component {
     constructor(props) {
@@ -26,6 +27,7 @@ export class DashboardPage extends React.Component {
 
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
+        setSidebarOpen(false);
     }
 
     componentWillUnmount() {
@@ -41,12 +43,12 @@ export class DashboardPage extends React.Component {
     render() {
         const {getUser, totalVacation, vacationLeftCount, openRequestsCount, requests} = this.state;
         return <div className='DashboardPage'>
-            <Header getUser={getUser}/>
+            <Header/>
 
             <Grid className='DashboardPage__Overview'>
                 <Row className="show-grid">
                     <Col xs={12}>
-                        <h1>Dashboard</h1>
+                        <h1>{getUser ? getUser.userName : '...'}'s Dashboard</h1>
                     </Col>
                 </Row>
                 <Row className="show-grid">

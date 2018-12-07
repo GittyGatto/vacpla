@@ -42,7 +42,11 @@
 
 /* Position and sizing of burger button */
 .bm-burger-button {
-    display: none;
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
 }
 
 /* Color/shape of burger icon bars */
@@ -67,25 +71,17 @@
     font-size: 1.15em;
 }
 
-button.list-group-item {
-    background: #eeeeee;
-    color: #00519e;
-}
-
-button.list-group-item:hover {
-    color: #337ab7;
-}
-
 /* Styling of overlay */
 .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
 }
 
-.sidebarHeader {
-    width: 100%;
-    height: 100%;
-    background: #00519e;
-    color: #f6f6f6;
-    display: inline-block;
+.sideBarItem {
+    background: #ee4d2e;
+    color: white;
+}
+
+a:visited {
+    color: black;
 }
 

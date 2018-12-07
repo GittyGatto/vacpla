@@ -10,6 +10,7 @@ import addVacation from "../../actions/add-vacation-range-action";
 import {RequestedVacation} from "./requested-vacation";
 import sendRequest from "../../actions/send-request-action";
 import {Link} from "react-router-dom";
+import {setSidebarOpen} from "../../actions/show-sidebar-action";
 
 export class NewRequestPage extends React.Component {
     constructor(props) {
@@ -28,6 +29,7 @@ export class NewRequestPage extends React.Component {
 
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
+        setSidebarOpen(false);
     }
 
     componentWillUnmount() {
