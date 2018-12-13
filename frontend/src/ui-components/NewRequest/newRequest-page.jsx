@@ -7,9 +7,7 @@ import {dispatcher} from "../../util/mini-flux";
 import {Button, Col, Grid, Label, Row} from "react-bootstrap";
 import changedCalender from "../../actions/change-calendar-action";
 import addVacation from "../../actions/add-vacation-range-action";
-import {RequestedVacation} from "./requested-vacation";
 import sendRequest from "../../actions/send-request-action";
-import {Link} from "react-router-dom";
 import {setSidebarOpen} from "../../actions/show-sidebar-action";
 import resetNewRequestPage from "../../actions/reset-new-request-page-action";
 
@@ -69,6 +67,9 @@ export class NewRequestPage extends React.Component {
                         <Button bsStyle="danger" onClick={(ev) => this._onSendClicked(ev)}>Send Request</Button>
 
                         <Row className="show-grid">
+                            <Col xs={6} className='LeftCol'>
+                                <p>Left: </p>
+                            </Col>
                             <Col xs={6} className='RightCol'>
                                 <Label>{vacationLeftCount}</Label>
                             </Col>
@@ -104,7 +105,7 @@ export class NewRequestPage extends React.Component {
 
                         <Row className="show-grid">
                             <Col xs={6} className='LeftCol'>
-                                <p>Days left: </p>
+                                <p>Expected Left: </p>
                             </Col>
                             <Col xs={6} className='RightCol'>
                                 <Label>{vacationLeftCount - requestedDays}</Label>

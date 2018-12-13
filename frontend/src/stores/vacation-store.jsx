@@ -3,7 +3,7 @@ class VacationStore {
         this.data = {
             totalVacation: '',
             vacationLeftCount: '',
-            openRequestsCount: undefined,
+            openRequestDaysCount: undefined,
             requests: [],
         };
     }
@@ -11,7 +11,7 @@ class VacationStore {
     handleLoadVacationSucceeded(ev) {
         this.data.totalVacation = ev.data.totalVacation;
         this.data.vacationLeftCount = this._getVacationLeftCount(ev);
-        this.data.openRequestsCount = this._getOpenRequestsCount(ev);
+        this.data.openRequestDaysCount = this._getOpenRequestDaysCount(ev);
         this.data.requests = this._getAllRequests(ev);
     }
 
@@ -21,15 +21,16 @@ class VacationStore {
 
     _getVacationLeftCount(ev) {
         let approvedRequests = this._getFilteredRequests(ev, 'APPROVED')
-        let vacationDays = this._getVacationDays(approvedRequests);
-        let taken = this._getVacationDayCount(vacationDays);
+        let approvedDays = this._getVacationDays(approvedRequests);
+        let taken = this._getVacationDayCount(approvedDays);
         const total = ev.data.totalVacation;
         return total - taken;
     }
 
-    _getOpenRequestsCount(ev) {
-        const requests = this._getFilteredRequests(ev, 'REQUESTED');
-        return requests.length;
+    _getOpenRequestDaysCount(ev) {
+        const requestedRequests = this._getFilteredRequests(ev, 'REQUESTED');
+        let requestedDays = this._getVacationDays(requestedRequests);
+        return this._getVacationDayCount(requestedDays);
     }
 
     _getVacationRequests(ev) {

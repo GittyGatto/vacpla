@@ -17,7 +17,7 @@ export class DashboardPage extends React.Component {
             getUser: props.getUser,
             totalVacation: undefined,
             vacationLeftCount: undefined,
-            openRequestsCount: undefined,
+            openRequestDaysCount: undefined,
             requests: [],
         };
         loadVacation();
@@ -36,12 +36,12 @@ export class DashboardPage extends React.Component {
 
     _onChange(ev) {
         const {getUser} = ev;
-        const {totalVacation, vacationLeftCount, openRequestsCount, requests} = ev.vacation;
-        this.setState({getUser, totalVacation, vacationLeftCount, openRequestsCount, requests});
+        const {totalVacation, vacationLeftCount, openRequestDaysCount, requests} = ev.vacation;
+        this.setState({getUser, totalVacation, vacationLeftCount, openRequestDaysCount, requests});
     }
 
     render() {
-        const {getUser, totalVacation, vacationLeftCount, openRequestsCount, requests} = this.state;
+        const {getUser, totalVacation, vacationLeftCount, openRequestDaysCount, requests} = this.state;
         return <div className='DashboardPage'>
             <Header/>
 
@@ -69,7 +69,7 @@ export class DashboardPage extends React.Component {
                 </Row>
                 <Row className="show-grid">
                     <Col md={6} className='LeftCol'>
-                        <p>Gone forever:</p>
+                        <p>Taken:</p>
                     </Col>
                     <Col md={6} className='RightCol'>
                         <Label>{totalVacation - vacationLeftCount ? totalVacation - vacationLeftCount : '...'}</Label>
@@ -77,15 +77,15 @@ export class DashboardPage extends React.Component {
                 </Row>
                 <Row className="show-grid">
                     <Col md={6} className='LeftCol'>
-                        <p>Open Requests:</p>
+                        <p>Requested:</p>
                     </Col>
                     <Col md={6} className='RightCol'>
-                        <Label bsStyle='warning'>{openRequestsCount ? openRequestsCount : '...'}</Label>
+                        <Label bsStyle='warning'>{openRequestDaysCount ? openRequestDaysCount : '...'}</Label>
                     </Col>
                 </Row>
                 <Row className="show-grid">
                     <Col md={12}>
-                        <Link to="/About"><Button bsStyle='danger'>Request some fine vacation</Button></Link>
+                        <Link to="/About"><Button bsStyle='danger'>NEW REQUEST!</Button></Link>
                     </Col>
                 </Row>
                 <Row className="show-grid">
