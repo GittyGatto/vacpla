@@ -13,7 +13,7 @@ export default class App extends React.Component {
             <Router history={appHistory}>
                 <Switch>
                     <Route exact path="/" component={DashboardPage}/>
-                    <Route path="/About" component={NewRequestPage}/>
+                    <Route path="/NewRequest" component={NewRequestPage}/>
                 </Switch>
             </Router>
         </RestrictAccess>);

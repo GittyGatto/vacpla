@@ -50,7 +50,7 @@ export class Header extends React.Component {
                 </a>
 
                 <a className="menu-item sideBarItem">
-                    <Link to="/about">New Request</Link>
+                    <Link to="/NewRequest">New Request</Link>
                 </a>
 
                 <a className="menu-item sideBarItem" onClick={() => logout()}>
