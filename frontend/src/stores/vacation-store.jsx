@@ -1,3 +1,5 @@
+import {getAllRequests, getVacationRequests} from '../ui-components/Utils/vacation-request-service';
+
 class VacationStore {
     constructor() {
         this.data = {
@@ -12,7 +14,7 @@ class VacationStore {
         this.data.totalVacation = ev.data.totalVacation;
         this.data.vacationLeftCount = this._getVacationLeftCount(ev);
         this.data.openRequestDaysCount = this._getOpenRequestDaysCount(ev);
-        this.data.requests = this._getAllRequests(ev);
+        this.data.requests = getAllRequests(ev);
     }
 
     appendDataTo(data) {
@@ -33,14 +35,8 @@ class VacationStore {
         return this._getVacationDayCount(requestedDays);
     }
 
-    _getVacationRequests(ev) {
-        const currentYear = (new Date()).getFullYear();
-        const requests = ev.data.vacationRequests[currentYear];
-        return requests;
-    }
-
     _getFilteredRequests(ev, searchString) {
-        const requests = this._getVacationRequests(ev);
+        const requests = getVacationRequests(ev);
         let approvedRequests = requests.filter(function (curr) {
             return (curr.vacationRequestStatus === searchString)
         });
@@ -52,10 +48,6 @@ class VacationStore {
             return (curr.vacations)
         });
         return days;
-    }
-
-    _getAllRequests(ev) {
-        return this._getVacationRequests(ev);
     }
 
     _getVacationDayCount(vacationDays) {

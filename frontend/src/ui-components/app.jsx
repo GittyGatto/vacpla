@@ -5,6 +5,7 @@ import {Router, Route, Switch} from 'react-router-dom';
 import {DashboardPage} from './Dashboard/dashboard-page';
 import {NewRequestPage} from './NewRequest/newRequest-page'
 import {appHistory} from './appHistory';
+import {OpenRequestPage} from "./OpenRequest/open-request-page";
 
 
 export default class App extends React.Component {
@@ -14,6 +15,7 @@ export default class App extends React.Component {
                 <Switch>
                     <Route exact path="/" component={DashboardPage}/>
                     <Route path="/NewRequest" component={NewRequestPage}/>
+                    <Route path="/OpenRequest" component={OpenRequestPage}/>
                 </Switch>
             </Router>
         </RestrictAccess>);

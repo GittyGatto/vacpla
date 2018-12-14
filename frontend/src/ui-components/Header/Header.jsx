@@ -49,8 +49,12 @@ export class Header extends React.Component {
                     <Link to="/">Dashboard</Link>
                 </a>
 
-                <a className="menu-item sideBarItem">
+                <span className="menu-item sideBarItem">
                     <Link to="/NewRequest">New Request</Link>
+                </span>
+
+                <a className="menu-item sideBarItem">
+                    <Link to="/OpenRequest">Open Requests</Link>
                 </a>
 
                 <a className="menu-item sideBarItem" onClick={() => logout()}>

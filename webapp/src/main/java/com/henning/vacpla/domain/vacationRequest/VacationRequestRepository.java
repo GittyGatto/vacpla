@@ -2,6 +2,8 @@ package com.henning.vacpla.domain.vacationRequest;
 
 import com.henning.vacpla.domain.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,4 +18,8 @@ public interface VacationRequestRepository extends JpaRepository<VacationRequest
 
     @Transactional
     VacationRequestEntity save(VacationRequestEntity vacationRequestEntity);
+
+    @Transactional
+    @Query("SELECT r FROM VacationRequestEntity r WHERE status = 'REQUESTED' AND NOT USER_ID = :userId")
+    Optional<List<VacationRequestEntity>> findOpenRequests(@Param("userId") long userId);
 }

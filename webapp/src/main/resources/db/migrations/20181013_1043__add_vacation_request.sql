@@ -24,3 +24,6 @@ insert into vacation_request (user_id, status, requested, approved, approved_by_
 
 insert into vacation_request (user_id, status, requested, approved, approved_by_id) VALUES
 (1, 'REQUESTED','2018-11-02',  null, null);
+
+insert into vacation_request (user_id, status, requested, approved, approved_by_id) VALUES
+(2,  'REQUESTED','2018-12-13', null, null);

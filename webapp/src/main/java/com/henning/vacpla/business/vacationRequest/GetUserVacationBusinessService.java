@@ -12,10 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -34,6 +30,18 @@ public class GetUserVacationBusinessService {
         UserEntity userEntity = getUserEntity(userName);
         List<VacationRequestEntity> vacationRequestEntities = vacationRequestRepository.findByUzer(Optional.ofNullable(userEntity)).orElse(null);
         return fillVacationOverviewDto(userEntity, vacationRequestEntities);
+    }
+
+    public OpenRequestsDto getOpenRequests(String userName) {
+        UserEntity userEntity = userRepository.findByUserName(userName).get();
+        List<VacationRequestEntity> openRequests = vacationRequestRepository.findOpenRequests(userEntity.getId()).get();
+        return fillOpenRequestsDto(openRequests);
+    }
+
+    private OpenRequestsDto fillOpenRequestsDto(List<VacationRequestEntity> openRequests) {
+        OpenRequestsDto dto = new OpenRequestsDto();
+        dto.vacationRequests = fillVacationRequestDtos(openRequests);
+        return dto;
     }
 
     public VacationOverviewDto saveNewVacationRequest(String userName, String[] range, long vacationDays) {
