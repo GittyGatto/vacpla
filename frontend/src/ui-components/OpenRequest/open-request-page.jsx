@@ -31,20 +31,11 @@ export class OpenRequestPage extends React.Component {
     }
 
     render() {
-
         const {openRequests} = this.state;
-
         return <div className='OpenRequestPage'>
             <Header/>
-
             <h1>Open requests</h1>
-            <p>überhaupt mal urlaub haben</p>
-
             <OpenRequests openRequests={openRequests}/>
-
-
-
-
         </div>;
     }
 }
