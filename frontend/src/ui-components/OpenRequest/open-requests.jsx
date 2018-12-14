@@ -1,28 +1,32 @@
 import '../../../styles/index.scss';
 import React from 'react';
-import {ListGroup, ListGroupItem} from "react-bootstrap";
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
+
+
+const Child = ({match}) => (
+    <div>
+        <h3>ID: {match.params.id}</h3>
+    </div>
+)
+
 
 export class OpenRequests extends React.Component {
-
     render() {
-        const {openRequests} = this.props;
-        let resultList = openRequests.map((curr, index) => {
-            let buttonStyle = this._getButtonStyle(curr.vacationRequestStatus);
-            return (<span key={index}>
-                <ListGroupItem bsStyle={buttonStyle}> {curr.vacationRequestStatus} on {curr.requested} Days: {curr.vacations[0].vacationCount}</ListGroupItem>
-                </span>);
-        });
+        return (
+            <Router>
+                <div>
+                    <h2>Accounts</h2>
+                    <ul>
+                        <li><Link to="/netflix">Netflix</Link></li>
+                        <li><Link to="/zillow-group">Zillow Group</Link></li>
+                        <li><Link to="/yahoo">Yahoo</Link></li>
+                        <li><Link to="/modus-create">Modus Create</Link></li>
+                    </ul>
 
-        return (<div>
-            <ListGroup>
-                {resultList}
-            </ListGroup>
-        </div>);
-    }
-
-    _getButtonStyle(status) {
-        if (status === 'REQUESTED') {
-            return "warning";
-        }
+                    <Route path="/:id" component={Child}/>
+                </div>
+            </Router>
+        )
     }
 }
+
