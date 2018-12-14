@@ -10,6 +10,7 @@ import addVacation from "../../actions/add-vacation-range-action";
 import sendRequest from "../../actions/send-request-action";
 import {setSidebarOpen} from "../../actions/show-sidebar-action";
 import resetNewRequestPage from "../../actions/reset-new-request-page-action";
+import {Link} from "react-router-dom";
 
 export class NewRequestPage extends React.Component {
     constructor(props) {
@@ -44,7 +45,7 @@ export class NewRequestPage extends React.Component {
     }
 
     render() {
-        const {getUser, date, minDate, range, requestedDays, vacationLeftCount, requestedVacations} = this.state;
+        const {getUser, date, minDate, range, requestedDays, vacationLeftCount} = this.state;
         return <div className='DashboardPage'>
             <Header getUser={getUser}/>
             <Grid className='DashboardPage__Overview'>
@@ -64,6 +65,7 @@ export class NewRequestPage extends React.Component {
                     </Col>
                     <Col xs={6} className='NewRequest__Status'>
 
+                        <Link to="/"><Button bsStyle='success'>Cancel</Button></Link>
                         <Button bsStyle="danger" onClick={(ev) => this._onSendClicked(ev)}>Send Request</Button>
 
                         <Row className="show-grid">
