@@ -1,32 +1,35 @@
 import '../../../styles/index.scss';
 import React from 'react';
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
-
-
-const Child = ({match}) => (
-    <div>
-        <h3>ID: {match.params.id}</h3>
-    </div>
-)
-
+import {ListGroup, ListGroupItem} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 export class OpenRequests extends React.Component {
-    render() {
-        return (
-            <Router>
-                <div>
-                    <h2>Accounts</h2>
-                    <ul>
-                        <li><Link to="/netflix">Netflix</Link></li>
-                        <li><Link to="/zillow-group">Zillow Group</Link></li>
-                        <li><Link to="/yahoo">Yahoo</Link></li>
-                        <li><Link to="/modus-create">Modus Create</Link></li>
-                    </ul>
 
-                    <Route path="/:id" component={Child}/>
-                </div>
-            </Router>
-        )
+    render() {
+        return (<div>
+            {this._renderRequests()}
+        </div>);
+    }
+
+    _renderRequests() {
+        const {openRequests} = this.props;
+
+        return (<ListGroup>
+            {openRequests.length > 0 ? openRequests.map(this._renderRequest)
+                : <ListGroupItem>No open request.</ListGroupItem>}
+        </ListGroup>);
+    }
+
+    _renderRequest(request) {
+        const vacationRequestStatus = request.vacationRequestStatus || '<no open requests>';
+        const requested = request.requested;
+        const count = request.vacations[0].vacationCount;
+
+        return (<ListGroupItem>
+            {vacationRequestStatus} on {requested} Days: {count}
+
+            <Link to={'/VerifyRequest/' + requested}>{requested}</Link>
+
+        </ListGroupItem>);
     }
 }
-

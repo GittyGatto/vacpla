@@ -8,12 +8,21 @@ import java.util.Date;
 import java.util.List;
 
 public class VacationRequestDto implements Comparable<VacationRequestDto> {
+    private String owner;
     private String vacationRequestStatus;
     private Date requested;
     private String approved;
     private String approvedBy;
     private List<VacationDto> vacations;
     private List<CommentDto> comments;
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 
     public String getVacationRequestStatus() {
         return vacationRequestStatus;

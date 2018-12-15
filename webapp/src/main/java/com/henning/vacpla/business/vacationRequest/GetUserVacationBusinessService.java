@@ -123,6 +123,7 @@ public class GetUserVacationBusinessService {
         if (requestEntity.getApproved() != null) {
             requestDto.setApproved(requestEntity.getApproved().toString());
             requestDto.setApprovedBy(requestEntity.getApprovedBy().getUserName());
+            requestDto.setOwner(requestEntity.getUzer().getRole().name());
         }
         requestDto.setVacations(fillVacationDtos(requestEntity.getVacations()));
         return requestDto;
