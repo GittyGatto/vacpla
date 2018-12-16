@@ -1,8 +1,10 @@
 import {VacationRequestRange} from "../ui-components/NewRequest/vacation-request-range";
+import uuidv4 from 'uuid/v4';
 
 class NewRequestStore {
     constructor() {
         this.data = {
+            uuid: undefined,
             range: [],
             requestedDays: undefined,
             requestedVacations: undefined,
@@ -47,17 +49,19 @@ class NewRequestStore {
         const request = new VacationRequestRange();
         request.days = this.data.requestedDays;
         request.range = this.data.range;
+        request.uuid = uuidv4();
+        this.data.uuid = request.uuid;
         return request;
     }
 
     _resetRequest() {
+        this.data.uuid = undefined;
         this.data.range = [];
         this.data.requestedDays = undefined;
     }
 
     _resetData() {
-        this.data.range = [];
-        this.data.requestedDays = undefined;
+        this._resetRequest();
         this.data.requestedVacations = undefined;
         this.data.holidays = [];
     }

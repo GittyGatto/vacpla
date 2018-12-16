@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public class VacationRequestDto implements Comparable<VacationRequestDto> {
+    private String uuid;
     private String owner;
     private String vacationRequestStatus;
     private Date requested;
@@ -15,6 +16,14 @@ public class VacationRequestDto implements Comparable<VacationRequestDto> {
     private String approvedBy;
     private List<VacationDto> vacations;
     private List<CommentDto> comments;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
     public String getOwner() {
         return owner;

@@ -18,6 +18,9 @@ public class VacationRequestEntity {
     @Column(name = "vacation_request_id")
     private long vacationRequestId;
 
+    @Column(name="vacation_request_uuid")
+    private String uuid;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity uzer;
@@ -45,21 +48,20 @@ public class VacationRequestEntity {
     public VacationRequestEntity() {
     }
 
-    public VacationRequestEntity(UserEntity uzer, VacationRequestStatus vacationRequestStatus, Date approved, UserEntity approvedBy, List<VacationEntity> vacations, List<CommentEntity> comments) {
-        this.uzer = uzer;
-        this.vacationRequestStatus = vacationRequestStatus;
-        this.approved = approved;
-        this.approvedBy = approvedBy;
-        this.vacations = vacations;
-        this.comments = comments;
-    }
-
     public long getVacationRequestId() {
         return vacationRequestId;
     }
 
     public void setVacationRequestId(long vacationRequestId) {
         this.vacationRequestId = vacationRequestId;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public UserEntity getUzer() {

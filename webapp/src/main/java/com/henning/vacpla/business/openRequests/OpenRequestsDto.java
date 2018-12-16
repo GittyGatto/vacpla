@@ -1,4 +1,6 @@
-package com.henning.vacpla.business.vacationRequest;
+package com.henning.vacpla.business.openRequests;
+
+import com.henning.vacpla.business.vacationRequest.VacationRequestDto;
 
 import java.util.HashMap;
 import java.util.List;

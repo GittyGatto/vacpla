@@ -1,5 +1,6 @@
 package com.henning.vacpla.business.vacationRequest;
 
+import com.henning.vacpla.business.openRequests.OpenRequestsDto;
 import com.henning.vacpla.business.util.DateUtil;
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;
@@ -44,9 +45,10 @@ public class GetUserVacationBusinessService {
         return dto;
     }
 
-    public VacationOverviewDto saveNewVacationRequest(String userName, String[] range, long vacationDays) {
+    public VacationOverviewDto saveNewVacationRequest(String userName, String[] range, long vacationDays, String uuid) {
         UserEntity userEntity = getUserEntity(userName);
         VacationRequestEntity vacRequest = new VacationRequestEntity();
+        vacRequest.setUuid(uuid);
         vacRequest.setUzer(userEntity);
         vacRequest.setRequested(new Date());
         vacRequest.setVacationRequestStatus(VacationRequestStatus.REQUESTED);
@@ -123,7 +125,8 @@ public class GetUserVacationBusinessService {
         if (requestEntity.getApproved() != null) {
             requestDto.setApproved(requestEntity.getApproved().toString());
             requestDto.setApprovedBy(requestEntity.getApprovedBy().getUserName());
-            requestDto.setOwner(requestEntity.getUzer().getRole().name());
+            requestDto.setOwner(requestEntity.getUzer().getUserName());
+            requestDto.setUuid(requestEntity.getUuid());
         }
         requestDto.setVacations(fillVacationDtos(requestEntity.getVacations()));
         return requestDto;

@@ -16,6 +16,7 @@ export class NewRequestPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            uuid: undefined,
             range: [],
             requestedDays: undefined,
             date: [new Date(), new Date()],
@@ -39,9 +40,9 @@ export class NewRequestPage extends React.Component {
 
     _onChange(ev) {
         const {getUser} = ev;
-        const {range, requestedDays, requestedVacations} = ev.newRequest;
+        const {uuid, range, requestedDays, requestedVacations} = ev.newRequest;
         const {vacationLeftCount} = ev.vacation;
-        this.setState({getUser, range, requestedDays, vacationLeftCount, requestedVacations});
+        this.setState({getUser, uuid, range, requestedDays, vacationLeftCount, requestedVacations});
     }
 
     render() {
