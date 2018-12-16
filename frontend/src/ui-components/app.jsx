@@ -17,7 +17,7 @@ export default class App extends React.Component {
                     <Route exact path="/" component={DashboardPage}/>
                     <Route path="/NewRequest" component={NewRequestPage}/>
                     <Route path="/OpenRequest" component={OpenRequestPage}/>
-                    <Route path="/VerifyRequest/:requested" component={VerifyRequest}/>
+                    <Route path="/VerifyRequest/:uuid" component={VerifyRequest}/>
                 </Switch>
             </Router>
         </RestrictAccess>);

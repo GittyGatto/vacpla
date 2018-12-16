@@ -7,15 +7,15 @@ export class VerifyRequest extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            requested: undefined,
+            uuid: undefined,
             request: {},
         };
         this._onAppModelChanged = this._onAppModelChanged.bind(this);
     }
 
     componentWillMount() {
-        const {requested} = this.props.match.params;
-        console.log(requested);
+        const {uuid} = this.props.match.params;
+
     }
 
     _onAppModelChanged(ev) {
@@ -31,15 +31,15 @@ export class VerifyRequest extends React.Component {
 
     _renderPageContent() {
         const request = this.state.request;
-        const {requested} = this.props.match.params;
-        console.log(requested);
-        console.log(request);
-        if (!requested) {
+        const {uuid} = this.props.match.params;
+
+        if (!uuid) {
             return <h1>No request selected.</h1>;
         }
 
         return (<div>
-                <h1>my little request</h1>
+            <h1>my little request</h1>
+            <p>{uuid}</p>
         </div>);
     }
 

@@ -24,12 +24,14 @@ export class OpenRequests extends React.Component {
         const vacationRequestStatus = request.vacationRequestStatus || '<no open requests>';
         const requested = request.requested;
         const count = request.vacations[0].vacationCount;
+        const uuid = request.uuid;
+        const owner = request.owner;
 
-        return (<ListGroupItem>
-            {vacationRequestStatus} on {requested} Days: {count}
+        return (<span key={uuid}><ListGroupItem>
+            <p>{count} Days for {owner}</p>
 
-            <Link to={'/VerifyRequest/' + requested}>{requested}</Link>
+            <Link to={'/VerifyRequest/' + uuid}>{uuid}</Link>
 
-        </ListGroupItem>);
+        </ListGroupItem></span>);
     }
 }
