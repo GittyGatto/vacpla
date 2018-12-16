@@ -122,12 +122,12 @@ public class GetUserVacationBusinessService {
         VacationRequestDto requestDto = new VacationRequestDto();
         requestDto.setVacationRequestStatus(requestEntity.getVacationRequestStatus().toString());
         requestDto.setRequested(requestEntity.getRequested());
-        if (requestEntity.getApproved() != null) {
+        if(requestEntity.getApproved() != null){
             requestDto.setApproved(requestEntity.getApproved().toString());
             requestDto.setApprovedBy(requestEntity.getApprovedBy().getUserName());
-            requestDto.setOwner(requestEntity.getUzer().getUserName());
-            requestDto.setUuid(requestEntity.getUuid());
         }
+        requestDto.setOwner(requestEntity.getUzer().getUserName());
+        requestDto.setUuid(requestEntity.getUuid());
         requestDto.setVacations(fillVacationDtos(requestEntity.getVacations()));
         return requestDto;
     }
