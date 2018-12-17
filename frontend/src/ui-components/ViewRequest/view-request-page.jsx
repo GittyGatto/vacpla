@@ -1,37 +1,40 @@
 import '../../../styles/index.scss';
 import React from 'react';
 import {dispatcher} from "../../util/mini-flux";
+import loadRequest from "../../actions/load-request-action";
 
 
-export class VerifyRequest extends React.Component {
+export class ViewRequestPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             uuid: undefined,
-            request: {},
+            viewRequest: {},
         };
-        this._onAppModelChanged = this._onAppModelChanged.bind(this);
+        this._onChange = this._onChange.bind(this);
     }
 
     componentWillMount() {
         const {uuid} = this.props.match.params;
-
+        loadRequest(uuid);
     }
 
-    _onAppModelChanged(ev) {
+    _onChange(ev) {
+        const {viewRequest} = ev.viewRequest;
+        this.setState({viewRequest});
     }
 
     componentDidMount() {
-        dispatcher.subscribe(this._onAppModelChanged);
+        dispatcher.subscribe(this._onChange);
     }
 
     componentWillUnmount() {
-        dispatcher.unsubscribe(this._onAppModelChanged);
+        dispatcher.unsubscribe(this._onChange);
     }
 
     _renderPageContent() {
-        const request = this.state.request;
         const {uuid} = this.props.match.params;
+        const {viewRequest} = this.state;
 
         if (!uuid) {
             return <h1>No request selected.</h1>;
@@ -40,6 +43,7 @@ export class VerifyRequest extends React.Component {
         return (<div>
             <h1>my little request</h1>
             <p>{uuid}</p>
+            <h1>owner: {viewRequest.owner ? viewRequest.owner : '...'}</h1>
         </div>);
     }
 

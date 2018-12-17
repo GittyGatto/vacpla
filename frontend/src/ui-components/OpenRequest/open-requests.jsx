@@ -30,7 +30,7 @@ export class OpenRequests extends React.Component {
         return (<span key={uuid}><ListGroupItem>
             <p>{count} Days for {owner}</p>
 
-            <Link to={'/VerifyRequest/' + uuid}>{uuid}</Link>
+            <Link to={'/ViewRequest/' + uuid}>{uuid}</Link>
 
         </ListGroupItem></span>);
     }

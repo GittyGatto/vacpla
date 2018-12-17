@@ -2,6 +2,7 @@ package com.henning.vacpla.business.vacationRequest;
 
 import com.henning.vacpla.business.openRequests.OpenRequestsDto;
 import com.henning.vacpla.business.util.DateUtil;
+import com.henning.vacpla.business.viewRequest.ViewRequestDto;
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;
 import com.henning.vacpla.domain.vacation.VacationCategory;
@@ -122,7 +123,7 @@ public class GetUserVacationBusinessService {
         VacationRequestDto requestDto = new VacationRequestDto();
         requestDto.setVacationRequestStatus(requestEntity.getVacationRequestStatus().toString());
         requestDto.setRequested(requestEntity.getRequested());
-        if(requestEntity.getApproved() != null){
+        if (requestEntity.getApproved() != null) {
             requestDto.setApproved(requestEntity.getApproved().toString());
             requestDto.setApprovedBy(requestEntity.getApprovedBy().getUserName());
         }
@@ -143,5 +144,13 @@ public class GetUserVacationBusinessService {
             vacationDtos.add(vacationDto);
         }
         return vacationDtos;
+    }
+
+    public ViewRequestDto getVacationRequest(String userName, String uuid) {
+        VacationRequestEntity vacRequest = vacationRequestRepository.findByUuid(uuid).get();
+        VacationRequestDto vacationRequestDto = fillVacationRequestDto(vacRequest);
+        ViewRequestDto viewRequestDto = new ViewRequestDto();
+        viewRequestDto.request = vacationRequestDto;
+        return viewRequestDto;
     }
 }
