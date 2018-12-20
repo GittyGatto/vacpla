@@ -8,7 +8,6 @@ export class ViewRequestPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            uuid: undefined,
             viewRequest: {},
         };
         this._onChange = this._onChange.bind(this);
@@ -32,24 +31,25 @@ export class ViewRequestPage extends React.Component {
         dispatcher.unsubscribe(this._onChange);
     }
 
-    _renderPageContent() {
-        const {uuid} = this.props.match.params;
+    _renderRequest() {
         const {viewRequest} = this.state;
 
-        if (!uuid) {
+        if (!viewRequest) {
             return <h1>No request selected.</h1>;
         }
 
         return (<div>
-            <h1>my little request</h1>
-            <p>{uuid}</p>
-            <h1>owner: {viewRequest.owner ? viewRequest.owner : '...'}</h1>
+            <h1>{viewRequest.uuid ? viewRequest.uuid : '...'}</h1>
+            <p>owner: {viewRequest.owner ? viewRequest.owner : '...'}</p>
+            <p>from: {viewRequest.vacations ? viewRequest.vacations[0].from : '...'}</p>
+            <p>to: {viewRequest.vacations ? viewRequest.vacations[0].to : '...'}</p>
+            <p>days: {viewRequest.vacations ? viewRequest.vacations[0].vacationCount : '...'}</p>
         </div>);
     }
 
     render() {
         return (<div>
-            {this._renderPageContent()}
+            {this._renderRequest()}
         </div>);
     }
 }

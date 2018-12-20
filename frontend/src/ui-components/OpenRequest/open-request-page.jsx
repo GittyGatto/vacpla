@@ -4,6 +4,7 @@ import './open-request-page.css';
 import {Header} from "../Header/Header";
 import loadOpenRequests from "../../actions/load-open-requests-action";
 import {OpenRequests} from "./open-requests";
+import {setSidebarOpen} from "../../actions/show-sidebar-action";
 
 export class OpenRequestPage extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ export class OpenRequestPage extends React.Component {
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
         loadOpenRequests();
+        setSidebarOpen(false);
     }
 
     componentWillUnmount() {
