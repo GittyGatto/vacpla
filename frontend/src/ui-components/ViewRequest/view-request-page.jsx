@@ -2,6 +2,8 @@ import '../../../styles/index.scss';
 import React from 'react';
 import {dispatcher} from "../../util/mini-flux";
 import loadRequest from "../../actions/load-request-action";
+import './ViewRequest-Page.css';
+import {Header} from "../Header/Header";
 
 
 export class ViewRequestPage extends React.Component {
@@ -48,7 +50,9 @@ export class ViewRequestPage extends React.Component {
     }
 
     render() {
-        return (<div>
+        return (<div className='ViewRequestPage'>
+            <Header/>
+            <h1>Request</h1>
             {this._renderRequest()}
         </div>);
     }

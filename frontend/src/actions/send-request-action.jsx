@@ -17,8 +17,6 @@ export default function sendRequest() {
     const result = calculateVacationDays(vacDays);
     const uuid = newRequestStore.data.requestedVacations.uuid;
 
-    console.log('halt mal an');
-
     xhr({
         uri: Config.apiBaseUrl + '/api/vacationRequest',
         method: 'POST',
