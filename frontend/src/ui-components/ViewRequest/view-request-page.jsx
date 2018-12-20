@@ -4,12 +4,15 @@ import {dispatcher} from "../../util/mini-flux";
 import loadRequest from "../../actions/load-request-action";
 import './ViewRequest-Page.css';
 import {Header} from "../Header/Header";
+import {Button} from "react-bootstrap";
+import approveRequest from "../../actions/approve-request-action";
 
 
 export class ViewRequestPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            uuid : undefined,
             viewRequest: {},
         };
         this._onChange = this._onChange.bind(this);
@@ -54,7 +57,16 @@ export class ViewRequestPage extends React.Component {
             <Header/>
             <h1>Request</h1>
             {this._renderRequest()}
+
+            <Button bsStyle='success' onClick={(ev) => this._onApproveClicked(ev)}>Approve</Button>
+
+
         </div>);
+
+    }
+
+    _onApproveClicked(ev) {
+            approveRequest(this.state.uuid)
     }
 }
 

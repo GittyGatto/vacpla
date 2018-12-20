@@ -14,6 +14,10 @@ export class OpenRequests extends React.Component {
     _renderRequests() {
         const {openRequests} = this.props;
 
+        if (openRequests === undefined){
+            return <ListGroupItem>No open request.</ListGroupItem>
+        }
+
         return (<ListGroup>
             {openRequests.length > 0 ? openRequests.map(this._renderRequest)
                 : <ListGroupItem>No open request.</ListGroupItem>}
@@ -21,8 +25,6 @@ export class OpenRequests extends React.Component {
     }
 
     _renderRequest(request) {
-        const vacationRequestStatus = request.vacationRequestStatus || '<no open requests>';
-        const requested = request.requested;
         const count = request.vacations[0].vacationCount;
         const uuid = request.uuid;
         const owner = request.owner;

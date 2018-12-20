@@ -3,6 +3,7 @@ package com.henning.vacpla.business.vacationRequest;
 import com.henning.vacpla.business.openRequests.OpenRequestsDto;
 import com.henning.vacpla.business.util.DateUtil;
 import com.henning.vacpla.business.viewRequest.ViewRequestDto;
+import com.henning.vacpla.controllers.vacation.RequestStatusChangeDto;
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;
 import com.henning.vacpla.domain.vacation.VacationCategory;
@@ -39,6 +40,20 @@ public class GetUserVacationBusinessService {
         List<VacationRequestEntity> openRequests = vacationRequestRepository.findOpenRequests(userEntity.getId()).get();
         return fillOpenRequestsDto(openRequests);
     }
+
+    public RequestStatusChangeDto changeRequestStatus(String userName, String uuid, String status) {
+        UserEntity userEntity = userRepository.findByUserName(userName).get();
+        VacationRequestEntity vacationRequest = vacationRequestRepository.findByUuid(uuid).get();
+        vacationRequest.setVacationRequestStatus(VacationRequestStatus.APPROVED);
+        vacationRequest.setApproved(new Date());
+        vacationRequest.setApprovedBy(userEntity);
+        vacationRequestRepository.save(vacationRequest);
+        RequestStatusChangeDto dto = new RequestStatusChangeDto();
+        dto.status = "APPROVED";
+        dto.uuid = uuid;
+        return dto;
+    }
+
 
     private OpenRequestsDto fillOpenRequestsDto(List<VacationRequestEntity> openRequests) {
         OpenRequestsDto dto = new OpenRequestsDto();
