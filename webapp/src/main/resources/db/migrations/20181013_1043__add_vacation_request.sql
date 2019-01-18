@@ -37,3 +37,6 @@ insert into vacation_request (vacation_request_uuid, user_id, status, requested,
 
 insert into vacation_request (vacation_request_uuid, user_id, status, requested, approved, approved_by_id) VALUES
 ('a08eb363-fa18-48c6-b477-52b969048631', 2, 'REQUESTED','2019-01-14', null, null);
+
+insert into vacation_request (vacation_request_uuid, user_id, status, requested, approved, approved_by_id) VALUES
+('1c7541d3-bf64-433f-9d45-0cc272ebf7c2', 2, 'APPROVED','2018-12-01', '2018-12-15', 1);

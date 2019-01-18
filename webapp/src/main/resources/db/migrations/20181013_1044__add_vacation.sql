@@ -37,3 +37,6 @@ insert into vacation (vacation_request_id, vac_From, vac_To, vacation_count, cat
 
 insert into vacation (vacation_request_id, vac_From, vac_To, vacation_count, category) VALUES
 (10, '2019-01-21', '2019-01-22', 2, 'PAID');
+
+insert into vacation (vacation_request_id, vac_From, vac_To, vacation_count, category) VALUES
+(11, '2019-01-01', '2019-01-04', 3, 'PAID');
