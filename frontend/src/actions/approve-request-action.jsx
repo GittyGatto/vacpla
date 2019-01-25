@@ -2,13 +2,11 @@ import xhr from 'xhr';
 import {dispatcher} from '../util/mini-flux'
 import Config from '../config';
 import {appHistory} from "../ui-components/appHistory";
-import viewRequestStore from "../stores/view-request-store";
 import appStore from "../stores/app-store";
 import loadOpenRequests from "./load-open-requests-action";
 
 
-export default function approveRequest(ev) {
-    const uuid = viewRequestStore.data.viewRequest.uuid;
+export default function approveRequest(uuid) {
     const userName = appStore.getUser().userName;
 
     xhr({

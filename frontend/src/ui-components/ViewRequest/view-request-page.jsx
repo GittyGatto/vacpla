@@ -7,6 +7,7 @@ import {Header} from "../Header/Header";
 import {Button} from "react-bootstrap";
 import {Calendar} from 'react-yearly-calendar';
 import moment from 'moment';
+import approveRequest from "../../actions/approve-request-action";
 
 
 export class ViewRequestPage extends React.Component {
@@ -59,8 +60,8 @@ export class ViewRequestPage extends React.Component {
         const today = moment();
         const year = today.year();
         const fromMoment = moment(viewRequest.vacations ? viewRequest.vacations[0].from : null);
-        const toMoment =moment(viewRequest.vacations ? viewRequest.vacations[0].to: null);
-        const selectedRange = [ fromMoment,toMoment];
+        const toMoment = moment(viewRequest.vacations ? viewRequest.vacations[0].to : null);
+        const selectedRange = [fromMoment, toMoment];
 
         const customCSSclasses = {
             holidays: [
@@ -79,6 +80,7 @@ export class ViewRequestPage extends React.Component {
             {this._renderRequest()}
 
             <Button bsStyle='success' onClick={(ev) => this._onApproveClicked(ev)}>Approve</Button>
+            <Button bsStyle='success' onClick={(ev) => this._onApproveClicked(ev)}>Decline</Button>
 
             <div className='YearOverview'>
                 <Calendar
@@ -94,7 +96,7 @@ export class ViewRequestPage extends React.Component {
     }
 
     _onApproveClicked(ev) {
-            approveRequest(this.state.uuid)
+        approveRequest(this.state.viewRequest.uuid);
     }
 
     _onDatePicked() {
