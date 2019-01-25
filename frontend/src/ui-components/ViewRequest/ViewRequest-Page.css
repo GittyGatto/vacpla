@@ -1,7 +1,3 @@
-.ViewRequestPage__ActionButton{
-    margin: 1vh;
-}
-
 .ViewRequestPage {
     font-family: 'Ubuntu', 'sans-serif';
     font-size: 2vh;
@@ -12,7 +8,11 @@
     height: 100vh;
 }
 
-.YearOverview {
+.ViewRequestPage__ActionButton{
+    margin: 1vh;
+}
+
+.ViewRequestPage__YearOverview {
     padding: 3vh;
 }
 
