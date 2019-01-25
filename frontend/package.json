@@ -39,6 +39,7 @@
     "react-router-dom": "^4.1.1",
     "react-select": "^0.9.1",
     "react-simple-dropdown": "^3.0.0",
+    "react-yearly-calendar": "^1.2.1",
     "sass-loader": "^6.0.2",
     "uuid": "^3.3.2",
     "xhr": "^2.4.0"

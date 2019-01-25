@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 
 public class VacationDto {
-    private Date from;
-    private Date to;
+    private String from;
+    private String to;
     private long vacationCount;
     private String category;
 
@@ -18,21 +18,19 @@ public class VacationDto {
         this.category = category;
     }
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    public Date getFrom() {
+    public String getFrom() {
         return from;
     }
 
-    public void setFrom(Date from) {
+    public void setFrom(String from) {
         this.from = from;
     }
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    public Date getTo() {
+    public String getTo() {
         return to;
     }
 
-    public void setTo(Date to) {
+    public void setTo(String to) {
         this.to = to;
     }
 

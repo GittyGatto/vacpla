@@ -28,9 +28,10 @@ export class OpenRequests extends React.Component {
         const count = request.vacations[0].vacationCount;
         const uuid = request.uuid;
         const owner = request.owner;
+        const requested = request.requested;
 
         return (<span key={uuid}><ListGroupItem>
-            <p>{count} Days for {owner}</p>
+            <p>{owner} requested {count} Days (request date: {requested})</p>
 
             <Link to={'/ViewRequest/' + uuid}>{uuid}</Link>
 

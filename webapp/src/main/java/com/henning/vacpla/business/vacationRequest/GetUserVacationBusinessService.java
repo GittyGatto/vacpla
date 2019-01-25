@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -28,6 +29,8 @@ public class GetUserVacationBusinessService {
 
     @Autowired
     private DateUtil dateUtil;
+
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     public VacationOverviewDto getUserVacation(String userName) {
         UserEntity userEntity = getUserEntity(userName);
@@ -137,7 +140,7 @@ public class GetUserVacationBusinessService {
     private VacationRequestDto fillVacationRequestDto(VacationRequestEntity requestEntity) {
         VacationRequestDto requestDto = new VacationRequestDto();
         requestDto.setVacationRequestStatus(requestEntity.getVacationRequestStatus().toString());
-        requestDto.setRequested(requestEntity.getRequested());
+        requestDto.setRequested(sdf.format(requestEntity.getRequested()));
         if (requestEntity.getApproved() != null) {
             requestDto.setApproved(requestEntity.getApproved().toString());
             requestDto.setApprovedBy(requestEntity.getApprovedBy().getUserName());
@@ -152,8 +155,8 @@ public class GetUserVacationBusinessService {
         List<VacationDto> vacationDtos = new ArrayList<>();
         for (VacationEntity curr : vacations) {
             VacationDto vacationDto = new VacationDto();
-            vacationDto.setFrom(curr.getFrom());
-            vacationDto.setTo(curr.getTo());
+            vacationDto.setFrom(sdf.format(curr.getFrom()));
+            vacationDto.setTo(sdf.format(curr.getTo()));
             vacationDto.setVacationCount(curr.getVacationCount());
             vacationDto.setCategory(curr.getVacationCategory().toString());
             vacationDtos.add(vacationDto);

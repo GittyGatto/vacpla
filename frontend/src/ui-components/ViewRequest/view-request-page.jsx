@@ -5,14 +5,15 @@ import loadRequest from "../../actions/load-request-action";
 import './ViewRequest-Page.css';
 import {Header} from "../Header/Header";
 import {Button} from "react-bootstrap";
-import approveRequest from "../../actions/approve-request-action";
+import {Calendar} from 'react-yearly-calendar';
+import moment from 'moment';
 
 
 export class ViewRequestPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            uuid : undefined,
+            uuid: undefined,
             viewRequest: {},
         };
         this._onChange = this._onChange.bind(this);
@@ -45,7 +46,7 @@ export class ViewRequestPage extends React.Component {
 
         return (<div>
             <h1>{viewRequest.uuid ? viewRequest.uuid : '...'}</h1>
-            <p>owner: {viewRequest.owner ? viewRequest.owner : '...'}</p>
+            <p>owner: {viewRequest.owner ? viewRequest.owner : '...'} </p>
             <p>from: {viewRequest.vacations ? viewRequest.vacations[0].from : '...'}</p>
             <p>to: {viewRequest.vacations ? viewRequest.vacations[0].to : '...'}</p>
             <p>days: {viewRequest.vacations ? viewRequest.vacations[0].vacationCount : '...'}</p>
@@ -53,13 +54,40 @@ export class ViewRequestPage extends React.Component {
     }
 
     render() {
+        const {viewRequest} = this.state;
+
+        const today = moment();
+        const year = today.year();
+        const fromMoment = moment(viewRequest.vacations ? viewRequest.vacations[0].from : null);
+        const toMoment =moment(viewRequest.vacations ? viewRequest.vacations[0].to: null);
+        const selectedRange = [ fromMoment,toMoment];
+
+        const customCSSclasses = {
+            holidays: [
+                '2019-04-25',
+                '2019-05-01',
+                '2019-06-02',
+                '2019-08-15',
+                '2019-11-01'
+            ],
+            weekend: 'Sat,Sun',
+        }
+
         return (<div className='ViewRequestPage'>
             <Header/>
-            <h1>Request</h1>
+            <h1>Request ({viewRequest.requested ? viewRequest.requested : '...'})</h1>
             {this._renderRequest()}
 
             <Button bsStyle='success' onClick={(ev) => this._onApproveClicked(ev)}>Approve</Button>
 
+            <div className='YearOverview'>
+                <Calendar
+                    year={year}
+                    forceFullWeeks={true}
+                    customClasses={customCSSclasses}
+                    selectRange={true}
+                    selectedRange={selectedRange}/>
+            </div>
 
         </div>);
 
@@ -67,6 +95,10 @@ export class ViewRequestPage extends React.Component {
 
     _onApproveClicked(ev) {
             approveRequest(this.state.uuid)
+    }
+
+    _onDatePicked() {
+
     }
 }
 

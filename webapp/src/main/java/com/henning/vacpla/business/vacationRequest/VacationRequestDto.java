@@ -11,7 +11,7 @@ public class VacationRequestDto implements Comparable<VacationRequestDto> {
     private String uuid;
     private String owner;
     private String vacationRequestStatus;
-    private Date requested;
+    private String requested;
     private String approved;
     private String approvedBy;
     private List<VacationDto> vacations;
@@ -41,12 +41,11 @@ public class VacationRequestDto implements Comparable<VacationRequestDto> {
         this.vacationRequestStatus = vacationRequestStatus;
     }
 
-    public Date getRequested() {
+    public String getRequested() {
         return requested;
     }
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    public void setRequested(Date requested) {
+    public void setRequested(String requested) {
         this.requested = requested;
     }
 
@@ -54,7 +53,6 @@ public class VacationRequestDto implements Comparable<VacationRequestDto> {
         return approved;
     }
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public void setApproved(String approved) {
         this.approved = approved;
     }
