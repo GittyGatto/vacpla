@@ -47,9 +47,13 @@ public class GetUserVacationBusinessService {
     public RequestStatusChangeDto changeRequestStatus(String userName, String uuid, String status) {
         UserEntity userEntity = userRepository.findByUserName(userName).get();
         VacationRequestEntity vacationRequest = vacationRequestRepository.findByUuid(uuid).get();
-        vacationRequest.setVacationRequestStatus(VacationRequestStatus.APPROVED);
-        vacationRequest.setApproved(new Date());
-        vacationRequest.setApprovedBy(userEntity);
+        if (status.equals("NOT_APPROVED")){
+            vacationRequest.setVacationRequestStatus(VacationRequestStatus.NOT_APPROVED);
+        } else {
+            vacationRequest.setVacationRequestStatus(VacationRequestStatus.APPROVED);
+            vacationRequest.setApproved(new Date());
+            vacationRequest.setApprovedBy(userEntity);
+        }
         vacationRequestRepository.save(vacationRequest);
         RequestStatusChangeDto dto = new RequestStatusChangeDto();
         dto.status = "APPROVED";

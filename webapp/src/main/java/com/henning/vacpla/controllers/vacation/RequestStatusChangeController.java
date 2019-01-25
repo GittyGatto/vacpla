@@ -15,7 +15,7 @@ public class RequestStatusChangeController {
     @RequestMapping(value = "/api/requestStatusChange", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
     ResponseEntity<RequestStatusChangeDto> changeRequestStatus(@RequestBody ChangeRequestStatusRequest changeRequestStatusRequest) {
-        return new ResponseEntity<>(getUserVacationBusinessService.changeRequestStatus(changeRequestStatusRequest.userName, changeRequestStatusRequest.uuid, changeRequestStatusRequest.uuid), HttpStatus.OK);
+        return new ResponseEntity<>(getUserVacationBusinessService.changeRequestStatus(changeRequestStatusRequest.userName, changeRequestStatusRequest.uuid, changeRequestStatusRequest.status), HttpStatus.OK);
     }
 
 }

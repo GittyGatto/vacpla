@@ -4,10 +4,11 @@ import {dispatcher} from "../../util/mini-flux";
 import loadRequest from "../../actions/load-request-action";
 import './ViewRequest-Page.css';
 import {Header} from "../Header/Header";
-import {Button} from "react-bootstrap";
+import {Button, ButtonGroup} from "react-bootstrap";
 import {Calendar} from 'react-yearly-calendar';
 import moment from 'moment';
 import approveRequest from "../../actions/approve-request-action";
+import declineRequest from "../../actions/decline-request-action";
 
 
 export class ViewRequestPage extends React.Component {
@@ -79,8 +80,8 @@ export class ViewRequestPage extends React.Component {
             <h1>Request ({viewRequest.requested ? viewRequest.requested : '...'})</h1>
             {this._renderRequest()}
 
-            <Button bsStyle='success' onClick={(ev) => this._onApproveClicked(ev)}>Approve</Button>
-            <Button bsStyle='success' onClick={(ev) => this._onApproveClicked(ev)}>Decline</Button>
+            <Button className='ViewRequestPage__ActionButton' bsStyle='success' onClick={(ev) => this._onApproveClicked(ev)}>Approve</Button>
+            <Button className='ViewRequestPage__ActionButton' bsStyle='danger' onClick={(ev) => this._onDeclineClicked(ev)}>Decline</Button>
 
             <div className='YearOverview'>
                 <Calendar
@@ -99,8 +100,8 @@ export class ViewRequestPage extends React.Component {
         approveRequest(this.state.viewRequest.uuid);
     }
 
-    _onDatePicked() {
-
+    _onDeclineClicked(ev) {
+        declineRequest(this.state.viewRequest.uuid);
     }
 }
 
