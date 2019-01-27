@@ -216,5 +216,5 @@ table.calendar td.holidays {
 table.calendar td.weekend {
     font-style: italic;
     font-weight: bold;
-    background-color: lightpink;
+    background-color: lightgreen;
 }

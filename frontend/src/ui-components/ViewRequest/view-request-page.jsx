@@ -4,7 +4,7 @@ import {dispatcher} from "../../util/mini-flux";
 import loadRequest from "../../actions/load-request-action";
 import './ViewRequest-Page.css';
 import {Header} from "../Header/Header";
-import {Button, ButtonGroup} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {Calendar} from 'react-yearly-calendar';
 import moment from 'moment';
 import approveRequest from "../../actions/approve-request-action";
@@ -17,6 +17,7 @@ export class ViewRequestPage extends React.Component {
         this.state = {
             uuid: undefined,
             viewRequest: {},
+            holidays: [],
         };
         this._onChange = this._onChange.bind(this);
     }
@@ -27,8 +28,8 @@ export class ViewRequestPage extends React.Component {
     }
 
     _onChange(ev) {
-        const {viewRequest} = ev.viewRequest;
-        this.setState({viewRequest});
+        const {viewRequest, holidays} = ev.viewRequest;
+        this.setState({viewRequest, holidays});
     }
 
     componentDidMount() {
@@ -56,38 +57,30 @@ export class ViewRequestPage extends React.Component {
     }
 
     render() {
-        const {viewRequest} = this.state;
+        const {viewRequest, holidays} = this.state;
 
         const today = moment();
         const year = today.year();
         const fromMoment = moment(viewRequest.vacations ? viewRequest.vacations[0].from : null);
         const toMoment = moment(viewRequest.vacations ? viewRequest.vacations[0].to : null);
         const selectedRange = [fromMoment, toMoment];
-
-        const customCSSclasses = {
-            holidays: [
-                '2019-04-25',
-                '2019-05-01',
-                '2019-06-02',
-                '2019-08-15',
-                '2019-11-01'
-            ],
-            weekend: 'Sat,Sun',
-        }
+        const customCssClasses = {holidays: holidays, weekend: 'Sat,Sun'};
 
         return (<div className='ViewRequestPage'>
             <Header/>
             <h1>Request ({viewRequest.requested ? viewRequest.requested : '...'})</h1>
             {this._renderRequest()}
 
-            <Button className='ViewRequestPage__ActionButton' bsStyle='success' onClick={(ev) => this._onApproveClicked(ev)}>Approve</Button>
-            <Button className='ViewRequestPage__ActionButton' bsStyle='danger' onClick={(ev) => this._onDeclineClicked(ev)}>Decline</Button>
+            <Button className='ViewRequestPage__ActionButton' bsStyle='success'
+                    onClick={(ev) => this._onApproveClicked(ev)}>Approve</Button>
+            <Button className='ViewRequestPage__ActionButton' bsStyle='danger'
+                    onClick={(ev) => this._onDeclineClicked(ev)}>Decline</Button>
 
-            <div className='YearOverview'>
+            <div className='ViewRequestPage__YearOverview'>
                 <Calendar
                     year={year}
                     forceFullWeeks={true}
-                    customClasses={customCSSclasses}
+                    customClasses={customCssClasses}
                     selectRange={true}
                     selectedRange={selectedRange}/>
             </div>
