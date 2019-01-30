@@ -4,7 +4,6 @@ class ViewRequestStore {
     constructor() {
         this.data = {
             viewRequest: {},
-        //    customCssClasses: { holidays: [], weekend: 'Sat,Sun'},
             holidays: [],
         }
     }
@@ -16,7 +15,6 @@ class ViewRequestStore {
     handleLoadRequestSucceeded(ev) {
         this.data.viewRequest = ev.data.request;
         this.data.holidays = this._holidaysToCalendarDates();
-      //  this.data.viewcustomCssClasses = {holidays: holidays};
     }
 
     _holidaysToCalendarDates() {
@@ -26,7 +24,7 @@ class ViewRequestStore {
         }
         let result = [];
         holidays.forEach(holiday => {
-            result.push(new Date(holiday).toISOString().split('T')[0]);
+            result.push(holiday);
         });
         return result;
     }

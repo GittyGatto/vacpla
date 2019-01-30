@@ -1,4 +1,5 @@
 import holidayStore from "../../stores/holiday-store";
+import {holidaysToISODate} from "./holidayService";
 
 export function calculateVacationDays(range) {
     let vacCount = 0;
@@ -20,7 +21,7 @@ function isWeekend(date) {
 }
 
 function isPubicHoliday(date) {
-    const holidays = holidayStore.data.holidays;
+    const holidays = holidaysToISODate(holidayStore.data.holidays);
     const requestedDay = new Date(date).toDateString();
     const indexOf = holidays.indexOf(requestedDay);
     if (indexOf >= 0) {

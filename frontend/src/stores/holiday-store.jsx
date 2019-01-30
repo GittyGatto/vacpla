@@ -6,17 +6,17 @@ class HolidayStore {
     }
 
     handleLoadHolidaysSucceeded(ev) {
-        this.data.holidays = this._transformDates(ev.data);
+        this.data.holidays = this._extractHolidays(ev.data);
     }
 
     appendDataTo(data) {
         data.holidays = this.data;
     }
 
-    _transformDates(holidays) {
+    _extractHolidays(holidays) {
         const result = [];
         holidays.forEach(curr => {
-            result.push(new Date(curr.holiday).toDateString());
+            result.push(curr.holiday);
         });
         return result;
     }

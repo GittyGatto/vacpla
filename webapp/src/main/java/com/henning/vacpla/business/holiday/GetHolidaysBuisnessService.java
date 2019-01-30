@@ -5,6 +5,7 @@ import com.henning.vacpla.domain.holiday.HolidayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import java.util.List;
 public class GetHolidaysBuisnessService {
     @Autowired
     public HolidayRepository holidayRepository;
+
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     public List<HolidayDto> getHolidays() {
         List<HolidayEntity> holidayEntities = holidayRepository.findAll();
@@ -29,7 +32,7 @@ public class GetHolidaysBuisnessService {
 
     private HolidayDto toHolidayDto(HolidayEntity curr) {
         HolidayDto dto = new HolidayDto();
-        dto.holiday = curr.getHoliday().toString();
+        dto.holiday = sdf.format(curr.getHoliday());
         return dto;
     }
 }
