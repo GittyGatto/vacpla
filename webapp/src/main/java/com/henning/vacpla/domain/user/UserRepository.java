@@ -13,7 +13,4 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     @Transactional
     Optional<UserEntity> findByUserName(String userName);
-
-    @Transactional
-    List<UserEntity> findById(long id);
 }

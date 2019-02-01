@@ -95,7 +95,7 @@ table.calendar td.selected {
 
 /* Range */
 table.calendar td.range {
-    background-color: #15f3ff;
+    background-color: orangered;
     color: white;
     font-weight: bold;
 }

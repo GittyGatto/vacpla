@@ -1,4 +1,4 @@
-import {getAllRequests} from "../ui-components/Utils/vacation-request-service";
+import {getVacationRequests} from "../ui-components/Utils/vacation-request-service";
 
 class OpenRequestStore {
     constructor() {
@@ -12,7 +12,7 @@ class OpenRequestStore {
     }
 
     handleLoadOpenRequestsSucceeded(ev) {
-        this.data.openRequests = getAllRequests(ev);
+        this.data.openRequests = getVacationRequests(ev);
     }
 }
 

@@ -14,13 +14,13 @@ export default function sendRequest() {
     const userName = appStore.getUser().userName;
     const range = newRequestStore.data.requestedVacations.range;
     const vacDays = Array.from(datesBetween(new Date(range[0]), new Date(range[1])));
-    const result = calculateVacationDays(vacDays);
+    const vacationDays = calculateVacationDays(vacDays);
     const uuid = newRequestStore.data.requestedVacations.uuid;
 
     xhr({
         uri: Config.apiBaseUrl + '/api/vacationRequest',
         method: 'POST',
-        body: {"userName": userName, "range": range, "vacationDays": result, "uuid": uuid},
+        body: {"userName": userName, "range": range, "vacationDays": vacationDays, "uuid": uuid},
         json: true,
         headers: {
             "X-User": userName,

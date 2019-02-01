@@ -18,6 +18,8 @@ export class ViewRequestPage extends React.Component {
             uuid: undefined,
             viewRequest: {},
             holidays: [],
+            approved: [],
+            requested: [],
         };
         this._onChange = this._onChange.bind(this);
     }
@@ -28,8 +30,8 @@ export class ViewRequestPage extends React.Component {
     }
 
     _onChange(ev) {
-        const {viewRequest, holidays} = ev.viewRequest;
-        this.setState({viewRequest, holidays});
+        const {viewRequest, holidays, approved, requested} = ev.viewRequest;
+        this.setState({viewRequest, holidays, approved, requested});
     }
 
     componentDidMount() {
@@ -57,14 +59,14 @@ export class ViewRequestPage extends React.Component {
     }
 
     render() {
-        const {viewRequest, holidays} = this.state;
+        const {viewRequest, holidays, approved, requested} = this.state;
 
         const today = moment();
         const year = today.year();
         const fromMoment = moment(viewRequest.vacations ? viewRequest.vacations[0].from : null);
         const toMoment = moment(viewRequest.vacations ? viewRequest.vacations[0].to : null);
         const selectedRange = [fromMoment, toMoment];
-        const customCssClasses = {holidays: holidays, weekend: 'Sat,Sun'};
+        const customCssClasses = {holidays: holidays, weekend: 'Sat,Sun', spring: approved, winter: requested};
 
         return (<div className='ViewRequestPage'>
             <Header/>

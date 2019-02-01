@@ -173,6 +173,15 @@ public class GetUserVacationBusinessService {
         VacationRequestDto vacationRequestDto = fillVacationRequestDto(vacRequest);
         ViewRequestDto viewRequestDto = new ViewRequestDto();
         viewRequestDto.request = vacationRequestDto;
+
+
+        UserEntity userEntity = vacRequest.getUzer();
+        List<VacationRequestEntity> vacRequests = vacationRequestRepository.findByUzer(Optional.of(userEntity)).get();
+        HashMap<Integer, List<VacationRequestDto>> contextRequests = fillVacationRequestDtos(vacRequests);
+        viewRequestDto.vacationRequests = contextRequests;
+
+        viewRequestDto.totalVacation = userEntity.getTotalVacation();
+
         return viewRequestDto;
     }
 }
