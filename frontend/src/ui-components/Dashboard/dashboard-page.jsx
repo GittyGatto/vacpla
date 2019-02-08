@@ -2,7 +2,7 @@ import '../../../styles/index.scss';
 import React from 'react';
 import {dispatcher} from '../../util/mini-flux';
 import './Dashboard-Page.css';
-import {Button, Col, Grid, Label, Row} from 'react-bootstrap';
+import {Badge, Button, Col, Grid, Label, Row} from 'react-bootstrap';
 import loadVacation from "../../actions/load-vacation-action";
 import {Header} from "../Header/Header";
 import {AllRequests} from "./all-requests";
