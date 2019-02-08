@@ -1,5 +1,7 @@
 import {VacationRequestRange} from "../ui-components/NewRequest/vacation-request-range";
 import uuidv4 from 'uuid/v4';
+import datesBetween from "dates-between";
+import {calculateVacationDays} from "../ui-components/Utils/vacation-service";
 
 class NewRequestStore {
     constructor() {
@@ -18,7 +20,7 @@ class NewRequestStore {
 
     handleCalendarChanged(ev) {
         this.data.range = this._setRange(ev.data.range);
-        this.data.requestedDays = this._getRequestedDays(ev.data.range);
+        this.data.requestedDays = this._getRequestedDays();
     }
 
     handleVacationAdded(ev) {
@@ -38,11 +40,10 @@ class NewRequestStore {
         return [range[0].toLocaleDateString(), range[1].toLocaleDateString()];
     }
 
-    _getRequestedDays(range) {
-        const fromDate = new Date(range[0]);
-        const toDate = new Date(range[1]);
-        let diff = new Date(toDate.getTime() - fromDate.getTime());
-        return diff.getUTCDate();
+    _getRequestedDays() {
+        const range = this.data.range;
+        const vacDays = Array.from(datesBetween(new Date(range[0]), new Date(range[1])));
+        return calculateVacationDays(vacDays);
     }
 
     _createRequest() {
