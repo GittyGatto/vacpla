@@ -14,7 +14,6 @@ class VacationStore {
             requests: [],
 
             year: undefined,
-            firstDayOfWeek: undefined,
             customCssClasses: undefined,
 
 
@@ -37,7 +36,6 @@ class VacationStore {
         this.data.requests = getVacationRequests(ev);
 
         this.data.year = this._getYear();
-        this.data.firstDayOfWeek = 1;
         this.data.customCssClasses = this._getCustomCssClasses(ev);
     }
 

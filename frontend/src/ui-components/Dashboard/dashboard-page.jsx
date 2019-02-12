@@ -20,7 +20,6 @@ export class DashboardPage extends React.Component {
             openRequestDaysCount: undefined,
             requests: [],
             year: undefined,
-            firstDayOfWeek: undefined,
             customCssClasses: undefined,
 
         };
@@ -40,7 +39,7 @@ export class DashboardPage extends React.Component {
 
     _onChange(ev) {
         const {getUser} = ev;
-        const {totalVacation, vacationLeftCount, openRequestDaysCount, requests, year, firstDayOfWeek, customCssClasses} = ev.vacation;
+        const {totalVacation, vacationLeftCount, openRequestDaysCount, requests, year, customCssClasses} = ev.vacation;
         this.setState({
             getUser,
             totalVacation,
@@ -48,13 +47,12 @@ export class DashboardPage extends React.Component {
             openRequestDaysCount,
             requests,
             year,
-            firstDayOfWeek,
             customCssClasses
         });
     }
 
     render() {
-        const {vacationLeftCount, year, firstDayOfWeek, customCssClasses} = this.state;
+        const {vacationLeftCount, year, customCssClasses} = this.state;
 
         return <div className='DashboardPage'>
 
@@ -63,43 +61,24 @@ export class DashboardPage extends React.Component {
             <StatusBar/>
 
             <div className='DashboardPage__title'>
-                <h2>dashboard {year}</h2>
+                <h2>Dashboard {year}</h2>
             </div>
 
             <div className='DashboardPage__information'>
                 <h1>{vacationLeftCount ? vacationLeftCount : '...'}</h1>
-                <h3>days left</h3>
+                <h3>Days Left</h3>
             </div>
 
             <div className='DashboardPage__Calendar'>
                 <YearlyCalendar year={year}
                                 selectRange={false}
-                                firstDayOfWeek={firstDayOfWeek}
                                 customCssClasses={customCssClasses}/>
             </div>
-
 
         </div>;
     }
 
     datePicked(date) {
 
-    }
-
-    _doTest(year, firstDayOfWeek, customCssClasses) {
-        if (customCssClasses === undefined) {
-            console.log('un => ' + customCssClasses)
-            return undefined;
-        } else {
-            console.log('def => ' + customCssClasses)
-
-            return <div className='DashboardPage__Calendar'>
-                <YearlyCalendar year={2019}
-                                selectRange={false}
-                                firstDayOfWeek={firstDayOfWeek}
-                                customClasses={customCssClasses}/>
-            </div>
-        }
-        return undefined;
     }
 }

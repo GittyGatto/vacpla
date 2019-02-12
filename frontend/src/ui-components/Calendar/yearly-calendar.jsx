@@ -7,33 +7,41 @@ export class YearlyCalendar extends React.Component {
         super(props);
         this.state = {
             year: undefined,
-            firstDayOfWeek: 1,
             customClasses: undefined,
+            selectRange: false,
         };
         this._onChange = this._onChange.bind(this);
     }
 
     _onChange(ev) {
-        const {year, firstDayOfWeek, customCssClasses} = ev.vacation;
+        const {year, customCssClasses, selectRange} = ev.vacation;
         this.setState({
             year,
-            firstDayOfWeek,
-            customCssClasses
+            customCssClasses,
+            selectRange
         });
     }
 
     render() {
-        const {year, firstDayOfWeek, customCssClasses} = this.props;
+        const {year, customCssClasses, selectRange} = this.props;
 
-        return (<Calendar year={year}
-                          selectRange={false}
-                          onPickRange={(start, end) => this.rangePicked(start, end)}
-                          onPickDate={date => this.datePicked(date)}
-                          firstDayOfWeek={firstDayOfWeek}
+        return (<div id='calendar'>
+                <Calendar year={year ? year : 1900}
                           customClasses={customCssClasses}
-                          showWeekSeparators={false}
-            />
+                          selectRange={selectRange}
+                          onPickRange={(start, end) => this._rangePicked(start, end)}
+                          onPickDate={date => this._datePicked(date)}
+                          firstDayOfWeek={1}
+                          showWeekSeparators={false}/>
+            </div>
         );
     };
 
+    rangePicked(start, end) {
+        console.log(start + end)
+    }
+
+    _datePicked(date) {
+        console.log(date)
+    }
 }

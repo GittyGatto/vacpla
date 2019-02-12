@@ -9,36 +9,36 @@ export class StatusBar extends React.Component {
             <Link to="/">
             <div className='StatusBar__item'>
                 <i className="fas fa-tachometer-alt"></i>
-                <p>dashboard</p>
+                <p>Dashboard</p>
             </div>
             </Link>
 
             <Link to="/NewRequest">
             <div className='StatusBar__item'>
                 <i className="fas fa-cart-plus"></i>
-                <p>new</p>
+                <p>New</p>
             </div>
             </Link>
 
             <div className='StatusBar__item'>
                 <i className="fas fa-envelope-open"></i>
-                <p>open</p>
+                <p>Open</p>
             </div>
 
             <div className='StatusBar__item'>
                 <i className="fas fa-thumbs-up"></i>
-                <p>approved</p>
+                <p>Approved</p>
             </div>
 
             <div className='StatusBar__item'>
                 <i className="fas fa-thumbs-down"></i>
-                <p>declined</p>
+                <p>Declined</p>
             </div>
 
             <Link to="/OpenRequest">
             <div className='StatusBar__item'>
                 <i className="fas fa-glasses"></i>
-                <p>need approval</p>
+                <p>Need Approval</p>
             </div>
             </Link>
 
