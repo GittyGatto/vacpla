@@ -46,19 +46,19 @@ export class Header extends React.Component {
                   isOpen={showSidebar}>
 
                 <a className="menu-item sideBarItem">
-                    <Link to="/">Dashboard</Link>
+                    <Link to="/"><i className="fas fa-tachometer-alt"></i> Dashboard</Link>
                 </a>
 
                 <span className="menu-item sideBarItem">
-                    <Link to="/NewRequest">New Request</Link>
+                    <Link to="/NewRequest"><i className="fas fa-cart-plus"></i> New Request</Link>
                 </span>
 
                 <a className="menu-item sideBarItem">
-                    <Link to="/OpenRequest">Open Requests</Link>
+                    <Link to="/OpenRequest"><i className="fas fa-envelope-open"></i> Open Requests</Link>
                 </a>
 
                 <a className="menu-item sideBarItem" onClick={() => logout()}>
-                    Logout
+                    <i className="fas fa-sign-out-alt"></i>Logout
                 </a>
             </Menu>
         </div>

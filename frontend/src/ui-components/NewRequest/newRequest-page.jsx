@@ -1,16 +1,17 @@
 import '../../../styles/index.scss';
 import React from 'react';
-import '../Dashboard/Dashboard-Page.css';
+import './newRequestPage.css';
+import '../Calendar/calendar-style.css'
 import {Header} from "../Header/Header";
-import Calendar from "react-calendar";
 import {dispatcher} from "../../util/mini-flux";
-import {Button, Col, Grid, Label, Row} from "react-bootstrap";
 import changedCalender from "../../actions/change-calendar-action";
 import addVacation from "../../actions/add-vacation-range-action";
 import sendRequest from "../../actions/send-request-action";
 import {setSidebarOpen} from "../../actions/show-sidebar-action";
 import resetNewRequestPage from "../../actions/reset-new-request-page-action";
-import {Link} from "react-router-dom";
+import {StatusBar} from "../StatusBar/StatusBar";
+import {Calendar} from "react-yearly-calendar";
+import moment from 'moment';
 
 export class NewRequestPage extends React.Component {
     constructor(props) {
@@ -24,6 +25,7 @@ export class NewRequestPage extends React.Component {
             getUser: props.getUser,
             vacationLeftCount: undefined,
             requestedVacations: undefined,
+
         };
         this._onChange = this._onChange.bind(this);
     }
@@ -47,77 +49,28 @@ export class NewRequestPage extends React.Component {
 
     render() {
         const {getUser, date, minDate, range, requestedDays, vacationLeftCount} = this.state;
-        return <div className='DashboardPage'>
-            <Header getUser={getUser}/>
-            <Grid className='DashboardPage__Overview'>
-                <Row className="show-grid">
-                    <Col xs={12}>
-                        <h1>New Request</h1>
-                    </Col>
-                </Row>
-                <Row className="show-grid">
-                    <Col xs={6} className='NewRequest__Calender'>
-                        <Calendar locale='de'
-                                  minDate={minDate}
-                                  returnValue='range'
-                                  selectRange={true}
-                                  value={date}
-                                  onChange={(ev) => this._onCalendarChanged(ev)}/>
-                    </Col>
-                    <Col xs={6} className='NewRequest__Status'>
+        const year = new Date().getFullYear();
+        const today = moment();
+        const selectedRange = [today, moment(today).add(15, 'day')];
 
-                        <Link to="/"><Button bsStyle='success'>Cancel</Button></Link>
-                        <Button bsStyle="danger" onClick={(ev) => this._onSendClicked(ev)}>Send Request</Button>
+        return <div className='NewRequestPage'>
 
-                        <Row className="show-grid">
-                            <Col xs={6} className='LeftCol'>
-                                <p>Left: </p>
-                            </Col>
-                            <Col xs={6} className='RightCol'>
-                                <Label>{vacationLeftCount}</Label>
-                            </Col>
-                        </Row>
+            <Header/>
 
+            <StatusBar/>
 
-                        <Row className="show-grid">
-                            <Col xs={6} className='LeftCol'>
-                                <p>From: </p>
-                            </Col>
-                            <Col xs={6} className='RightCol'>
-                                <Label>{range[0]}</Label>
-                            </Col>
-                        </Row>
+            <div className='NewRequestPage_Requests'>
+                <h2>new request</h2>
+            </div>
 
-                        <Row className="show-grid">
-                            <Col xs={6} className='LeftCol'>
-                                <p>To: </p>
-                            </Col>
-                            <Col xs={6} className='RightCol'>
-                                <Label>{range[1]}</Label>
-                            </Col>
-                        </Row>
+            <div className='NewRequestPage_Calendar'>
+                <Calendar year={year}
+                          selectedRange={selectedRange}
+                          selectRange={true}
+                          onPickRange={(start, end) => this.rangePicked(start, end)}
+                          firstDayOfWeek={1}/>
+            </div>
 
-                        <Row className="show-grid">
-                            <Col xs={6} className='LeftCol'>
-                                <p>Requested: </p>
-                            </Col>
-                            <Col xs={6} className='RightCol'>
-                                <Label>{requestedDays}</Label>
-                            </Col>
-                        </Row>
-
-                        <Row className="show-grid">
-                            <Col xs={6} className='LeftCol'>
-                                <p>Expected Left: </p>
-                            </Col>
-                            <Col xs={6} className='RightCol'>
-                                <Label>{vacationLeftCount - requestedDays}</Label>
-                            </Col>
-                        </Row>
-
-                    </Col>
-                </Row>
-            </Grid>
         </div>;
     }
 
@@ -128,5 +81,9 @@ export class NewRequestPage extends React.Component {
     _onSendClicked(ev) {
         addVacation(ev);
         sendRequest(ev);
+    }
+
+    rangePicked(range, end) {
+        console.log(range, end);
     }
 }

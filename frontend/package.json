@@ -24,6 +24,7 @@
     "dates-between": "^1.1.0",
     "font-awesome": "4.7.0",
     "node-sass": "^4.3.0",
+    "notevil": "^1.1.0",
     "postcss": "^5.2.16",
     "postcss-cssnext": "^2.10.0",
     "precss": "^1.4.0",
@@ -40,11 +41,13 @@
     "react-select": "^0.9.1",
     "react-simple-dropdown": "^3.0.0",
     "react-yearly-calendar": "^1.2.1",
+    "safe-eval": "^0.4.1",
     "sass-loader": "^6.0.2",
     "uuid": "^3.3.2",
     "xhr": "^2.4.0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.1",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-plugin-transform-class-properties": "^6.22.0",

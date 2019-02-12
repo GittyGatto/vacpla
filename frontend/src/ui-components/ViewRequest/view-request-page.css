@@ -1,0 +1,18 @@
+.ViewRequestPage {
+    font-family: 'Ubuntu', 'sans-serif';
+    font-size: 2vh;
+    text-align: center;
+    background-size: cover;
+    background-origin: content-box;
+    background-color: whitesmoke;
+    height: 100vh;
+}
+
+.ViewRequestPage__ActionButton{
+    margin: 1vh;
+}
+
+.ViewRequestPage__YearOverview {
+    padding: 3vh;
+}
+

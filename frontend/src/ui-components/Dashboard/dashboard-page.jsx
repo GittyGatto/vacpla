@@ -1,14 +1,14 @@
 import '../../../styles/index.scss';
 import React from 'react';
 import {dispatcher} from '../../util/mini-flux';
-import './Dashboard-Page.css';
-import {Badge, Button, Col, Grid, Label, Row} from 'react-bootstrap';
+import './dashboard-page.css';
 import loadVacation from "../../actions/load-vacation-action";
-import {Header} from "../Header/Header";
-import {AllRequests} from "./all-requests";
-import {Link} from "react-router-dom";
 import loadHolidays from "../../actions/load-holidays-action";
 import {setSidebarOpen} from "../../actions/show-sidebar-action";
+import {Header} from "../Header/Header";
+import {StatusBar} from "../StatusBar/StatusBar";
+import {YearlyCalendar} from "../Calendar/yearly-calendar";
+
 
 export class DashboardPage extends React.Component {
     constructor(props) {
@@ -19,6 +19,10 @@ export class DashboardPage extends React.Component {
             vacationLeftCount: undefined,
             openRequestDaysCount: undefined,
             requests: [],
+            year: undefined,
+            firstDayOfWeek: undefined,
+            customCssClasses: undefined,
+
         };
         loadVacation();
         loadHolidays();
@@ -36,66 +40,66 @@ export class DashboardPage extends React.Component {
 
     _onChange(ev) {
         const {getUser} = ev;
-        const {totalVacation, vacationLeftCount, openRequestDaysCount, requests} = ev.vacation;
-        this.setState({getUser, totalVacation, vacationLeftCount, openRequestDaysCount, requests});
+        const {totalVacation, vacationLeftCount, openRequestDaysCount, requests, year, firstDayOfWeek, customCssClasses} = ev.vacation;
+        this.setState({
+            getUser,
+            totalVacation,
+            vacationLeftCount,
+            openRequestDaysCount,
+            requests,
+            year,
+            firstDayOfWeek,
+            customCssClasses
+        });
     }
 
     render() {
-        const {getUser, totalVacation, vacationLeftCount, openRequestDaysCount, requests} = this.state;
+        const {vacationLeftCount, year, firstDayOfWeek, customCssClasses} = this.state;
+
         return <div className='DashboardPage'>
+
             <Header/>
 
-            <Grid className='DashboardPage__Overview'>
-                <Row className="show-grid">
-                    <Col xs={12}>
-                        <h1>{getUser ? getUser.userName : '...'}'s Dashboard</h1>
-                    </Col>
-                </Row>
-                <Row className="show-grid">
-                    <Col md={6} className='LeftCol'>
-                        <p>Total:</p>
-                    </Col>
-                    <Col md={6} className='RightCol'>
-                        <Label>{totalVacation ? totalVacation : '...'}</Label>
-                    </Col>
-                </Row>
-                <Row className="show-grid">
-                    <Col md={6} className='LeftCol'>
-                        <p>Left:</p>
-                    </Col>
-                    <Col md={6} className='RightCol'>
-                        <Label>{vacationLeftCount ? vacationLeftCount : '...'}</Label>
-                    </Col>
-                </Row>
-                <Row className="show-grid">
-                    <Col md={6} className='LeftCol'>
-                        <p>Taken:</p>
-                    </Col>
-                    <Col md={6} className='RightCol'>
-                        <Label>{totalVacation - vacationLeftCount ? totalVacation - vacationLeftCount : '...'}</Label>
-                    </Col>
-                </Row>
-                <Row className="show-grid">
-                    <Col md={6} className='LeftCol'>
-                        <p>Requested:</p>
-                    </Col>
-                    <Col md={6} className='RightCol'>
-                        <Label bsStyle='warning'>{openRequestDaysCount ? openRequestDaysCount : '...'}</Label>
-                    </Col>
-                </Row>
-                <Row className="show-grid">
-                    <Col md={12}>
-                        <Link to="/NewRequest"><Button bsStyle='danger'>NEW REQUEST!</Button></Link>
-                    </Col>
-                </Row>
-                <Row className="show-grid">
-                    <Col md={12}>
-                        <h1>All requests</h1>
-                        <AllRequests requests={requests}/>
-                    </Col>
-                </Row>
+            <StatusBar/>
 
-            </Grid>
+            <div className='DashboardPage__title'>
+                <h2>dashboard {year}</h2>
+            </div>
+
+            <div className='DashboardPage__information'>
+                <h1>{vacationLeftCount ? vacationLeftCount : '...'}</h1>
+                <h3>days left</h3>
+            </div>
+
+            <div className='DashboardPage__Calendar'>
+                <YearlyCalendar year={year}
+                                selectRange={false}
+                                firstDayOfWeek={firstDayOfWeek}
+                                customCssClasses={customCssClasses}/>
+            </div>
+
+
         </div>;
+    }
+
+    datePicked(date) {
+
+    }
+
+    _doTest(year, firstDayOfWeek, customCssClasses) {
+        if (customCssClasses === undefined) {
+            console.log('un => ' + customCssClasses)
+            return undefined;
+        } else {
+            console.log('def => ' + customCssClasses)
+
+            return <div className='DashboardPage__Calendar'>
+                <YearlyCalendar year={2019}
+                                selectRange={false}
+                                firstDayOfWeek={firstDayOfWeek}
+                                customClasses={customCssClasses}/>
+            </div>
+        }
+        return undefined;
     }
 }

@@ -2,7 +2,7 @@ import '../../../styles/index.scss';
 import React from 'react';
 import {dispatcher} from "../../util/mini-flux";
 import loadRequest from "../../actions/load-request-action";
-import './ViewRequest-Page.css';
+import './view-request-page.css';
 import {Header} from "../Header/Header";
 import {Button} from "react-bootstrap";
 import {Calendar} from 'react-yearly-calendar';
