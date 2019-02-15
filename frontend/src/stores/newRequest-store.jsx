@@ -2,12 +2,14 @@ import {VacationRequestRange} from "../ui-components/NewRequest/vacation-request
 import uuidv4 from 'uuid/v4';
 import datesBetween from "dates-between";
 import {calculateVacationDays} from "../ui-components/Utils/vacation-service";
+import moment from 'moment';
+
 
 class NewRequestStore {
     constructor() {
         this.data = {
             uuid: undefined,
-            range: [],
+            selectedRange: [],
             requestedDays: undefined,
             requestedVacations: undefined,
         };
@@ -18,7 +20,7 @@ class NewRequestStore {
     }
 
     handleCalendarChanged(ev) {
-        this.data.range = this._setRange(ev.data.range);
+        this.data.selectedRange = ev.data.range;
         this.data.requestedDays = this._getRequestedDays();
     }
 
@@ -40,15 +42,16 @@ class NewRequestStore {
     }
 
     _getRequestedDays() {
-        const range = this.data.range;
+        const range = this.data.selectedRange;
         const vacDays = Array.from(datesBetween(new Date(range[0]), new Date(range[1])));
         return calculateVacationDays(vacDays);
     }
 
     _createRequest() {
         const request = new VacationRequestRange();
+        const range = this.data.selectedRange;
         request.days = this.data.requestedDays;
-        request.range = this.data.range;
+        request.range = [range[0].toDate().toLocaleDateString(), range[1].toDate().toLocaleDateString()];
         request.uuid = uuidv4();
         this.data.uuid = request.uuid;
         return request;
@@ -56,14 +59,13 @@ class NewRequestStore {
 
     _resetRequest() {
         this.data.uuid = undefined;
-        this.data.range = [];
+        this.data.selectedRange = undefined;
         this.data.requestedDays = undefined;
     }
 
     _resetData() {
         this._resetRequest();
         this.data.requestedVacations = undefined;
-        this.data.holidays = [];
     }
 }
 

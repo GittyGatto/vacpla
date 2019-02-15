@@ -8,11 +8,15 @@
     height: 100vh;
 }
 
-.NewRequestPage_Requests {
+.NewRequestPage_DaysLeft .NewRequestPage_Title .NewRequestPage_Calendar{
     display: flex;
     justify-content: center;
 }
 
 .NewRequestPage_Calendar {
     padding: 3vh;
+}
+
+.NewRequestPage_Error {
+    color: red;
 }

@@ -1,6 +1,8 @@
 import {Calendar} from "react-yearly-calendar";
 import React from "react";
 import './calendar-style.css';
+import changedCalender from "../../actions/change-calendar-action";
+import moment from 'moment';
 
 export class YearlyCalendar extends React.Component {
     constructor(props) {
@@ -9,26 +11,29 @@ export class YearlyCalendar extends React.Component {
             year: undefined,
             customClasses: undefined,
             selectRange: false,
+            selectedRange: [],
         };
         this._onChange = this._onChange.bind(this);
     }
 
     _onChange(ev) {
         const {year, customCssClasses, selectRange} = ev.vacation;
+        //const {selectedRange} = ev.newRequest;
         this.setState({
             year,
             customCssClasses,
-            selectRange
+            selectRange,
         });
     }
 
     render() {
-        const {year, customCssClasses, selectRange} = this.props;
+        const {year, customCssClasses, selectRange, selectedRange} = this.props;
 
         return (<div id='calendar'>
                 <Calendar year={year ? year : 1900}
                           customClasses={customCssClasses}
                           selectRange={selectRange}
+                          selectedRange={selectedRange ? selectedRange : [moment(), moment()]}
                           onPickRange={(start, end) => this._rangePicked(start, end)}
                           onPickDate={date => this._datePicked(date)}
                           firstDayOfWeek={1}
@@ -37,11 +42,12 @@ export class YearlyCalendar extends React.Component {
         );
     };
 
-    rangePicked(start, end) {
-        console.log(start + end)
-    }
-
     _datePicked(date) {
         console.log(date)
+    }
+
+    _rangePicked(start, end) {
+        const range = [start, end];
+        changedCalender(range);
     }
 }
