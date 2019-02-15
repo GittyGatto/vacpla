@@ -68,27 +68,28 @@ export class NewRequestPage extends React.Component {
 
         if (selectedRange !== undefined) {
             let disabled = false;
-            if (vacationLeftCount-openRequestDaysCount-requestedDays <= 0){
+            if (vacationLeftCount - openRequestDaysCount - requestedDays <= 0) {
                 disabled = true;
-                errorReason = 'Not enough vacation left';
+                errorReason = 'Not enough vacation';
             }
 
-            if (requestedDays === 0){
+            if (requestedDays === 0) {
                 disabled = true;
-                errorReason = 'This is a public holiday';
+                errorReason = 'This date is already requested, a public holiday, or on a weekend';
             }
 
-            if (moment(selectedRange[0]).diff(moment()) <= 0){
-               disabled= true;
-               errorReason = 'Start day is in the past or today';
+            if (moment(selectedRange[0]).diff(moment()) <= 0) {
+                disabled = true;
+                errorReason = 'Start day is in the past or today';
             }
 
-            vacation = <div className='NewRequestPage_DaysLeft'>
+            vacation = <div className='NewRequestPage_Request'>
                 <h1>{requestedDays}</h1>
                 <h3>Days Requested</h3>
-                <h3>{moment(selectedRange[0]).format('DD-MMM-YYYY')} <i className="fas fa-arrow-right"></i> {moment(selectedRange[1]).format('DD-MMM-YYYY')}</h3>
-                <Button disabled={disabled} bsStyle="danger" onClick={(ev) => this._onSendClicked(ev)}>Send Request</Button>
-                <span><h3 className='NewRequestPage_Error'>{errorReason}</h3></span>
+                <h3>{moment(selectedRange[0]).format('DD-MMM-YYYY')} <i
+                    className="fas fa-arrow-right"></i> {moment(selectedRange[1]).format('DD-MMM-YYYY')}</h3>
+                <Button disabled={disabled} onClick={(ev) => this._onSendClicked(ev)}>Request</Button>
+                <span><p className='NewRequestPage_Error'>{errorReason}</p></span>
             </div>
         }
 
@@ -108,9 +109,7 @@ export class NewRequestPage extends React.Component {
                 <h3>Days Left</h3>
             </div>
 
-            <div className='NewRequestPage_Request'>
-                {vacation}
-            </div>
+            {vacation}
 
             <div className='NewRequestPage_Calendar'>
                 <YearlyCalendar year={year ? year : 1900}
@@ -118,7 +117,6 @@ export class NewRequestPage extends React.Component {
                                 customCssClasses={customCssClasses}
                                 selectRange={true}/>
             </div>
-
         </div>;
     }
 

@@ -8,9 +8,9 @@
     height: 100vh;
 }
 
-.NewRequestPage_DaysLeft .NewRequestPage_Title .NewRequestPage_Calendar{
-    display: flex;
-    justify-content: center;
+.NewRequestPage{
+    flex-direction: column;
+
 }
 
 .NewRequestPage_Calendar {
@@ -18,5 +18,19 @@
 }
 
 .NewRequestPage_Error {
-    color: red;
+    color: orangered;
+}
+
+.NewRequestPage_Request{
+    border: 3px solid white;
+    border-radius: 1vh;
+    width: 60vh;
+    padding: 1vh;
+    margin: auto;
+}
+
+.NewRequestPage_Request Button:hover {
+    background-color: orangered;
+    color: white;
+    font-weight: bold;
 }
