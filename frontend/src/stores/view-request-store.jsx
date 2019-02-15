@@ -1,5 +1,5 @@
 import holidayStore from "./holiday-store";
-import {getDaysByStatus, getFilteredRequestsByStatus} from "../ui-components/Utils/vacation-request-service";
+import {getFilteredRequestsByStatus} from "../ui-components/Utils/vacation-request-service";
 import datesBetween from "dates-between";
 import {giveVacationDays} from "../ui-components/Utils/vacation-service";
 

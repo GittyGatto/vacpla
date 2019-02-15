@@ -15,17 +15,6 @@ class VacationStore {
 
             year: undefined,
             customCssClasses: undefined,
-
-
-            /*year, firstDayOfWeek, customCssClasses, selectedRange*/
-
-            /*
-            const year = today.year();
-        const fromMoment = moment(viewRequest.vacations ? viewRequest.vacations[0].from : null);
-        const toMoment = moment(viewRequest.vacations ? viewRequest.vacations[0].to : null);
-        const selectedRange = [fromMoment, toMoment];
-        const customCssClasses = {holidays: holidays, weekend: 'Sat,Sun', spring: approved, winter: requested};
-             */
         };
     }
 

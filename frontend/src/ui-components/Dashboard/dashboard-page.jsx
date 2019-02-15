@@ -21,7 +21,6 @@ export class DashboardPage extends React.Component {
             requests: [],
             year: undefined,
             customCssClasses: undefined,
-
         };
         loadVacation();
         loadHolidays();
