@@ -1,7 +1,7 @@
-import {VacationRequestRange} from "../ui-components/NewRequest/vacation-request-range";
+import {VacationRequestRange} from "../ui-components/new-request/vacation-request-range";
 import uuidv4 from 'uuid/v4';
 import datesBetween from "dates-between";
-import {calculateVacationDays} from "../ui-components/Utils/vacation-service";
+import {calculateVacationDays} from "../services/vacation-service";
 import moment from 'moment';
 
 

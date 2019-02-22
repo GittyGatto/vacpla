@@ -1,7 +1,7 @@
 import holidayStore from "./holiday-store";
-import {getFilteredRequestsByStatus} from "../ui-components/Utils/vacation-request-service";
+import {getFilteredRequestsByStatus} from "../services/vacation-request-service";
 import datesBetween from "dates-between";
-import {giveVacationDays} from "../ui-components/Utils/vacation-service";
+import {giveVacationDays} from "../services/vacation-service";
 
 class ViewRequestStore {
     constructor() {

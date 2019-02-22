@@ -1,4 +1,4 @@
-import {getVacationRequests} from "../ui-components/Utils/vacation-request-service";
+import {getVacationRequests} from "../services/vacation-request-service";
 
 class OpenRequestStore {
     constructor() {

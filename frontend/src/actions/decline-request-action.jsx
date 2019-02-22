@@ -1,7 +1,7 @@
 import xhr from 'xhr';
 import {dispatcher} from '../util/mini-flux'
 import Config from '../config';
-import {appHistory} from "../ui-components/appHistory";
+import {appHistory} from "../ui-components/app-history";
 import appStore from "../stores/app-store";
 import loadOpenRequests from "./load-open-requests-action";
 

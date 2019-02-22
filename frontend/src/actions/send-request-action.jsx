@@ -5,8 +5,8 @@ import loadVacation from "./load-vacation-action";
 import appStore from "../stores/app-store";
 import newRequestStore from "../stores/newRequest-store";
 import datesBetween from 'dates-between';
-import {calculateVacationDays} from "../ui-components/Utils/vacation-service";
-import {appHistory} from "../ui-components/appHistory";
+import {calculateVacationDays} from "../services/vacation-service";
+import {appHistory} from "../ui-components/app-history";
 
 
 

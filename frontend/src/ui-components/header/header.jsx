@@ -1,6 +1,6 @@
 import '../../../styles/index.scss';
 import React from 'react';
-import './Header-Page.css'
+import './header-page.css'
 import {dispatcher} from '../../util/mini-flux';
 import {Link} from "react-router-dom";
 import logout from '../../actions/logout-action';

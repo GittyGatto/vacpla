@@ -1,5 +1,5 @@
-import holidayStore from "../../stores/holiday-store";
-import {holidaysToDateString} from "./holidayService";
+import holidayStore from "../stores/holiday-store";
+import {holidaysToDateString} from "./holiday-service";
 
 export function calculateVacationDays(range) {
     let vacCount = 0;

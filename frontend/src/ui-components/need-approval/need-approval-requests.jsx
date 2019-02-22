@@ -3,7 +3,7 @@ import React from 'react';
 import {ListGroup, ListGroupItem} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
-export class OpenRequests extends React.Component {
+export class NeedApprovalRequests extends React.Component {
 
     render() {
         return (<div>

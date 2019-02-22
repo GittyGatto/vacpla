@@ -1,16 +1,16 @@
+import '../../../styles/index.scss';
 import React from 'react';
-import {dispatcher} from '../../util/mini-flux';
 import './open-request-page.css';
-import {Header} from "../Header/Header";
-import loadOpenRequests from "../../actions/load-open-requests-action";
-import {OpenRequests} from "./open-requests";
+import {Header} from "../header/header";
+import {dispatcher} from "../../util/mini-flux";
 import {setSidebarOpen} from "../../actions/show-sidebar-action";
+import {StatusBar} from "../status-bar/status-bar";
+import {AllRequests} from "../dashboard/all-requests";
 
 export class OpenRequestPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            getUser: props.getUser,
             openRequests: [],
         };
         this._onChange = this._onChange.bind(this);
@@ -18,7 +18,6 @@ export class OpenRequestPage extends React.Component {
 
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
-        loadOpenRequests();
         setSidebarOpen(false);
     }
 
@@ -27,17 +26,27 @@ export class OpenRequestPage extends React.Component {
     }
 
     _onChange(ev) {
-        const {getUser} = ev;
-        const {openRequests} = ev.openRequests;
-        this.setState({getUser, openRequests});
+        const {openRequests} = ev.vacation;
+        this.setState({openRequests});
     }
 
     render() {
         const {openRequests} = this.state;
-        return <div className='OpenRequestPage'>
+
+        return <div className='MyOpenRequestPage'>
+
             <Header/>
-            <h1>Open requests</h1>
-            <OpenRequests openRequests={openRequests}/>
+
+            <StatusBar/>
+
+            <div className='MyOpenRequestPage_Title'>
+                <h2>Open Request</h2>
+            </div>
+
+            <div className='MyOpenRequestPage_Requests'>
+                <AllRequests requests={openRequests}/>
+            </div>
+
         </div>;
     }
 }

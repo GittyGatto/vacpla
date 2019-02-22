@@ -1,16 +1,16 @@
 import '../../../styles/index.scss';
 import React from 'react';
-import './newRequestPage.css';
-import '../Calendar/calendar-style.css'
-import {Header} from "../Header/Header";
+import './new-request-page.css';
+import '../calendar/calendar-style.css'
+import {Header} from "../header/header";
 import {dispatcher} from "../../util/mini-flux";
 import addVacation from "../../actions/add-vacation-range-action";
 import sendRequest from "../../actions/send-request-action";
 import {setSidebarOpen} from "../../actions/show-sidebar-action";
 import resetNewRequestPage from "../../actions/reset-new-request-page-action";
-import {StatusBar} from "../StatusBar/StatusBar";
+import {StatusBar} from "../status-bar/status-bar";
 import moment from 'moment';
-import {YearlyCalendar} from "../Calendar/yearly-calendar";
+import {YearlyCalendar} from "../calendar/yearly-calendar";
 import {Button} from "react-bootstrap";
 
 export class NewRequestPage extends React.Component {

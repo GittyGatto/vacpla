@@ -1,8 +1,8 @@
-import {getFilteredRequestsByStatus, getVacationRequests} from '../ui-components/Utils/vacation-request-service';
+import {getFilteredRequestsByStatus, getVacationRequests} from '../services/vacation-request-service';
 import moment from 'moment';
 import holidayStore from "./holiday-store";
 import datesBetween from "dates-between";
-import {giveVacationDays} from "../ui-components/Utils/vacation-service";
+import {giveVacationDays} from "../services/vacation-service";
 
 
 class VacationStore {
@@ -15,6 +15,8 @@ class VacationStore {
 
             year: undefined,
             customCssClasses: undefined,
+
+            openRequests : [],
         };
     }
 
@@ -26,6 +28,8 @@ class VacationStore {
 
         this.data.year = this._getYear();
         this.data.customCssClasses = this._getCustomCssClasses(ev);
+
+        this.data.openRequests = getFilteredRequestsByStatus(ev, 'REQUESTED');
     }
 
     appendDataTo(data) {

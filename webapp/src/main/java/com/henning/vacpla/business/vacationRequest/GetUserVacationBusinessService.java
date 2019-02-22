@@ -3,7 +3,6 @@ package com.henning.vacpla.business.vacationRequest;
 import com.henning.vacpla.business.openRequests.OpenRequestsDto;
 import com.henning.vacpla.business.util.DateUtil;
 import com.henning.vacpla.business.viewRequest.ViewRequestDto;
-import com.henning.vacpla.controllers.vacation.RequestStatusChangeDto;
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;
 import com.henning.vacpla.domain.vacation.VacationCategory;
@@ -44,21 +43,24 @@ public class GetUserVacationBusinessService {
         return fillOpenRequestsDto(openRequests);
     }
 
-    public RequestStatusChangeDto changeRequestStatus(String userName, String uuid, String status) {
+    public void changeRequestStatus(String userName, String uuid, String status) {
         UserEntity userEntity = userRepository.findByUserName(userName).get();
         VacationRequestEntity vacationRequest = vacationRequestRepository.findByUuid(uuid).get();
-        if (status.equals("NOT_APPROVED")){
+
+        if (status.equals(VacationRequestStatus.NOT_APPROVED.toString())) {
             vacationRequest.setVacationRequestStatus(VacationRequestStatus.NOT_APPROVED);
-        } else {
+        }
+
+        if (status.equals(VacationRequestStatus.APPROVED.toString())) {
             vacationRequest.setVacationRequestStatus(VacationRequestStatus.APPROVED);
             vacationRequest.setApproved(new Date());
             vacationRequest.setApprovedBy(userEntity);
         }
+
+        if (status.equals(VacationRequestStatus.WITHDRAW.toString())){
+            vacationRequest.setVacationRequestStatus(VacationRequestStatus.WITHDRAW);
+        }
         vacationRequestRepository.save(vacationRequest);
-        RequestStatusChangeDto dto = new RequestStatusChangeDto();
-        dto.status = "APPROVED";
-        dto.uuid = uuid;
-        return dto;
     }
 
 

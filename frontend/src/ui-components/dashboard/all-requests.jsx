@@ -1,26 +1,20 @@
 import '../../../styles/index.scss';
 import React from 'react';
-import {Jumbotron, ListGroup, Badge} from "react-bootstrap";
+import {Button, Jumbotron, ListGroup} from "react-bootstrap";
 import './all-requests.css'
+import withdrawRequest from "../../actions/withdraw-request-action";
 
 export class AllRequests extends React.Component {
 
     render() {
         const {requests} = this.props;
         let allRequests = requests.map((curr, index) => {
-
-            let buttonStyle = this._getButtonStyle(curr.vacationRequestStatus);
-            let badgeStyle = "DashboardPage_Request_Badge_" + this._getButtonStyle(curr.vacationRequestStatus);
-
-
             return (<span key={index}>
                         <Jumbotron className="DashboardPage_Request">
-                          <p>
-                             {curr.vacations[0].vacationCount} Days <Badge variant="warning">{curr.vacationRequestStatus}</Badge> on {curr.requested}
-                          </p>
-                          <p>
-                             {curr.vacations[0].from} => {curr.vacations[0].to}
-                          </p>
+                            <h1>{curr.vacations[0].vacationCount}</h1>
+                            <h3>Days</h3>
+                            <h3>{curr.vacations[0].from} <i className="fas fa-arrow-right"></i> {curr.vacations[0].to}</h3>
+                            <Button onClick={() => this._onWithdrawClicked(curr.uuid)} bsStyle="warning">Withdraw</Button>
                         </Jumbotron>
                 </span>);
         })
@@ -41,5 +35,10 @@ export class AllRequests extends React.Component {
         if (status === 'NOT_APPROVED') {
             return "danger";
         }
+    }
+
+    _onWithdrawClicked(requestUuid) {
+        console.log(requestUuid);
+        withdrawRequest(requestUuid);
     }
 }

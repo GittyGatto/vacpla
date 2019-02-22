@@ -1,0 +1,13 @@
+.MyOpenRequestPage {
+    font-family: 'Ubuntu', 'sans-serif';
+    font-size: 2vh;
+    text-align: center;
+    background-size: cover;
+    background-origin: content-box;
+    background-color: whitesmoke;
+    height: 100vh;
+}
+
+.MyOpenRequestPage{
+    flex-direction: column;
+}

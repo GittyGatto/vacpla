@@ -1,0 +1,12 @@
+.DashboardPage_Request {
+    border: 3px solid white;
+    border-radius: 1vh;
+    width: 60vh;
+    padding: 1vh;
+    padding-top: 0vh;
+    margin: auto;
+}
+
+.DashboardPage_Request_Badge {
+    font-size: 2vh;
+}

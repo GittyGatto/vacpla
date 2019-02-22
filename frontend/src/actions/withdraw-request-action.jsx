@@ -1,18 +1,17 @@
 import xhr from 'xhr';
 import {dispatcher} from '../util/mini-flux'
 import Config from '../config';
-import {appHistory} from "../ui-components/app-history";
 import appStore from "../stores/app-store";
-import loadOpenRequests from "./load-open-requests-action";
+import loadVacation from "./load-vacation-action";
 
 
-export default function approveRequest(uuid) {
+export default function withdrawRequest(uuid) {
     const userName = appStore.getUser().userName;
 
     xhr({
         uri: Config.apiBaseUrl + '/api/requestStatusChange',
         method: 'POST',
-        body: {"userName": userName, "uuid": uuid, "status": 'APPROVED'},
+        body: {"userName": userName, "uuid": uuid, "status": 'WITHDRAW'},
         json: true,
         headers: {
             "X-User": userName,
@@ -20,15 +19,14 @@ export default function approveRequest(uuid) {
     }, function (err, resp, body) {
         if (resp && resp.statusCode === 403) {
             dispatcher.dispatch({
-                type: "approveRequestFailed",
+                type: "withdrawRequestFailed",
             });
         } else {
             dispatcher.dispatch({
-                type: "approveRequestSucceeded",
+                type: "withdrawRequestSucceeded",
                 user: body
             })
-            loadOpenRequests();
-            appHistory.push('/OpenRequest');
+            loadVacation();
         }
     });
 }

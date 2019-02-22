@@ -3,7 +3,7 @@ import React from 'react';
 import {dispatcher} from "../../util/mini-flux";
 import loadRequest from "../../actions/load-request-action";
 import './view-request-page.css';
-import {Header} from "../Header/Header";
+import {Header} from "../header/header";
 import {Button} from "react-bootstrap";
 import {Calendar} from 'react-yearly-calendar';
 import moment from 'moment';

@@ -5,9 +5,9 @@ import './dashboard-page.css';
 import loadVacation from "../../actions/load-vacation-action";
 import loadHolidays from "../../actions/load-holidays-action";
 import {setSidebarOpen} from "../../actions/show-sidebar-action";
-import {Header} from "../Header/Header";
-import {StatusBar} from "../StatusBar/StatusBar";
-import {YearlyCalendar} from "../Calendar/yearly-calendar";
+import {Header} from "../header/header";
+import {StatusBar} from "../status-bar/status-bar";
+import {YearlyCalendar} from "../calendar/yearly-calendar";
 
 
 export class DashboardPage extends React.Component {
@@ -78,6 +78,5 @@ export class DashboardPage extends React.Component {
     }
 
     datePicked(date) {
-
     }
 }
