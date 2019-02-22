@@ -3,16 +3,16 @@ import {getVacationRequests} from "../services/vacation-request-service";
 class OpenRequestStore {
     constructor() {
         this.data = {
-            openRequests: [],
+            openUserRequests: [],
         };
     }
 
     appendDataTo(data) {
-        data.openRequests = this.data;
+        data.openUserRequests = this.data;
     }
 
     handleLoadOpenRequestsSucceeded(ev) {
-        this.data.openRequests = getVacationRequests(ev);
+        this.data.openUserRequests = getVacationRequests(ev);
     }
 }
 

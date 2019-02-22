@@ -12,6 +12,7 @@ export class StatusBar extends React.Component {
             openRequests: [],
             approvedRequests: [],
             declinedRequests: [],
+            openUserRequests: [],
         };
         this._onChange = this._onChange.bind(this);
     }
@@ -27,11 +28,12 @@ export class StatusBar extends React.Component {
 
     _onChange(ev) {
         const {openRequests, approvedRequests, declinedRequests} = ev.vacation;
-        this.setState({openRequests, approvedRequests, declinedRequests});
+        const {openUserRequests} = ev.openUserRequests;
+        this.setState({openRequests, approvedRequests, declinedRequests, openUserRequests});
     }
 
     render() {
-        const {openRequests, approvedRequests, declinedRequests} = this.state;
+        const {openRequests, approvedRequests, declinedRequests, openUserRequests} = this.state;
 
         return <div className='container'>
 
@@ -70,10 +72,10 @@ export class StatusBar extends React.Component {
                 </div>
             </Link>
 
-            <Link to="/OpenRequest">
+            <Link to="/NeedApproval">
                 <div className='StatusBar__item'>
                     <i className="fas fa-glasses"></i>
-                    <p>Need Approval</p>
+                    <p>Need Approval ({openUserRequests ? openUserRequests.length : '0'})</p>
                 </div>
             </Link>
 
