@@ -3,6 +3,7 @@ import './status-bar.css';
 import {Link} from "react-router-dom";
 import {dispatcher} from "../../util/mini-flux";
 import {setSidebarOpen} from "../../actions/show-sidebar-action";
+import logout from "../../actions/logout-action";
 
 export class StatusBar extends React.Component {
     constructor(props) {
@@ -46,17 +47,19 @@ export class StatusBar extends React.Component {
                 </div>
             </Link>
 
-            <Link to="/MyOpenRequest">
+            <Link to="/OpenRequest">
                 <div className='StatusBar__item'>
                     <i className="fas fa-envelope-open"></i>
-                    <p>Open ({openRequests ? openRequests.length:'0'})</p>
+                    <p>Open ({openRequests ? openRequests.length : '0'})</p>
                 </div>
             </Link>
 
-            <div className='StatusBar__item'>
-                <i className="fas fa-thumbs-up"></i>
-                <p>Approved</p>
-            </div>
+            <Link to="/ApprovedRequest">
+                <div className='StatusBar__item'>
+                    <i className="fas fa-thumbs-up"></i>
+                    <p>Approved</p>
+                </div>
+            </Link>
 
             <div className='StatusBar__item'>
                 <i className="fas fa-thumbs-down"></i>
@@ -69,6 +72,11 @@ export class StatusBar extends React.Component {
                     <p>Need Approval</p>
                 </div>
             </Link>
+
+            <div className='StatusBar__item' onClick={() => logout()}>
+                <i className="fas fa-sign-out-alt"></i>
+                <p>Go Away!</p>
+            </div>
 
         </div>;
     }
