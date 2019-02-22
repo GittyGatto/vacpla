@@ -9,6 +9,7 @@ import {NeedApprovalPage} from "./need-approval/need-approval-page";
 import {ViewRequestPage} from "./view-request/view-request-page";
 import {OpenRequestPage} from "./open-request/open-request-page";
 import {ApprovedRequestPage} from "./approved-request/approved-request-page";
+import {DeclinedRequestPage} from "./declined-request/declined-request-page";
 
 
 export default class App extends React.Component {
@@ -20,6 +21,7 @@ export default class App extends React.Component {
                     <Route path="/NewRequest" component={NewRequestPage}/>
                     <Route path="/OpenRequest" component={OpenRequestPage}/>
                     <Route path="/ApprovedRequest" component={ApprovedRequestPage}/>
+                    <Route path="/DeclinedRequest" component={DeclinedRequestPage}/>
                     <Route path="/NeedApproval" component={NeedApprovalPage}/>
                     <Route path="/ViewRequest/:uuid" component={ViewRequestPage}/>
                 </Switch>

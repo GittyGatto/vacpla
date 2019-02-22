@@ -18,6 +18,7 @@ class VacationStore {
 
             openRequests : [],
             approvedRequests : [],
+            declinedRequests : [],
         };
     }
 
@@ -32,6 +33,7 @@ class VacationStore {
 
         this.data.openRequests = getFilteredRequestsByStatus(ev, 'REQUESTED');
         this.data.approvedRequests = getFilteredRequestsByStatus(ev, 'APPROVED');
+        this.data.declinedRequests = getFilteredRequestsByStatus(ev, 'NOT_APPROVED');
     }
 
     appendDataTo(data) {

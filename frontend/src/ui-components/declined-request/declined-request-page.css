@@ -1,0 +1,13 @@
+.Declined_Request_Page {
+    font-family: 'Ubuntu', 'sans-serif';
+    font-size: 2vh;
+    text-align: center;
+    background-size: cover;
+    background-origin: content-box;
+    background-color: whitesmoke;
+    height: 100vh;
+}
+
+.Declined_Request_Page{
+    flex-direction: column;
+}
