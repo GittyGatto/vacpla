@@ -44,7 +44,8 @@ export class OpenRequestPage extends React.Component {
             </div>
 
             <div className='Open_Request_Page_Requests'>
-                <AllRequests requests={openRequests}/>
+                <AllRequests requests={openRequests}
+                             withdraw={true}/>
             </div>
 
         </div>;

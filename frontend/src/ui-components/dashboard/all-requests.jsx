@@ -7,14 +7,14 @@ import withdrawRequest from "../../actions/withdraw-request-action";
 export class AllRequests extends React.Component {
 
     render() {
-        const {requests} = this.props;
+        const {requests, withdraw} = this.props;
         let allRequests = requests.map((curr, index) => {
             return (<span key={index}>
                         <Jumbotron className="DashboardPage_Request">
                             <h1>{curr.vacations[0].vacationCount}</h1>
                             <h3>Days</h3>
                             <h3>{curr.vacations[0].from} <i className="fas fa-arrow-right"></i> {curr.vacations[0].to}</h3>
-                            <Button onClick={() => this._onWithdrawClicked(curr.uuid)} bsStyle="warning">Withdraw</Button>
+                            {withdraw ? <Button onClick={() => this._onWithdrawClicked(curr.uuid)} bsStyle="warning">Withdraw</Button> : null}
                         </Jumbotron>
                 </span>);
         })
