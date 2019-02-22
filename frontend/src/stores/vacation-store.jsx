@@ -17,6 +17,7 @@ class VacationStore {
             customCssClasses: undefined,
 
             openRequests : [],
+            approvedRequests : [],
         };
     }
 
@@ -30,6 +31,7 @@ class VacationStore {
         this.data.customCssClasses = this._getCustomCssClasses(ev);
 
         this.data.openRequests = getFilteredRequestsByStatus(ev, 'REQUESTED');
+        this.data.approvedRequests = getFilteredRequestsByStatus(ev, 'APPROVED');
     }
 
     appendDataTo(data) {

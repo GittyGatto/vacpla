@@ -33,17 +33,17 @@ export class OpenRequestPage extends React.Component {
     render() {
         const {openRequests} = this.state;
 
-        return <div className='MyOpenRequestPage'>
+        return <div className='Open_Request_Page'>
 
             <Header/>
 
             <StatusBar/>
 
-            <div className='MyOpenRequestPage_Title'>
+            <div className='Open_Request_Page_Title'>
                 <h2>Open Request</h2>
             </div>
 
-            <div className='MyOpenRequestPage_Requests'>
+            <div className='Open_Request_Page_Requests'>
                 <AllRequests requests={openRequests}/>
             </div>
 
