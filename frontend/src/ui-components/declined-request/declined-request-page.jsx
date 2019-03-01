@@ -28,7 +28,7 @@ export class DeclinedRequestPage extends React.Component {
 
     _onChange(ev) {
         const {declinedRequests} = ev.vacation;
-        this.setState({approvedRequests});
+        this.setState({declinedRequests});
     }
 
     render() {
