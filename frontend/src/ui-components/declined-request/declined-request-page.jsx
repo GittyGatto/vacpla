@@ -45,8 +45,7 @@ export class DeclinedRequestPage extends React.Component {
             </div>
 
             <div className='Declined_Request_Page_Requests'>
-                <AllRequests requests={declinedRequests}
-                             withdraw={false}/>
+                {declinedRequests.length ? <AllRequests requests={declinedRequests}/> : <p>no request decline</p>}
             </div>
 
         </div>;

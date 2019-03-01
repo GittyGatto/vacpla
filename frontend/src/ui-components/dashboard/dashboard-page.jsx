@@ -59,11 +59,11 @@ export class DashboardPage extends React.Component {
 
             <StatusBar/>
 
-            <div className='DashboardPage__title'>
+            <div className='DashboardPage__Title'>
                 <h2>Dashboard {year}</h2>
             </div>
 
-            <div className='DashboardPage__information'>
+            <div className='DashboardPage__Information'>
                 <h1>{vacationLeftCount ? vacationLeftCount : '...'}</h1>
                 <h3>Days Left</h3>
             </div>

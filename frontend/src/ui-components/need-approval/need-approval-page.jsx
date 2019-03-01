@@ -1,6 +1,7 @@
 import React from 'react';
 import {dispatcher} from '../../util/mini-flux';
 import './need-approval-page.css';
+import '../dashboard/all-requests.css'
 import {Header} from "../header/header";
 import loadOpenRequests from "../../actions/load-open-requests-action";
 import {setSidebarOpen} from "../../actions/show-sidebar-action";
@@ -40,12 +41,13 @@ export class NeedApprovalPage extends React.Component {
 
             <StatusBar/>
 
-            <div className='Declined_Request_Page_Title'>
+            <div className='Need_Approval_Page_Title'>
                 <h2>Need approval</h2>
             </div>
 
-            <div className='Declined_Request_Page_Requests'>
-                <AllRequests requests={openUserRequests} take={true}/>
+            <div className='Need_Approval_Page'>
+                {openUserRequests.length ? <AllRequests requests={openUserRequests} take={true}/> :
+                    <p>no request to approve</p>}
             </div>
 
         </div>;

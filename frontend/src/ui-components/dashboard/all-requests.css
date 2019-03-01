@@ -10,3 +10,7 @@
 .DashboardPage_Request_Badge {
     font-size: 2vh;
 }
+
+.DashboardPage_Request Button {
+    margin-right: 1vh;
+}

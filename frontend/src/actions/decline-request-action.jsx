@@ -28,7 +28,7 @@ export default function declineRequest(uuid) {
                 user: body
             })
             loadOpenRequests();
-            appHistory.push('/OpenRequest');
+            appHistory.push('/NeedApproval');
         }
     });
 }

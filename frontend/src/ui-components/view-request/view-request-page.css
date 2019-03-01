@@ -1,4 +1,4 @@
-.ViewRequestPage {
+.View_Request_Page {
     font-family: 'Ubuntu', 'sans-serif';
     font-size: 2vh;
     text-align: center;
@@ -8,11 +8,8 @@
     height: 100vh;
 }
 
-.ViewRequestPage__ActionButton{
-    margin: 1vh;
-}
-
-.ViewRequestPage__YearOverview {
-    padding: 3vh;
+.View_Request_Page__Title .View_Request_Page_Request .View_Request_Page__Calendar {
+    display: flex;
+    justify-content: center;
 }
 

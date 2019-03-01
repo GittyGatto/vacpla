@@ -3,12 +3,13 @@ import React from 'react';
 import {dispatcher} from "../../util/mini-flux";
 import loadRequest from "../../actions/load-request-action";
 import './view-request-page.css';
+import '../calendar/calendar-style.css';
 import {Header} from "../header/header";
-import {Button} from "react-bootstrap";
 import {Calendar} from 'react-yearly-calendar';
 import moment from 'moment';
-import approveRequest from "../../actions/approve-request-action";
-import declineRequest from "../../actions/decline-request-action";
+import {StatusBar} from "../status-bar/status-bar";
+import {AllRequests} from "../dashboard/all-requests";
+import {YearlyCalendar} from "../calendar/yearly-calendar";
 
 
 export class ViewRequestPage extends React.Component {
@@ -42,22 +43,6 @@ export class ViewRequestPage extends React.Component {
         dispatcher.unsubscribe(this._onChange);
     }
 
-    _renderRequest() {
-        const {viewRequest} = this.state;
-
-        if (!viewRequest) {
-            return <h1>No request selected.</h1>;
-        }
-
-        return (<div>
-            <h1>{viewRequest.uuid ? viewRequest.uuid : '...'}</h1>
-            <p>owner: {viewRequest.owner ? viewRequest.owner : '...'} </p>
-            <p>from: {viewRequest.vacations ? viewRequest.vacations[0].from : '...'}</p>
-            <p>to: {viewRequest.vacations ? viewRequest.vacations[0].to : '...'}</p>
-            <p>days: {viewRequest.vacations ? viewRequest.vacations[0].vacationCount : '...'}</p>
-        </div>);
-    }
-
     render() {
         const {viewRequest, holidays, approved, requested} = this.state;
 
@@ -68,35 +53,29 @@ export class ViewRequestPage extends React.Component {
         const selectedRange = [fromMoment, toMoment];
         const customCssClasses = {holidays: holidays, weekend: 'Sat,Sun', spring: approved, winter: requested};
 
-        return (<div className='ViewRequestPage'>
+
+        return (<div className='View_Request_Page'>
+
             <Header/>
-            <h1>Request ({viewRequest.requested ? viewRequest.requested : '...'})</h1>
-            {this._renderRequest()}
 
-            <Button className='ViewRequestPage__ActionButton' bsStyle='success'
-                    onClick={(ev) => this._onApproveClicked(ev)}>Approve</Button>
-            <Button className='ViewRequestPage__ActionButton' bsStyle='danger'
-                    onClick={(ev) => this._onDeclineClicked(ev)}>Decline</Button>
+            <StatusBar/>
 
-            <div className='ViewRequestPage__YearOverview'>
-                <Calendar
-                    year={year}
-                    forceFullWeeks={true}
-                    customClasses={customCssClasses}
-                    selectRange={true}
-                    selectedRange={selectedRange}/>
+            <div className='View_Request_Page_Title'>
+                <h2>Decide</h2>
+            </div>
+
+            <div className='View_Request_Page_Request'>
+                {viewRequest.uuid ? <AllRequests requests={[viewRequest]} approvalMode={true}/> : null}
+            </div>
+
+            <div className='DashboardPage__Calendar'>
+                <YearlyCalendar year={year}
+                                selectRange={true}
+                                selectedRange={selectedRange}
+                                customCssClasses={customCssClasses}/>
             </div>
 
         </div>);
-
-    }
-
-    _onApproveClicked(ev) {
-        approveRequest(this.state.viewRequest.uuid);
-    }
-
-    _onDeclineClicked(ev) {
-        declineRequest(this.state.viewRequest.uuid);
     }
 }
 

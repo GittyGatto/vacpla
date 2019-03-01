@@ -18,7 +18,6 @@ export class YearlyCalendar extends React.Component {
 
     _onChange(ev) {
         const {year, customCssClasses, selectRange} = ev.vacation;
-        //const {selectedRange} = ev.newRequest;
         this.setState({
             year,
             customCssClasses,

@@ -3,18 +3,18 @@
     justify-content: space-evenly;
 }
 
-.StatusBar__item {
+.Status_Bar__item {
     border: white solid 3px;
     border-radius: 1vh;
     padding: 2vh;
-    width: 15vh;
+    width: 17vh;
     height: 15vh;
 }
 
-.StatusBar__item i {
+.Status_Bar__item i {
     font-size: 5vh;
 }
 
-.StatusBar__item:hover {
+.Status_Bar__item:hover {
     background-color: #D1D3C8;
 }
