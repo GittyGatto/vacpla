@@ -2,9 +2,7 @@ import React from 'react';
 import {dispatcher} from '../../util/mini-flux';
 import './need-approval-page.css';
 import '../dashboard/all-requests.css'
-import {Header} from "../header/header";
 import loadOpenRequests from "../../actions/load-open-requests-action";
-import {setSidebarOpen} from "../../actions/show-sidebar-action";
 import {StatusBar} from "../status-bar/status-bar";
 import {AllRequests} from "../dashboard/all-requests";
 
@@ -20,7 +18,6 @@ export class NeedApprovalPage extends React.Component {
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
         loadOpenRequests();
-        setSidebarOpen(false);
     }
 
     componentWillUnmount() {
@@ -36,8 +33,6 @@ export class NeedApprovalPage extends React.Component {
         const {openUserRequests} = this.state;
 
         return <div className='Need_Approval_Page'>
-
-            <Header/>
 
             <StatusBar/>
 

@@ -2,11 +2,9 @@ import '../../../styles/index.scss';
 import React from 'react';
 import './new-request-page.css';
 import '../calendar/calendar-style.css'
-import {Header} from "../header/header";
 import {dispatcher} from "../../util/mini-flux";
 import addVacation from "../../actions/add-vacation-range-action";
 import sendRequest from "../../actions/send-request-action";
-import {setSidebarOpen} from "../../actions/show-sidebar-action";
 import resetNewRequestPage from "../../actions/reset-new-request-page-action";
 import {StatusBar} from "../status-bar/status-bar";
 import moment from 'moment';
@@ -34,7 +32,6 @@ export class NewRequestPage extends React.Component {
 
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
-        setSidebarOpen(false);
         resetNewRequestPage();
     }
 
@@ -95,8 +92,6 @@ export class NewRequestPage extends React.Component {
 
 
         return <div className='NewRequestPage'>
-
-            <Header/>
 
             <StatusBar/>
 

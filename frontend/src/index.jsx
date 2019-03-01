@@ -8,7 +8,6 @@ import loginStore from "./stores/login-store";
 import vacationStore from "./stores/vacation-store";
 import newRequestStore from "./stores/newRequest-store";
 import holidayStore from "./stores/holiday-store";
-import burgerStore from "./stores/burger-store";
 import openRequestStore from "./stores/open-request-store";
 import viewRequestStore from "./stores/view-request-store";
 
@@ -17,7 +16,6 @@ dispatcher.addStore(loginStore);
 dispatcher.addStore(vacationStore);
 dispatcher.addStore(newRequestStore);
 dispatcher.addStore(holidayStore);
-dispatcher.addStore(burgerStore);
 dispatcher.addStore(openRequestStore);
 dispatcher.addStore(viewRequestStore);
 

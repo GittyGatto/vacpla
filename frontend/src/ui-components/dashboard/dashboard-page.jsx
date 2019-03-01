@@ -4,8 +4,6 @@ import {dispatcher} from '../../util/mini-flux';
 import './dashboard-page.css';
 import loadVacation from "../../actions/load-vacation-action";
 import loadHolidays from "../../actions/load-holidays-action";
-import {setSidebarOpen} from "../../actions/show-sidebar-action";
-import {Header} from "../header/header";
 import {StatusBar} from "../status-bar/status-bar";
 import {YearlyCalendar} from "../calendar/yearly-calendar";
 
@@ -29,7 +27,6 @@ export class DashboardPage extends React.Component {
 
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
-        setSidebarOpen(false);
     }
 
     componentWillUnmount() {
@@ -54,8 +51,6 @@ export class DashboardPage extends React.Component {
         const {vacationLeftCount, year, customCssClasses} = this.state;
 
         return <div className='DashboardPage'>
-
-            <Header/>
 
             <StatusBar/>
 

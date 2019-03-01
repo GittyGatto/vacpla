@@ -4,8 +4,6 @@ import {dispatcher} from "../../util/mini-flux";
 import loadRequest from "../../actions/load-request-action";
 import './view-request-page.css';
 import '../calendar/calendar-style.css';
-import {Header} from "../header/header";
-import {Calendar} from 'react-yearly-calendar';
 import moment from 'moment';
 import {StatusBar} from "../status-bar/status-bar";
 import {AllRequests} from "../dashboard/all-requests";
@@ -55,8 +53,6 @@ export class ViewRequestPage extends React.Component {
 
 
         return (<div className='View_Request_Page'>
-
-            <Header/>
 
             <StatusBar/>
 

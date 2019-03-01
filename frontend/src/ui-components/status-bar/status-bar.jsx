@@ -2,7 +2,6 @@ import React from 'react';
 import './status-bar.css';
 import {Link} from "react-router-dom";
 import {dispatcher} from "../../util/mini-flux";
-import {setSidebarOpen} from "../../actions/show-sidebar-action";
 import logout from "../../actions/logout-action";
 
 export class StatusBar extends React.Component {
@@ -19,7 +18,6 @@ export class StatusBar extends React.Component {
 
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
-        setSidebarOpen(false);
     }
 
     componentWillUnmount() {

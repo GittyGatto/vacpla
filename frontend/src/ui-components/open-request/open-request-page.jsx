@@ -1,9 +1,7 @@
 import '../../../styles/index.scss';
 import React from 'react';
 import './open-request-page.css';
-import {Header} from "../header/header";
 import {dispatcher} from "../../util/mini-flux";
-import {setSidebarOpen} from "../../actions/show-sidebar-action";
 import {StatusBar} from "../status-bar/status-bar";
 import {AllRequests} from "../dashboard/all-requests";
 
@@ -18,7 +16,6 @@ export class OpenRequestPage extends React.Component {
 
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
-        setSidebarOpen(false);
     }
 
     componentWillUnmount() {
@@ -34,8 +31,6 @@ export class OpenRequestPage extends React.Component {
         const {openRequests} = this.state;
 
         return <div className='Open_Request_Page'>
-
-            <Header/>
 
             <StatusBar/>
 

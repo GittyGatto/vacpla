@@ -1,12 +1,9 @@
 import '../../../styles/index.scss';
 import React from 'react';
 import './declined-request-page.css';
-import {Header} from "../header/header";
 import {dispatcher} from "../../util/mini-flux";
-import {setSidebarOpen} from "../../actions/show-sidebar-action";
 import {StatusBar} from "../status-bar/status-bar";
 import {AllRequests} from "../dashboard/all-requests";
-import {ListGroupItem} from "react-bootstrap";
 
 export class DeclinedRequestPage extends React.Component {
     constructor(props) {
@@ -19,7 +16,6 @@ export class DeclinedRequestPage extends React.Component {
 
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
-        setSidebarOpen(false);
     }
 
     componentWillUnmount() {
@@ -35,8 +31,6 @@ export class DeclinedRequestPage extends React.Component {
         const {declinedRequests} = this.state;
 
         return <div className='Declined_Request_Page'>
-
-            <Header/>
 
             <StatusBar/>
 
