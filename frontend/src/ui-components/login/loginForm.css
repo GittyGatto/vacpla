@@ -26,13 +26,9 @@
   font-weight: 400;
   font-size: 6vh;
   margin-bottom: 0;
-  color: white;
+  color: orangered;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-.LoginForm_header img {
-  margin-right: 0.2em;
 }
 
 .LoginForm_header h3 {

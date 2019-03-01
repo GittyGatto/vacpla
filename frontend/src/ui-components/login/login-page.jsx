@@ -2,7 +2,6 @@ import React from 'react';
 import {dispatcher} from "../../util/mini-flux";
 import login from '../../actions/login-action';
 import changeLoginField from '../../actions/change-login-field-action';
-import bgImage from '../../assets/images/M8FaIr1.jpg';
 import './loginForm.css'
 import {Button, FormControl, FormGroup, Label} from 'react-bootstrap';
 
@@ -54,9 +53,7 @@ export default class LoginPage extends React.Component {
     render() {
         const {userName, password, message} = this.state;
 
-        const formStyle = {backgroundImage: 'url("' + bgImage + '")'};
-
-        return <div className='LoginForm atLoginForm' style={formStyle}>
+        return <div className='LoginForm atLoginForm'>
 
             <div className='LoginForm_header'>
                 <h2>VAC PLA</h2>
