@@ -1,6 +1,6 @@
 package com.henning.vacpla.business.user;
 
-import com.henning.vacpla.controllers.users.AllUsersRequest;
+import com.henning.vacpla.controllers.vacation.Requester;
 import com.henning.vacpla.domain.user.User;
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;
@@ -16,7 +16,7 @@ public class UserBusinessService {
     @Autowired
     UserRepository userRepository;
 
-    public List<User> getAllUsers(AllUsersRequest allUsersRequest) {
+    public List<User> getAllUsers(Requester requester) {
         List<UserEntity> userEntities = userRepository.findAll();
         return getUsersFromUserEntities(userEntities);
     }

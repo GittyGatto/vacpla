@@ -1,9 +1,7 @@
 package com.henning.vacpla.controllers.users;
 
-import com.henning.vacpla.business.holiday.GetHolidaysBuisnessService;
-import com.henning.vacpla.business.holiday.HolidayDto;
 import com.henning.vacpla.business.user.UserBusinessService;
-import com.henning.vacpla.controllers.vacation.VacationRequest;
+import com.henning.vacpla.controllers.vacation.Requester;
 import com.henning.vacpla.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +18,7 @@ public class UserController {
 
     @RequestMapping(value = "/api/users", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
-    ResponseEntity<List<User>> getAllUsers(@RequestBody AllUsersRequest allUsersRequest) {
-        return new ResponseEntity<>(userBusinessService.getAllUsers(allUsersRequest), HttpStatus.OK);
+    ResponseEntity<List<User>> getAllUsers(@RequestBody Requester requester) {
+        return new ResponseEntity<>(userBusinessService.getAllUsers(requester), HttpStatus.OK);
     }
 }

@@ -20,7 +20,7 @@ public class HolidayController {
 
     @RequestMapping(value = "/api/holiday", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
-    ResponseEntity<List<HolidayDto>> getUserVacation() {
+    ResponseEntity<List<HolidayDto>> getHolidays() {
         return new ResponseEntity<>(getHolidaysBuisnessService.getHolidays(), HttpStatus.OK);
     }
 }

@@ -15,8 +15,7 @@ public class OpenRequestController {
 
     @RequestMapping(value = "/api/openRequests", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
-    ResponseEntity<OpenRequestsDto> getOpenRequests(@RequestBody VacationRequest vacationRequest) {
-        return new ResponseEntity<>(getUserVacationBusinessService.getOpenRequests(vacationRequest.userName), HttpStatus.OK);
+    ResponseEntity<OpenRequestsDto> getOpenRequests(@RequestBody Requester requester) {
+        return new ResponseEntity<>(getUserVacationBusinessService.getOpenRequests(requester.userName), HttpStatus.OK);
     }
-
 }
