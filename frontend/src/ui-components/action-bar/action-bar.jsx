@@ -1,10 +1,10 @@
 import React from 'react';
-import './status-bar.css';
+import './action-bar.css';
 import {Link} from "react-router-dom";
 import {dispatcher} from "../../util/mini-flux";
 import logout from "../../actions/logout-action";
 
-export class StatusBar extends React.Component {
+export class ActionBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,55 +36,55 @@ export class StatusBar extends React.Component {
         return <div className='container'>
 
             <Link to="/">
-                <div className='Status_Bar__item'>
+                <div className='Action_Bar__item'>
                     <i className="fas fa-tachometer-alt"></i>
                     <p>Dashboard</p>
                 </div>
             </Link>
 
             <Link to="/NewRequest">
-                <div className='Status_Bar__item'>
+                <div className='Action_Bar__item'>
                     <i className="fas fa-cart-plus"></i>
                     <p>New</p>
                 </div>
             </Link>
 
             <Link to="/OpenRequest">
-                <div className='Status_Bar__item'>
+                <div className='Action_Bar__item'>
                     <i className="fas fa-envelope-open"></i>
                     <p>Open ({openRequests ? openRequests.length : '0'})</p>
                 </div>
             </Link>
 
             <Link to="/ApprovedRequest">
-                <div className='Status_Bar__item'>
+                <div className='Action_Bar__item'>
                     <i className="fas fa-thumbs-up"></i>
                     <p>Approved ({approvedRequests ? approvedRequests.length : '0'})</p>
                 </div>
             </Link>
 
             <Link to="/DeclinedRequest">
-                <div className='Status_Bar__item'>
+                <div className='Action_Bar__item'>
                     <i className="fas fa-thumbs-down"></i>
                     <p>Declined ({declinedRequests ? declinedRequests.length : '0'})</p>
                 </div>
             </Link>
 
             <Link to="/NeedApproval">
-                <div className='Status_Bar__item'>
+                <div className='Action_Bar__item'>
                     <i className="fas fa-glasses"></i>
                     <p>Need Approval ({openUserRequests ? openUserRequests.length : '0'})</p>
                 </div>
             </Link>
 
             <Link to="/UserManagement">
-                <div className='Status_Bar__item'>
+                <div className='Action_Bar__item'>
                     <i className="fas fa-users"></i>
                     <p>User Management</p>
                 </div>
             </Link>
 
-            <div className='Status_Bar__item' onClick={() => logout()}>
+            <div className='Action_Bar__item' onClick={() => logout()}>
                 <i className="fas fa-sign-out-alt"></i>
                 <p>Go Away!</p>
             </div>

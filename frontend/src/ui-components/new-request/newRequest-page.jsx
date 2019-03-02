@@ -6,7 +6,7 @@ import {dispatcher} from "../../util/mini-flux";
 import addVacation from "../../actions/add-vacation-range-action";
 import sendRequest from "../../actions/send-request-action";
 import resetNewRequestPage from "../../actions/reset-new-request-page-action";
-import {StatusBar} from "../status-bar/status-bar";
+import {ActionBar} from "../action-bar/action-bar";
 import moment from 'moment';
 import {YearlyCalendar} from "../calendar/yearly-calendar";
 import {Button} from "react-bootstrap";
@@ -93,7 +93,7 @@ export class NewRequestPage extends React.Component {
 
         return <div className='NewRequestPage'>
 
-            <StatusBar/>
+            <ActionBar/>
 
             <div className='NewRequestPage_Title'>
                 <h2>New Request {year}</h2>

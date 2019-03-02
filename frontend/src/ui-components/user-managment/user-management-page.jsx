@@ -1,6 +1,6 @@
 import React from 'react';
 import './user-management-page.css';
-import {StatusBar} from "../status-bar/status-bar";
+import {ActionBar} from "../action-bar/action-bar";
 import {dispatcher} from "../../util/mini-flux";
 import loadAllUsers from "../../actions/load-all-Users-action";
 import {Users} from "./users";
@@ -34,7 +34,7 @@ export class UserManagement extends React.Component {
 
         return <div className='User_Management_Page'>
 
-            <StatusBar/>
+            <ActionBar/>
 
             <div className='User_Management_Page_Title'>
                 <h2>User Management</h2>

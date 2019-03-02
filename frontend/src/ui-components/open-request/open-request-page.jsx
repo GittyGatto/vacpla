@@ -2,7 +2,7 @@ import '../../../styles/index.scss';
 import React from 'react';
 import './open-request-page.css';
 import {dispatcher} from "../../util/mini-flux";
-import {StatusBar} from "../status-bar/status-bar";
+import {ActionBar} from "../action-bar/action-bar";
 import {AllRequests} from "../dashboard/all-requests";
 
 export class OpenRequestPage extends React.Component {
@@ -32,7 +32,7 @@ export class OpenRequestPage extends React.Component {
 
         return <div className='Open_Request_Page'>
 
-            <StatusBar/>
+            <ActionBar/>
 
             <div className='Open_Request_Page_Title'>
                 <h2>Open Request</h2>

@@ -2,7 +2,7 @@ import '../../../styles/index.scss';
 import React from 'react';
 import './approved-request-page.css';
 import {dispatcher} from "../../util/mini-flux";
-import {StatusBar} from "../status-bar/status-bar";
+import {ActionBar} from "../action-bar/action-bar";
 import {AllRequests} from "../dashboard/all-requests";
 
 export class ApprovedRequestPage extends React.Component {
@@ -32,7 +32,7 @@ export class ApprovedRequestPage extends React.Component {
 
         return <div className='Approved_Request_Page'>
 
-            <StatusBar/>
+            <ActionBar/>
 
             <div className='Approved_Request_Page_Title'>
                 <h2>Approved Request</h2>

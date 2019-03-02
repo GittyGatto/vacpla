@@ -4,7 +4,7 @@ import {dispatcher} from '../../util/mini-flux';
 import './dashboard-page.css';
 import loadVacation from "../../actions/load-vacation-action";
 import loadHolidays from "../../actions/load-holidays-action";
-import {StatusBar} from "../status-bar/status-bar";
+import {ActionBar} from "../action-bar/action-bar";
 import {YearlyCalendar} from "../calendar/yearly-calendar";
 
 
@@ -52,7 +52,7 @@ export class DashboardPage extends React.Component {
 
         return <div className='DashboardPage'>
 
-            <StatusBar/>
+            <ActionBar/>
 
             <div className='DashboardPage__Title'>
                 <h2>Dashboard {year}</h2>

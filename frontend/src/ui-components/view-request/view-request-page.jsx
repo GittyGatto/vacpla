@@ -5,7 +5,7 @@ import loadRequest from "../../actions/load-request-action";
 import './view-request-page.css';
 import '../calendar/calendar-style.css';
 import moment from 'moment';
-import {StatusBar} from "../status-bar/status-bar";
+import {ActionBar} from "../action-bar/action-bar";
 import {AllRequests} from "../dashboard/all-requests";
 import {YearlyCalendar} from "../calendar/yearly-calendar";
 
@@ -54,7 +54,7 @@ export class ViewRequestPage extends React.Component {
 
         return (<div className='View_Request_Page'>
 
-            <StatusBar/>
+            <ActionBar/>
 
             <div className='View_Request_Page_Title'>
                 <h2>Decide</h2>

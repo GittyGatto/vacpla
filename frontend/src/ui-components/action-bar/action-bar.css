@@ -4,7 +4,7 @@
     padding-top: 3vh;
 }
 
-.Status_Bar__item {
+.Action_Bar__item {
     border: white solid 3px;
     border-radius: 1vh;
     padding: 2vh;
@@ -12,10 +12,10 @@
     height: 15vh;
 }
 
-.Status_Bar__item i {
+.Action_Bar__item i {
     font-size: 5vh;
 }
 
-.Status_Bar__item:hover {
+.Action_Bar__item:hover {
     background-color: #D1D3C8;
 }
