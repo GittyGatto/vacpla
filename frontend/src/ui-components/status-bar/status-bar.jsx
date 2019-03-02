@@ -77,11 +77,17 @@ export class StatusBar extends React.Component {
                 </div>
             </Link>
 
+            <Link to="/UserManagement">
+                <div className='Status_Bar__item'>
+                    <i className="fas fa-users"></i>
+                    <p>User Management</p>
+                </div>
+            </Link>
+
             <div className='Status_Bar__item' onClick={() => logout()}>
                 <i className="fas fa-sign-out-alt"></i>
                 <p>Go Away!</p>
             </div>
-
         </div>;
     }
 }

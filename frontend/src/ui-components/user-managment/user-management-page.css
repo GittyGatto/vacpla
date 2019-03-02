@@ -1,0 +1,17 @@
+.User_Management_Page {
+    font-family: 'Ubuntu', 'sans-serif';
+    font-size: 2vh;
+    text-align: center;
+    background-size: cover;
+    background-origin: content-box;
+    background-color: whitesmoke;
+    height: 100vh;
+}
+
+.User_Management_Page{
+    flex-direction: column;
+}
+
+.User_Management_Page_UserList{
+    padding: 3vh;
+}

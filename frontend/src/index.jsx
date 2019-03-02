@@ -10,6 +10,7 @@ import newRequestStore from "./stores/newRequest-store";
 import holidayStore from "./stores/holiday-store";
 import openRequestStore from "./stores/open-request-store";
 import viewRequestStore from "./stores/view-request-store";
+import userManagementStore from "./stores/user-management-store";
 
 dispatcher.addStore(appStore);
 dispatcher.addStore(loginStore);
@@ -18,6 +19,7 @@ dispatcher.addStore(newRequestStore);
 dispatcher.addStore(holidayStore);
 dispatcher.addStore(openRequestStore);
 dispatcher.addStore(viewRequestStore);
+dispatcher.addStore(userManagementStore);
 
 render(<AppContainer><App/></AppContainer>, document.querySelector("#app"));
 
