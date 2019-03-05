@@ -1,6 +1,8 @@
 package com.henning.vacpla.business.user;
 
 import com.henning.vacpla.controllers.auth.LoginRequest;
+import com.henning.vacpla.controllers.users.UserDao;
+import com.henning.vacpla.controllers.vacation.Requester;
 import com.henning.vacpla.domain.user.Role;
 import com.henning.vacpla.domain.user.User;
 import com.henning.vacpla.domain.user.UserEntity;
@@ -11,6 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -37,5 +42,31 @@ public class UserService {
         user.setTotalVacation(10);
         UserEntity userEntity = userRepository.save(user);
         return new User(userEntity);
+    }
+
+    public List<UserDao> getAllUsers(Requester requester) {
+        List<UserEntity> userEntities = userRepository.findAll();
+        return getUsersFromUserEntities(userEntities);
+    }
+
+    private List<UserDao> getUsersFromUserEntities(List<UserEntity> userEntities) {
+        List<UserDao> users = new ArrayList<>();
+        for (UserEntity userEntity : userEntities) {
+            UserDao userDao = getUserDaoByEntity(userEntity);
+            users.add(userDao);
+        }
+        return users;
+    }
+
+    private UserDao getUserDaoByEntity(UserEntity userEntity) {
+        UserDao userDao = new UserDao();
+        userDao.setUserName(userEntity.getUserName());
+        userDao.setRole(userEntity.getRole());
+        userDao.setTotalVacation(userEntity.getTotalVacation());
+        userDao.setEntry(userEntity.getEntry().toString());
+        if (userEntity.getExit() != null){
+            userDao.setExit(userEntity.getExit().toString());
+        }
+        return userDao;
     }
 }
