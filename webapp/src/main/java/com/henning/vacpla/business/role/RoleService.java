@@ -1,5 +1,6 @@
-package com.henning.vacpla.domain.role;
+package com.henning.vacpla.business.role;
 
+import com.henning.vacpla.domain.role.Role;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
