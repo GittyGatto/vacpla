@@ -1,13 +1,7 @@
 package com.henning.vacpla.domain.holiday;
 
-import com.henning.vacpla.domain.user.Role;
-import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
-
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
-
-import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "holiday")

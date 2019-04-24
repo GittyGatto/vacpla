@@ -1,4 +1,4 @@
-package com.henning.vacpla.domain.user;
+package com.henning.vacpla.domain.role;
 
 import org.springframework.stereotype.Service;
 

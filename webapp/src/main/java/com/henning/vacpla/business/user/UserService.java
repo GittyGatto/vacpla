@@ -3,7 +3,7 @@ package com.henning.vacpla.business.user;
 import com.henning.vacpla.controllers.auth.LoginRequest;
 import com.henning.vacpla.controllers.users.UserDao;
 import com.henning.vacpla.controllers.vacation.Requester;
-import com.henning.vacpla.domain.user.Role;
+import com.henning.vacpla.domain.role.Role;
 import com.henning.vacpla.domain.user.User;
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;

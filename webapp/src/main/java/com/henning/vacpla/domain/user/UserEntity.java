@@ -1,5 +1,6 @@
 package com.henning.vacpla.domain.user;
 
+import com.henning.vacpla.domain.role.Role;
 import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
 
 import javax.persistence.*;
