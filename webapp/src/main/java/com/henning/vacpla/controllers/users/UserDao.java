@@ -1,6 +1,6 @@
 package com.henning.vacpla.controllers.users;
 
-import com.henning.vacpla.domain.role.Role;
+import com.henning.vacpla.business.role.Role;
 
 public class UserDao {
     public String userName;

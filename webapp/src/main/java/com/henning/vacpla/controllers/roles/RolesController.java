@@ -1,6 +1,6 @@
 package com.henning.vacpla.controllers.roles;
 
-import com.henning.vacpla.domain.role.Role;
+import com.henning.vacpla.business.role.Role;
 import com.henning.vacpla.business.role.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

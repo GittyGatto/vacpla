@@ -1,7 +1,7 @@
 package com.henning.vacpla.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.henning.vacpla.domain.role.Role;
+import com.henning.vacpla.business.role.Role;
 
 
 public class User {
