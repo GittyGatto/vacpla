@@ -22,6 +22,6 @@ public class VacPlaWebappMain {
 
         SpringApplication.run(VacPlaWebappMain.class, args);
 
-        System.err.println("ready");
+        System.err.println("back again");
     }
 }
