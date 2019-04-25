@@ -1,6 +1,7 @@
 package com.henning.vacpla.domain.user;
 
 import com.henning.vacpla.business.role.Role;
+import com.henning.vacpla.domain.annual_leave.AnnualLeaveEntity;
 import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
 
 import javax.persistence.*;
@@ -38,6 +39,9 @@ public class UserEntity {
 
     @OneToMany(cascade = ALL, mappedBy = "uzer")
     private List<VacationRequestEntity> vacationRequestEntityList;
+
+    @OneToMany(cascade = ALL, mappedBy = "uzer")
+    private List<AnnualLeaveEntity> annualLeaveEntityList;
 
     public long getId() {
         return id;
@@ -97,5 +101,13 @@ public class UserEntity {
 
     public void setVacationRequestEntityList(List<VacationRequestEntity> vacationRequestEntityList) {
         this.vacationRequestEntityList = vacationRequestEntityList;
+    }
+
+    public List<AnnualLeaveEntity> getAnnualLeaveEntityList() {
+        return annualLeaveEntityList;
+    }
+
+    public void setAnnualLeaveEntityList(List<AnnualLeaveEntity> annualLeaveEntityList) {
+        this.annualLeaveEntityList = annualLeaveEntityList;
     }
 }
