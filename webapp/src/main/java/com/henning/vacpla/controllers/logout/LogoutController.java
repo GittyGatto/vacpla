@@ -1,6 +1,5 @@
-package com.henning.vacpla.controllers.auth;
+package com.henning.vacpla.controllers.logout;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,11 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @RestController
-public class LogoutResource {
+public class LogoutController {
 
     @RequestMapping(value = "/api/logout", method = RequestMethod.POST, consumes = "application/json")
-    public void logout(
-            @RequestBody() LogoutRequest logoutRequest, HttpServletRequest httpRequest) throws IOException {
-        HttpStatus statusCode = HttpStatus.valueOf(200);
+    public void logout(@RequestBody() LogoutRequest logoutRequest, HttpServletRequest httpRequest) throws IOException {
+        //TODO: that doesn't seams right.
     }
 }

@@ -1,4 +1,4 @@
-package com.henning.vacpla.controllers.auth;
+package com.henning.vacpla.controllers.logout;
 
 public class LogoutRequest {
 
