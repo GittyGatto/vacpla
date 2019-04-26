@@ -1,6 +1,6 @@
 package com.henning.vacpla.domain.vacation;
 
-import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
+import com.henning.vacpla.domain.vacation_request.VacationRequestEntity;
 
 import javax.persistence.*;
 import java.util.Date;

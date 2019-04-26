@@ -2,7 +2,7 @@ package com.henning.vacpla.domain.comment;
 
 
 import com.henning.vacpla.domain.user.UserEntity;
-import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
+import com.henning.vacpla.domain.vacation_request.VacationRequestEntity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

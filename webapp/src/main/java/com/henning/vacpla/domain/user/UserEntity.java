@@ -2,7 +2,7 @@ package com.henning.vacpla.domain.user;
 
 import com.henning.vacpla.business.role.Role;
 import com.henning.vacpla.domain.annual_leave.AnnualLeaveEntity;
-import com.henning.vacpla.domain.vacationRequest.VacationRequestEntity;
+import com.henning.vacpla.domain.vacation_request.VacationRequestEntity;
 
 import javax.persistence.*;
 import java.util.Date;

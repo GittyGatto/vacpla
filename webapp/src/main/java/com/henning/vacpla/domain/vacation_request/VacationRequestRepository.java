@@ -1,4 +1,4 @@
-package com.henning.vacpla.domain.vacationRequest;
+package com.henning.vacpla.domain.vacation_request;
 
 import com.henning.vacpla.domain.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
