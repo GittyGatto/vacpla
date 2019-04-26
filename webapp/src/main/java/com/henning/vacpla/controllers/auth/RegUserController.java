@@ -2,6 +2,7 @@ package com.henning.vacpla.controllers.auth;
 
 
 import com.henning.vacpla.business.user.UserService;
+import com.henning.vacpla.controllers.login.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @RestController
-public class RegUserResource {
+public class RegUserController {
     @Autowired
     private UserService userService;
 

@@ -7,10 +7,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Optional;
 
-public class MyUserPrincipal implements UserDetails {
+public class VacplaUserPrincipal implements UserDetails {
     private Optional<UserEntity> user;
 
-    public MyUserPrincipal(Optional<UserEntity> user) {
+    public VacplaUserPrincipal(Optional<UserEntity> user) {
         this.user = user;
     }
 

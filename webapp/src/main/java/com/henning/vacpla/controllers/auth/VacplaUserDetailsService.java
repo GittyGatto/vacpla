@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public class MyUserDetailsService implements UserDetailsService {
+public class VacplaUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -24,6 +24,6 @@ public class MyUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new MyUserPrincipal(user);
+        return new VacplaUserPrincipal(user);
     }
 }

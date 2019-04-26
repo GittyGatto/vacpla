@@ -1,6 +1,6 @@
 package com.henning.vacpla.config;
 
-import com.henning.vacpla.controllers.auth.MyUserDetailsService;
+import com.henning.vacpla.controllers.auth.VacplaUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,7 @@ import java.util.Arrays;
 public class WebMvcConfig extends WebMvcConfigurerAdapter
 {
 	@Autowired
-	private MyUserDetailsService userDetailsService;
+	private VacplaUserDetailsService userDetailsService;
 
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry)

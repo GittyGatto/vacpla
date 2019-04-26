@@ -1,6 +1,6 @@
 package com.henning.vacpla.config;
 
-import com.henning.vacpla.controllers.auth.MyUserDetailsService;
+import com.henning.vacpla.controllers.auth.VacplaUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    private MyUserDetailsService userDetailsService;
+    private VacplaUserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth)

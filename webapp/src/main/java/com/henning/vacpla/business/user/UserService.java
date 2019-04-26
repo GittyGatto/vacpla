@@ -2,7 +2,7 @@ package com.henning.vacpla.business.user;
 
 import com.henning.vacpla.business.annual_leave.AnnualLeaveBusinessService;
 import com.henning.vacpla.business.role.Role;
-import com.henning.vacpla.controllers.auth.LoginRequest;
+import com.henning.vacpla.controllers.login.LoginRequest;
 import com.henning.vacpla.controllers.users.UserDao;
 import com.henning.vacpla.controllers.vacation.Requester;
 import com.henning.vacpla.domain.user.User;
