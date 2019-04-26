@@ -65,7 +65,7 @@ class VacationStore {
 
     _getVacationDays(requests) {
         let days = requests.map(function (curr) {
-            return (curr.vacations)
+            return (curr)
         });
         return days;
     }
@@ -73,7 +73,7 @@ class VacationStore {
     _getVacationDayCount(vacationDays) {
         let count = 0;
         vacationDays.forEach(curr => {
-            count += curr[0].vacationCount;
+            count += curr.vacationCount;
         });
         return count;
     }
@@ -107,8 +107,8 @@ class VacationStore {
         let requests = getFilteredRequestsByStatus(ev, searchStatus);
         let dates = [];
         requests.forEach(request => {
-                const startDay = request.vacations[0].from;
-                const endDay = request.vacations[0].to;
+                const startDay = request.from;
+                const endDay = request.to;
                 let range = Array.from(datesBetween(new Date(startDay), new Date(endDay)));
                 const vacationDays = giveVacationDays(range);
                 vacationDays.forEach(day => {
