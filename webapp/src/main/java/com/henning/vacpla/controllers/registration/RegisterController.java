@@ -1,4 +1,4 @@
-package com.henning.vacpla.controllers.auth;
+package com.henning.vacpla.controllers.registration;
 
 
 import com.henning.vacpla.business.user.UserService;
