@@ -28,9 +28,6 @@ public class UserEntity {
     @Column(name = "role")
     private Role role;
 
-    @Column(name = "total_vacation")
-    private int totalVacation;
-
     @Column(name = "entry")
     private Date entry;
 
@@ -69,14 +66,6 @@ public class UserEntity {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public int getTotalVacation() {
-        return totalVacation;
-    }
-
-    public void setTotalVacation(int totalVacation) {
-        this.totalVacation = totalVacation;
     }
 
     public Date getEntry() {

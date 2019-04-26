@@ -1,11 +1,14 @@
 package com.henning.vacpla.controllers.users;
 
 import com.henning.vacpla.business.role.Role;
+import com.henning.vacpla.business.vacationRequest.AnnualLeaveDto;
+
+import java.util.List;
 
 public class UserDao {
     public String userName;
     public Role role;
-    public int totalVacation;
+    public List<AnnualLeaveDto> annualLeaves;
     public String entry;
     public String exit;
 
@@ -28,14 +31,6 @@ public class UserDao {
         this.role = role;
     }
 
-    public int getTotalVacation() {
-        return totalVacation;
-    }
-
-    public void setTotalVacation(int totalVacation) {
-        this.totalVacation = totalVacation;
-    }
-
     public String getEntry() {
         return entry;
     }
@@ -50,5 +45,13 @@ public class UserDao {
 
     public void setExit(String exit) {
         this.exit = exit;
+    }
+
+    public List<AnnualLeaveDto> getAnnualLeaves() {
+        return annualLeaves;
+    }
+
+    public void setAnnualLeaves(List<AnnualLeaveDto> annualLeaves) {
+        this.annualLeaves = annualLeaves;
     }
 }

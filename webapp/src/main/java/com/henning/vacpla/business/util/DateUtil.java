@@ -20,4 +20,10 @@ public class DateUtil {
         return null;
     }
 
+    public int getCurrentYear() {
+        Date now = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        return Integer.valueOf(sdf.format(now));
+    }
+
 }

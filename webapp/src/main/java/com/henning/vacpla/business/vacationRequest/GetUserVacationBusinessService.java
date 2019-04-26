@@ -1,5 +1,6 @@
 package com.henning.vacpla.business.vacationRequest;
 
+import com.henning.vacpla.business.annual_leave.AnnualLeaveBusinessService;
 import com.henning.vacpla.business.openRequests.OpenRequestsDto;
 import com.henning.vacpla.business.util.DateUtil;
 import com.henning.vacpla.business.viewRequest.ViewRequestDto;
@@ -29,6 +30,9 @@ public class GetUserVacationBusinessService {
     @Autowired
     private DateUtil dateUtil;
 
+    @Autowired
+    private AnnualLeaveBusinessService annualLeaveBusinessService;
+
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     public VacationOverviewDto getUserVacation(String userName) {
@@ -57,7 +61,7 @@ public class GetUserVacationBusinessService {
             vacationRequest.setApprovedBy(userEntity);
         }
 
-        if (status.equals(VacationRequestStatus.WITHDRAW.toString())){
+        if (status.equals(VacationRequestStatus.WITHDRAW.toString())) {
             vacationRequest.setVacationRequestStatus(VacationRequestStatus.WITHDRAW);
         }
         vacationRequestRepository.save(vacationRequest);
@@ -104,8 +108,8 @@ public class GetUserVacationBusinessService {
 
     private VacationOverviewDto fillVacationOverviewDto(UserEntity userEntity, List<VacationRequestEntity> vacationRequestEntities) {
         VacationOverviewDto overviewDto = new VacationOverviewDto();
-        overviewDto.totalVacation = userEntity.getTotalVacation();
-        overviewDto.vacationRequests = fillVacationRequestDtos(vacationRequestEntities);
+        overviewDto.setAnnualLeaves(annualLeaveBusinessService.getAnnualLeaveDtos(userEntity));
+        overviewDto.setVacationRequests(fillVacationRequestDtos(vacationRequestEntities));
         return overviewDto;
     }
 
@@ -174,15 +178,15 @@ public class GetUserVacationBusinessService {
         VacationRequestEntity vacRequest = vacationRequestRepository.findByUuid(uuid).get();
         VacationRequestDto vacationRequestDto = fillVacationRequestDto(vacRequest);
         ViewRequestDto viewRequestDto = new ViewRequestDto();
-        viewRequestDto.request = vacationRequestDto;
+        viewRequestDto.setRequest(vacationRequestDto);
 
 
         UserEntity userEntity = vacRequest.getUzer();
         List<VacationRequestEntity> vacRequests = vacationRequestRepository.findByUzer(Optional.of(userEntity)).get();
         HashMap<Integer, List<VacationRequestDto>> contextRequests = fillVacationRequestDtos(vacRequests);
-        viewRequestDto.vacationRequests = contextRequests;
+        viewRequestDto.setVacationRequests(contextRequests);
 
-        viewRequestDto.totalVacation = userEntity.getTotalVacation();
+        viewRequestDto.setAnnualLeaves(annualLeaveBusinessService.getAnnualLeaveDtos(userEntity));
 
         return viewRequestDto;
     }
