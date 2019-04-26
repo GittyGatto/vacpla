@@ -13,7 +13,7 @@ export class DashboardPage extends React.Component {
         super(props);
         this.state = {
             getUser: props.getUser,
-            totalVacation: undefined,
+            annualLeave: undefined,
             vacationLeftCount: undefined,
             openRequestDaysCount: undefined,
             requests: [],
@@ -35,10 +35,10 @@ export class DashboardPage extends React.Component {
 
     _onChange(ev) {
         const {getUser} = ev;
-        const {totalVacation, vacationLeftCount, openRequestDaysCount, requests, year, customCssClasses} = ev.vacation;
+        const {annualLeave, vacationLeftCount, openRequestDaysCount, requests, year, customCssClasses} = ev.vacation;
         this.setState({
             getUser,
-            totalVacation,
+            annualLeave,
             vacationLeftCount,
             openRequestDaysCount,
             requests,

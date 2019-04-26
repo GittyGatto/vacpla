@@ -2,6 +2,7 @@ import holidayStore from "./holiday-store";
 import {getFilteredRequestsByStatus} from "../services/vacation-request-service";
 import datesBetween from "dates-between";
 import {giveVacationDays} from "../services/vacation-service";
+import {getCurrentAnnualLeave} from "../services/annual-leave-service";
 
 class ViewRequestStore {
     constructor() {
@@ -10,7 +11,7 @@ class ViewRequestStore {
             holidays: [],
             approved: [],
             requested: [],
-            totalVacation: '',
+            annualLeave: '',
         }
     }
 
@@ -22,7 +23,7 @@ class ViewRequestStore {
         this.data.viewRequest = ev.data.request;
         this.data.approved = this._getCalendarDatesByStatus(ev, 'APPROVED');
         this.data.requested = this._getDaysAsDateFromRequestedExceptCurrent(ev);
-        this.data.totalVacation = ev.data.totalVacation;
+        this.data.annualLeave = getCurrentAnnualLeave(ev);
         this.data.holidays = this._holidaysToCalendarDates();
     }
 

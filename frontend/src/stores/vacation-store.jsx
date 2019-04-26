@@ -3,12 +3,13 @@ import moment from 'moment';
 import holidayStore from "./holiday-store";
 import datesBetween from "dates-between";
 import {giveVacationDays} from "../services/vacation-service";
+import {getCurrentAnnualLeave} from "../services/annual-leave-service";
 
 
 class VacationStore {
     constructor() {
         this.data = {
-            totalVacation: '',
+            annualLeave: '',
             vacationLeftCount: '',
             openRequestDaysCount: undefined,
             requests: [],
@@ -23,7 +24,7 @@ class VacationStore {
     }
 
     handleLoadVacationSucceeded(ev) {
-        this.data.totalVacation = ev.data.totalVacation;
+        this.data.annualLeave = getCurrentAnnualLeave(ev);
         this.data.vacationLeftCount = this._getVacationLeftCount(ev);
         this.data.openRequestDaysCount = this._getOpenRequestDaysCount(ev);
         this.data.requests = getVacationRequests(ev);
@@ -44,7 +45,7 @@ class VacationStore {
         let approvedRequests = getFilteredRequestsByStatus(ev, 'APPROVED');
         let approvedDays = this._getVacationDays(approvedRequests);
         let taken = this._getVacationDayCount(approvedDays);
-        const total = ev.data.totalVacation;
+        const total = getCurrentAnnualLeave(ev);
         return total - taken;
     }
 
