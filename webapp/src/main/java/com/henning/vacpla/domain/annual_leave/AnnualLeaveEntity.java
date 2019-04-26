@@ -13,7 +13,7 @@ public class AnnualLeaveEntity {
     private long id;
 
     @Column(name = "annual")
-    private String annual;
+    private int annual;
 
     @Column(name = "leave")
     private int leave;
@@ -33,11 +33,11 @@ public class AnnualLeaveEntity {
         this.id = id;
     }
 
-    public String getAnnual() {
+    public int getAnnual() {
         return annual;
     }
 
-    public void setAnnual(String annual) {
+    public void setAnnual(int annual) {
         this.annual = annual;
     }
 
