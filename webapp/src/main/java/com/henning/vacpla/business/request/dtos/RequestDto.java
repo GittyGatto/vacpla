@@ -1,20 +1,18 @@
-package com.henning.vacpla.business.vacationRequest;
+package com.henning.vacpla.business.request.dtos;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.henning.vacpla.controllers.vacation.JsonDateSerializer;
-
-import java.util.Date;
 import java.util.List;
 
-public class VacationRequestDto implements Comparable<VacationRequestDto> {
+public class RequestDto implements Comparable<RequestDto> {
     private String uuid;
     private String owner;
     private String vacationRequestStatus;
     private String requested;
     private String approved;
     private String approvedBy;
-    private List<VacationDto> vacations;
+    private String from;
+    private String to;
+    private String vacationCount;
+    private String category;
     private List<CommentDto> comments;
 
     public String getUuid() {
@@ -65,14 +63,6 @@ public class VacationRequestDto implements Comparable<VacationRequestDto> {
         this.approvedBy = approvedBy;
     }
 
-    public List<VacationDto> getVacations() {
-        return vacations;
-    }
-
-    public void setVacations(List<VacationDto> vacations) {
-        this.vacations = vacations;
-    }
-
     public List<CommentDto> getComments() {
         return comments;
     }
@@ -81,8 +71,40 @@ public class VacationRequestDto implements Comparable<VacationRequestDto> {
         this.comments = comments;
     }
 
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public String getVacationCount() {
+        return vacationCount;
+    }
+
+    public void setVacationCount(String vacationCount) {
+        this.vacationCount = vacationCount;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
-    public int compareTo(VacationRequestDto o) {
+    public int compareTo(RequestDto o) {
         return getRequested().compareTo(o.getRequested());
     }
 }

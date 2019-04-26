@@ -48,6 +48,10 @@ public class UserService {
         return new User(userEntity);
     }
 
+    public UserEntity getUserEntity(String userName) {
+        return userRepository.findByUserName(userName).orElseThrow(() -> new UsernameNotFoundException("No user found with username " + userName));
+    }
+
     public List<UserDao> getAllUsers(Requester requester) {
         List<UserEntity> userEntities = userRepository.findAll();
         return getUsersFromUserEntities(userEntities);

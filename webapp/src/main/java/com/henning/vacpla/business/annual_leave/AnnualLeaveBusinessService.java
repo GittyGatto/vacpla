@@ -1,7 +1,7 @@
 package com.henning.vacpla.business.annual_leave;
 
 import com.henning.vacpla.business.util.DateUtil;
-import com.henning.vacpla.business.vacationRequest.AnnualLeaveDto;
+import com.henning.vacpla.business.request.dtos.AnnualLeaveDto;
 import com.henning.vacpla.domain.annual_leave.AnnualLeaveEntity;
 import com.henning.vacpla.domain.user.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;

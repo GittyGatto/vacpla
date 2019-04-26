@@ -1,4 +1,4 @@
-package com.henning.vacpla.business.vacationRequest;
+package com.henning.vacpla.business.request.dtos;
 
 import java.sql.Timestamp;
 

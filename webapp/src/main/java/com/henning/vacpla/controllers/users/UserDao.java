@@ -1,7 +1,7 @@
 package com.henning.vacpla.controllers.users;
 
 import com.henning.vacpla.business.role.Role;
-import com.henning.vacpla.business.vacationRequest.AnnualLeaveDto;
+import com.henning.vacpla.business.request.dtos.AnnualLeaveDto;
 
 import java.util.List;
 

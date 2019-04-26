@@ -1,0 +1,40 @@
+package com.henning.vacpla.business.request;
+
+import com.henning.vacpla.domain.user.UserEntity;
+import com.henning.vacpla.domain.user.UserRepository;
+import com.henning.vacpla.domain.vacation_request.VacationRequestEntity;
+import com.henning.vacpla.domain.vacation_request.VacationRequestRepository;
+import com.henning.vacpla.domain.vacation_request.VacationRequestStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+
+@Service
+public class ChangeRequestStatusBusinessService {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private VacationRequestRepository vacationRequestRepository;
+
+    public void changeRequestStatus(String userName, String uuid, String status) {
+        UserEntity userEntity = userRepository.findByUserName(userName).get();
+        VacationRequestEntity vacationRequest = vacationRequestRepository.findByUuid(uuid).get();
+
+        if (status.equals(VacationRequestStatus.NOT_APPROVED.toString())) {
+            vacationRequest.setVacationRequestStatus(VacationRequestStatus.NOT_APPROVED);
+        }
+
+        if (status.equals(VacationRequestStatus.APPROVED.toString())) {
+            vacationRequest.setVacationRequestStatus(VacationRequestStatus.APPROVED);
+            vacationRequest.setApproved(new Date());
+            vacationRequest.setApprovedBy(userEntity);
+        }
+
+        if (status.equals(VacationRequestStatus.WITHDRAW.toString())) {
+            vacationRequest.setVacationRequestStatus(VacationRequestStatus.WITHDRAW);
+        }
+        vacationRequestRepository.save(vacationRequest);
+    }
+}

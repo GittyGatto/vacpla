@@ -2,7 +2,6 @@ package com.henning.vacpla.domain.vacation_request;
 
 import com.henning.vacpla.domain.comment.CommentEntity;
 import com.henning.vacpla.domain.user.UserEntity;
-import com.henning.vacpla.domain.vacation.VacationEntity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,7 +17,7 @@ public class VacationRequestEntity {
     @Column(name = "vacation_request_id")
     private long vacationRequestId;
 
-    @Column(name="vacation_request_uuid")
+    @Column(name = "vacation_request_uuid")
     private String uuid;
 
     @ManyToOne
@@ -35,12 +34,22 @@ public class VacationRequestEntity {
     @Column(name = "approved")
     private Date approved;
 
+    @Column(name = "vac_from")
+    private Date from;
+
+    @Column(name = "vac_to")
+    private Date to;
+
+    @Column(name = "vacation_count")
+    private long vacationCount;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category")
+    private VacationCategory vacationCategory;
+
     @ManyToOne
     @JoinColumn(name = "approved_by_id")
     private UserEntity approvedBy;
-
-    @OneToMany(cascade = ALL, mappedBy = "vacationRequest")
-    private List<VacationEntity> vacations;
 
     @OneToMany(cascade = ALL, mappedBy = "vacationRequest")
     private List<CommentEntity> comments;
@@ -104,19 +113,43 @@ public class VacationRequestEntity {
         this.approvedBy = approvedBy;
     }
 
-    public List<VacationEntity> getVacations() {
-        return vacations;
-    }
-
-    public void setVacations(List<VacationEntity> vacations) {
-        this.vacations = vacations;
-    }
-
     public List<CommentEntity> getComments() {
         return comments;
     }
 
     public void setComments(List<CommentEntity> comments) {
         this.comments = comments;
+    }
+
+    public Date getFrom() {
+        return from;
+    }
+
+    public void setFrom(Date from) {
+        this.from = from;
+    }
+
+    public Date getTo() {
+        return to;
+    }
+
+    public void setTo(Date to) {
+        this.to = to;
+    }
+
+    public long getVacationCount() {
+        return vacationCount;
+    }
+
+    public void setVacationCount(long vacationCount) {
+        this.vacationCount = vacationCount;
+    }
+
+    public VacationCategory getVacationCategory() {
+        return vacationCategory;
+    }
+
+    public void setVacationCategory(VacationCategory vacationCategory) {
+        this.vacationCategory = vacationCategory;
     }
 }
