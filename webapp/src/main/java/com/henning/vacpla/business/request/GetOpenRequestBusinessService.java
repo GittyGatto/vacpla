@@ -1,6 +1,6 @@
 package com.henning.vacpla.business.request;
 
-import com.henning.vacpla.business.openRequests.OpenRequestsDto;
+import com.henning.vacpla.business.request.dtos.OpenRequestsDto;
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.user.UserRepository;
 import com.henning.vacpla.domain.vacation_request.VacationRequestEntity;

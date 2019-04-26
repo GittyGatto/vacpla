@@ -1,6 +1,6 @@
 package com.henning.vacpla.controllers.vacation;
 
-import com.henning.vacpla.business.openRequests.OpenRequestsDto;
+import com.henning.vacpla.business.request.dtos.OpenRequestsDto;
 import com.henning.vacpla.business.request.GetOpenRequestBusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

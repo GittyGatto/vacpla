@@ -1,4 +1,4 @@
-package com.henning.vacpla.business.openRequests;
+package com.henning.vacpla.business.request.dtos;
 
 import com.henning.vacpla.business.request.dtos.RequestDto;
 
