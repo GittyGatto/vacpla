@@ -2,7 +2,8 @@ package com.henning.vacpla.business.user;
 
 import com.henning.vacpla.business.annual_leave.AnnualLeaveBusinessService;
 import com.henning.vacpla.business.role.Role;
-import com.henning.vacpla.controllers.login.LoginRequest;
+import com.henning.vacpla.business.util.DateUtil;
+import com.henning.vacpla.controllers.registration.RegistrationRequest;
 import com.henning.vacpla.controllers.users.UserDao;
 import com.henning.vacpla.controllers.vacation.Requester;
 import com.henning.vacpla.domain.user.User;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,6 +32,9 @@ public class UserService {
     @Autowired
     private AnnualLeaveBusinessService annualLeaveBusinessService;
 
+    @Autowired
+    private DateUtil dateUtil;
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public User loadUserByUsername(String name) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByUserName(name).orElseThrow(() -> new UsernameNotFoundException(String.format("User %s does not exist!", name)));
@@ -37,14 +42,21 @@ public class UserService {
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public User registerNewUserAccount(LoginRequest accountDto) {
-        UserEntity user = new UserEntity();
-        user.setUserName(accountDto.userName);
-        user.setPassword(passwordEncoder.encode(accountDto.password));
-        //TODO: role should be in params
-        user.setRole(Role.ADMIN);
-        user.setAnnualLeaveEntityList(annualLeaveBusinessService.getInitialAnnualLeave());
+    public User registerNewUserAccount(RegistrationRequest registrationRequest) {
+
+        String userName = registrationRequest.userName;
+        String password = registrationRequest.password;
+        String encodedPassword = passwordEncoder.encode(password);
+        String roleString = registrationRequest.role;
+        Integer initLeave = Integer.valueOf(registrationRequest.initLeave);
+        Role role = Role.valueOf(roleString);
+        Date entry = dateUtil.parseDate(registrationRequest.entry);
+
+        UserEntity user = new UserEntity(userName, encodedPassword, role, entry, null, null, null);
         UserEntity userEntity = userRepository.save(user);
+
+        annualLeaveBusinessService.setInitialAnnualLeave(userEntity, initLeave);
+
         return new User(userEntity);
     }
 

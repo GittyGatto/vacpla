@@ -1,8 +1,9 @@
 package com.henning.vacpla.business.annual_leave;
 
-import com.henning.vacpla.business.util.DateUtil;
 import com.henning.vacpla.business.request.dtos.AnnualLeaveDto;
+import com.henning.vacpla.business.util.DateUtil;
 import com.henning.vacpla.domain.annual_leave.AnnualLeaveEntity;
+import com.henning.vacpla.domain.annual_leave.AnnualLeaveRepository;
 import com.henning.vacpla.domain.user.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class AnnualLeaveBusinessService {
 
     @Autowired
     private DateUtil dateUtil;
+    @Autowired
+    private AnnualLeaveRepository annualLeaveRepository;
 
     public List<AnnualLeaveDto> getAnnualLeaveDtos(UserEntity userEntity) {
         List<AnnualLeaveDto> annualLeaveDtos = new ArrayList<>();
@@ -28,13 +31,13 @@ public class AnnualLeaveBusinessService {
         return annualLeaveDtos;
     }
 
-    public List<AnnualLeaveEntity> getInitialAnnualLeave() {
+    public void setInitialAnnualLeave(UserEntity userEntity, Integer initLeave) {
         List<AnnualLeaveEntity> leaveEntities = new ArrayList<>();
         AnnualLeaveEntity leaveEntity = new AnnualLeaveEntity();
         leaveEntity.setAnnual(dateUtil.getCurrentYear());
-        leaveEntity.setLeave(25);
+        leaveEntity.setUzer(userEntity);
+        leaveEntity.setLeave(initLeave);
         leaveEntities.add(leaveEntity);
-        return leaveEntities;
+        annualLeaveRepository.save(leaveEntity);
     }
-
 }

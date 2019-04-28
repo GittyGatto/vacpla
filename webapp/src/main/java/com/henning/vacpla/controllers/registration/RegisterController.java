@@ -19,7 +19,7 @@ public class RegisterController {
 
     @RequestMapping(value = "/api/register", method = RequestMethod.POST, consumes = "application/json")
     public void registerNewUser(
-            @RequestBody() LoginRequest loginRequest, HttpServletRequest httpRequest) throws IOException {
-        userService.registerNewUserAccount(loginRequest);
+            @RequestBody() RegistrationRequest registrationRequest, HttpServletRequest httpRequest) throws IOException {
+        userService.registerNewUserAccount(registrationRequest);
     }
 }

@@ -40,6 +40,18 @@ public class UserEntity {
     @OneToMany(cascade = ALL, mappedBy = "uzer")
     private List<AnnualLeaveEntity> annualLeaveEntityList;
 
+    public UserEntity (){};
+
+    public UserEntity(String userName, String password, Role role, Date entry, Date exit, List<VacationRequestEntity> vacationRequestEntityList, List<AnnualLeaveEntity> annualLeaveEntityList) {
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+        this.entry = entry;
+        this.exit = exit;
+        this.vacationRequestEntityList = vacationRequestEntityList;
+        this.annualLeaveEntityList = annualLeaveEntityList;
+    }
+
     public long getId() {
         return id;
     }
