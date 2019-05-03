@@ -6,7 +6,7 @@
 ```yarn run start```
 
 ## start dev-db
-```cd dev-db```
+```cd devdb```
 ```./start.sh```
 
 ## adding new user via rest-api
