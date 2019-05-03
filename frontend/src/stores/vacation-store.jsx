@@ -17,9 +17,9 @@ class VacationStore {
             year: undefined,
             customCssClasses: undefined,
 
-            openRequests : [],
-            approvedRequests : [],
-            declinedRequests : [],
+            openRequests: [],
+            approvedRequests: [],
+            declinedRequests: [],
         };
     }
 
@@ -42,6 +42,9 @@ class VacationStore {
     }
 
     _getVacationLeftCount(ev) {
+        if (!ev.data.vacationRequests[(new Date()).getFullYear()]) {
+            return getCurrentAnnualLeave(ev);
+        }
         let approvedRequests = getFilteredRequestsByStatus(ev, 'APPROVED');
         let approvedDays = this._getVacationDays(approvedRequests);
         let taken = this._getVacationDayCount(approvedDays);
@@ -50,6 +53,9 @@ class VacationStore {
     }
 
     _getOpenRequestDaysCount(ev) {
+        if (!ev.data.vacationRequests[(new Date()).getFullYear()]) {
+            return []
+        }
         const requestedRequests = getFilteredRequestsByStatus(ev, 'REQUESTED');
         let requestedDays = this._getVacationDays(requestedRequests);
         return this._getVacationDayCount(requestedDays);
@@ -85,9 +91,12 @@ class VacationStore {
 
     _getCustomCssClasses(ev) {
         const holidays = this._holidaysToCalendarDates();
+        const weekend = 'Sat,Sun';
+        if (!ev.data.vacationRequests[(new Date()).getFullYear()]) {
+            return {holidays: holidays, weekend: weekend}
+        }
         const approved = this._getCalendarDatesByStatus(ev, 'APPROVED');
         const requested = this._getCalendarDatesByStatus(ev, 'REQUESTED');
-        const weekend = 'Sat,Sun';
         return {holidays: holidays, weekend: weekend, spring: approved, winter: requested};
     }
 

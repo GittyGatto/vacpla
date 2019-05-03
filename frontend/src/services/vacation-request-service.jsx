@@ -5,6 +5,9 @@ export function getVacationRequests(ev) {
 }
 
 export function getFilteredRequestsByStatus(ev, searchString) {
+    if (!ev.data.vacationRequests[(new Date()).getFullYear()]) {
+        return {};
+    }
     const requests = getVacationRequests(ev);
     let approvedRequests = requests.filter(function (curr) {
         return (curr.vacationRequestStatus === searchString)
