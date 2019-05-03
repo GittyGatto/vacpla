@@ -39,8 +39,8 @@ export class ApprovedRequestPage extends React.Component {
             </div>
 
             <div className='Approved_Request_Page_Requests'>
-                <AllRequests requests={approvedRequests}
-                             withdraw={false}/>
+                {approvedRequests.length ? <AllRequests requests={approvedRequests} withdraw={false}/> :
+                    <p>no approved requests</p>}
             </div>
 
         </div>;

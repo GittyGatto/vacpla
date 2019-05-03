@@ -39,7 +39,7 @@ export class DeclinedRequestPage extends React.Component {
             </div>
 
             <div className='Declined_Request_Page_Requests'>
-                {declinedRequests.length ? <AllRequests requests={declinedRequests}/> : <p>no request decline</p>}
+                {declinedRequests.length ? <AllRequests requests={declinedRequests}/> : <p>no declined requests</p>}
             </div>
 
         </div>;
