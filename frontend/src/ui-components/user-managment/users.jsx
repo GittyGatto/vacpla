@@ -1,6 +1,7 @@
 import React from 'react';
 import './user.css';
 import {Table} from "react-bootstrap";
+import {extractAnnualLeave} from "../../services/annual-leave-service";
 
 export class Users extends React.Component {
 
@@ -22,7 +23,7 @@ export class Users extends React.Component {
             <tr>
                 <th>Name</th>
                 <th>Role</th>
-                <th>Vacation per year</th>
+                <th>Annual Leave {(new Date()).getFullYear()}</th>
                 <th>Entry</th>
                 <th>Exit</th>
             </tr>
@@ -36,7 +37,7 @@ export class Users extends React.Component {
     _renderUser(user, index) {
         const userName = user.userName;
         const role = user.role;
-        const totalVacation = user.totalVacation;
+        const totalVacation = extractAnnualLeave(user.annualLeaves);
         const entry = new Date(user.entry).toLocaleDateString();
         const exit = user.exit;
 
