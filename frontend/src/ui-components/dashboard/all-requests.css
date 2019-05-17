@@ -17,12 +17,13 @@
 
 .AllRequests_Request_container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     padding-top: 1vh;
 }
 
 .AllRequests_Request_container_item {
     padding-top: 3vh;
+    padding-left: 1vh;
 }
 
 .AllRequests_Request_from-to{
