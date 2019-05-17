@@ -2,8 +2,6 @@ import '../../../styles/index.scss';
 import React from 'react';
 import {dispatcher} from '../../util/mini-flux';
 import './dashboard-page.css';
-import loadVacation from "../../actions/load-vacation-action";
-import loadHolidays from "../../actions/load-holidays-action";
 import {ActionBar} from "../action-bar/action-bar";
 import {YearlyCalendar} from "../calendar/yearly-calendar";
 
@@ -20,8 +18,6 @@ export class DashboardPage extends React.Component {
             year: undefined,
             customCssClasses: undefined,
         };
-        loadVacation();
-        loadHolidays();
         this._onChange = this._onChange.bind(this);
     }
 
