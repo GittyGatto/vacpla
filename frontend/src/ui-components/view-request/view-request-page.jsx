@@ -6,7 +6,7 @@ import './view-request-page.css';
 import '../calendar/calendar-style.css';
 import moment from 'moment';
 import {ActionBar} from "../action-bar/action-bar";
-import {AllRequests} from "../dashboard/all-requests";
+import {AllRequests} from "../all-requests/all-requests";
 import {YearlyCalendar} from "../calendar/yearly-calendar";
 
 

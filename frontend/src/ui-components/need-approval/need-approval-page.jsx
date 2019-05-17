@@ -1,10 +1,10 @@
 import React from 'react';
 import {dispatcher} from '../../util/mini-flux';
 import './need-approval-page.css';
-import '../dashboard/all-requests.css'
+import '../all-requests/all-requests.css'
 import loadOpenRequests from "../../actions/load-open-requests-action";
 import {ActionBar} from "../action-bar/action-bar";
-import {AllRequests} from "../dashboard/all-requests";
+import {AllRequests} from "../all-requests/all-requests";
 
 export class NeedApprovalPage extends React.Component {
     constructor(props) {

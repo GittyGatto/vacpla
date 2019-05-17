@@ -3,7 +3,7 @@ import React from 'react';
 import './open-request-page.css';
 import {dispatcher} from "../../util/mini-flux";
 import {ActionBar} from "../action-bar/action-bar";
-import {AllRequests} from "../dashboard/all-requests";
+import {AllRequests} from "../all-requests/all-requests";
 
 export class OpenRequestPage extends React.Component {
     constructor(props) {
