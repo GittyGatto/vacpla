@@ -8,11 +8,21 @@
     height: 100vh;
 }
 
-.DashboardPage__Title .DashboardPage__Information .DashboardPage__Calendar {
+.DashboardPage__Title .DashboardPage__Calendar {
     display: flex;
     justify-content: center;
 }
 
 .DashboardPage__Calendar {
     padding: 3vh;
+}
+
+.DashboardPage__Information_container {
+    display: flex;
+    justify-content: center;
+}
+
+.DashboardPage__Information_container_item {
+    padding-top: 1vh;
+    padding-left: 2vh;
 }

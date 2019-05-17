@@ -35,3 +35,13 @@
     color: white;
     font-weight: bold;
 }
+
+.NewRequestPage_Request_container {
+    display: flex;
+    justify-content: center;
+}
+
+.NewRequestPage_Request_container_item {
+    padding-top: 1vh;
+    padding-left: 2vh;
+}

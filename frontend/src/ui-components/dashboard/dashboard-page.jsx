@@ -4,6 +4,7 @@ import {dispatcher} from '../../util/mini-flux';
 import './dashboard-page.css';
 import {ActionBar} from "../action-bar/action-bar";
 import {YearlyCalendar} from "../calendar/yearly-calendar";
+import {Jumbotron} from "react-bootstrap";
 
 
 export class DashboardPage extends React.Component {
@@ -54,9 +55,9 @@ export class DashboardPage extends React.Component {
                 <h2>Dashboard {year}</h2>
             </div>
 
-            <div className='DashboardPage__Information'>
+            <div className="DashboardPage__Information_container">
                 <h1>{vacationLeftCount ? vacationLeftCount : '...'}</h1>
-                <h3>Days Left</h3>
+                <h3 className="DashboardPage__Information_container_item">Days Left</h3>
             </div>
 
             <div className='DashboardPage__Calendar'>

@@ -99,9 +99,9 @@ export class NewRequestPage extends React.Component {
                 <h2>New Request {year}</h2>
             </div>
 
-            <div className='NewRequestPage_DaysLeft'>
+            <div className="NewRequestPage_Request_container">
                 <h1>{vacationLeftCount ? vacationLeftCount : '...'}</h1>
-                <h3>Days Left</h3>
+                <h3 className="NewRequestPage_Request_container_item">Days Left</h3>
             </div>
 
             {vacation}
