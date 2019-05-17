@@ -13,14 +13,22 @@ export class AllRequests extends React.Component {
         const {requests, withdraw, take, approvalMode} = this.props;
         let allRequests = requests.map((curr, index) => {
             return (<span key={index}>
-                        <Jumbotron className="DashboardPage_Request">
-                            <h1>{curr.vacationCount}</h1>
-                            <h3>Days {take ? ' for ' + curr.owner : null} for {approvalMode ? curr.owner : null}</h3>
-                            <h3>{curr.from} <i className="fas fa-arrow-right"></i> {curr.to}</h3>
-                            {withdraw ? <Button onClick={() => this._onWithdrawClicked(curr.uuid)} bsStyle="warning">Withdraw</Button> : null}
-                            {take ? <Button onClick={() => this._onCheckoutClicked(curr.uuid)} bsStyle="warning">Checkout</Button> : null}
-                            {approvalMode ? <Button onClick={() => this._onApproveClicked(curr.uuid)} bsStyle="danger">Decline</Button> : null}
-                            {approvalMode ? <Button onClick={() => this._onDeclineClicked(curr.uuid)} bsStyle="success">Approve</Button> : null}
+                        <Jumbotron className="AllRequests_Request">
+
+                            <div className="AllRequests_Request_container">
+                                <h1>{curr.vacationCount}</h1>
+                                <h3 className="AllRequests_Request_container_item">Days {take ? ' for ' + curr.owner : null} {approvalMode ? curr.owner : null}</h3>
+                            </div>
+
+                            <h3 className="AllRequests_Request_from-to">{curr.from} <i className="fas fa-arrow-right"></i> {curr.to}</h3>
+                            {withdraw ? <Button onClick={() => this._onWithdrawClicked(curr.uuid)}
+                                                bsStyle="warning">Withdraw</Button> : null}
+                            {take ? <Button onClick={() => this._onCheckoutClicked(curr.uuid)}
+                                            bsStyle="warning">Checkout</Button> : null}
+                            {approvalMode ? <Button onClick={() => this._onApproveClicked(curr.uuid)}
+                                                    bsStyle="danger">Decline</Button> : null}
+                            {approvalMode ? <Button onClick={() => this._onDeclineClicked(curr.uuid)}
+                                                    bsStyle="success">Approve</Button> : null}
                         </Jumbotron>
                 </span>);
         })

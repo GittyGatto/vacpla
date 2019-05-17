@@ -1,4 +1,4 @@
-.DashboardPage_Request {
+.AllRequests_Request {
     border: 3px solid white;
     border-radius: 1vh;
     width: 60vh;
@@ -7,10 +7,24 @@
     margin: auto;
 }
 
-.DashboardPage_Request_Badge {
+.AllRequests_Request_Badge {
     font-size: 2vh;
 }
 
-.DashboardPage_Request Button {
-    margin-right: 1vh;
+.AllRequests_Request Button {
+    margin: 1vh;
+}
+
+.AllRequests_Request_container {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 1vh;
+}
+
+.AllRequests_Request_container_item {
+    padding-top: 3vh;
+}
+
+.AllRequests_Request_from-to{
+    margin-top: 1vh;
 }
