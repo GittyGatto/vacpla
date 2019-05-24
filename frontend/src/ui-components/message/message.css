@@ -1,0 +1,6 @@
+.Error_Message {
+    display: flex;
+    justify-content: center;
+    color: orangered;
+    padding-top: 1vh;
+}

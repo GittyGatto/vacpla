@@ -3,6 +3,7 @@ import React from "react";
 import './calendar-style.css';
 import changedCalender from "../../actions/change-calendar-action";
 import moment from 'moment';
+import clearMessage from "../../actions/clear-message-action";
 
 export class YearlyCalendar extends React.Component {
     constructor(props) {
@@ -48,5 +49,6 @@ export class YearlyCalendar extends React.Component {
     _rangePicked(start, end) {
         const range = [start, end];
         changedCalender(range);
+        clearMessage();
     }
 }

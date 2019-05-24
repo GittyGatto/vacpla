@@ -10,6 +10,9 @@ import {ActionBar} from "../action-bar/action-bar";
 import moment from 'moment';
 import {YearlyCalendar} from "../calendar/yearly-calendar";
 import {Button} from "react-bootstrap";
+import {Message} from "../message/message";
+import setMessage from "../../actions/set-message-action";
+import clearMessage from "../../actions/clear-message-action";
 
 export class NewRequestPage extends React.Component {
     constructor(props) {
@@ -25,7 +28,8 @@ export class NewRequestPage extends React.Component {
             requestedVacations: undefined,
             customCssClasses: undefined,
             selectedRange: undefined,
-
+            text: '',
+            error: false,
         };
         this._onChange = this._onChange.bind(this);
     }
@@ -33,16 +37,19 @@ export class NewRequestPage extends React.Component {
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
         resetNewRequestPage();
+        setMessage("select vacation blyad", false);
     }
 
     componentWillUnmount() {
         dispatcher.unsubscribe(this._onChange);
+        clearMessage();
     }
 
     _onChange(ev) {
         const {getUser} = ev;
         const {uuid, range, requestedDays, requestedVacations, selectedRange} = ev.newRequest;
         const {vacationLeftCount, year, customCssClasses, openRequestDaysCount} = ev.vacation;
+        const {text, error} = ev.message;
         this.setState({
             getUser,
             uuid,
@@ -54,11 +61,13 @@ export class NewRequestPage extends React.Component {
             customCssClasses,
             selectedRange,
             openRequestDaysCount,
+            text,
+            error,
         });
     }
 
     render() {
-        const {getUser, date, minDate, range, requestedDays, vacationLeftCount, year, customCssClasses, selectedRange, openRequestDaysCount} = this.state;
+        const {getUser, date, minDate, range, requestedDays, vacationLeftCount, year, customCssClasses, selectedRange, openRequestDaysCount, text, error} = this.state;
 
         let vacation = undefined;
         let errorReason = '';
@@ -90,19 +99,17 @@ export class NewRequestPage extends React.Component {
             </div>
         }
 
-
         return <div className='NewRequestPage'>
 
             <ActionBar/>
 
-            <div className='NewRequestPage_Title'>
-                <h2>New Request {year}</h2>
-            </div>
 
             <div className="NewRequestPage_Request_container">
                 <h1>{vacationLeftCount ? vacationLeftCount : '...'}</h1>
                 <h3 className="NewRequestPage_Request_container_item">Days Left</h3>
             </div>
+
+            <Message text={text} error={error}/>
 
             {vacation}
 
