@@ -17,6 +17,7 @@
         <org.slf4j-version>1.7.16</org.slf4j-version>
         <org.spring.security-version>4.0.3.RELEASE</org.spring.security-version>
         <enunciate.version>2.11.1</enunciate.version>
+        <junit.jupiter.verion>5.4.2</junit.jupiter.verion>
     </properties>
 
     <scm>
@@ -28,6 +29,7 @@
         <module>webapp</module>
         <module>frontend</module>
     </modules>
+
     <build>
         <pluginManagement>
             <plugins>
@@ -126,16 +128,7 @@
             </plugin>
         </plugins>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-        </dependency>
-    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -156,18 +149,6 @@
                 <version>1.4.0.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>1.10.19</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>com.h2database</groupId>
@@ -199,6 +180,18 @@
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>2.6.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit.jupiter.verion}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit.jupiter.verion}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
