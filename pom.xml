@@ -18,6 +18,7 @@
         <org.spring.security-version>4.0.3.RELEASE</org.spring.security-version>
         <enunciate.version>2.11.1</enunciate.version>
         <junit.jupiter.verion>5.4.2</junit.jupiter.verion>
+        <org.mockito.version>2.28.2</org.mockito.version>
     </properties>
 
     <scm>
@@ -191,6 +192,12 @@
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
                 <version>${junit.jupiter.verion}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${org.mockito.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
