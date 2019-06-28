@@ -3,6 +3,7 @@ import './action-bar.css';
 import {Link} from "react-router-dom";
 import {dispatcher} from "../../util/mini-flux";
 import logout from "../../actions/logout-action";
+import appStore from "../../stores/app-store";
 
 export class ActionBar extends React.Component {
     constructor(props) {
@@ -32,6 +33,8 @@ export class ActionBar extends React.Component {
 
     render() {
         const {openRequests, approvedRequests, declinedRequests, openUserRequests} = this.state;
+        const userRole = appStore.getUser().role;
+
 
         return <div className='container'>
 
@@ -70,19 +73,21 @@ export class ActionBar extends React.Component {
                 </div>
             </Link>
 
-            <Link to="/NeedApproval">
-                <div className='Action_Bar__item'>
-                    <i className="fas fa-glasses"></i>
-                    <p>Need Approval ({openUserRequests ? openUserRequests.length : '0'})</p>
-                </div>
-            </Link>
+            {userRole !== 'ADMIN' ? null :
+                <Link to="/NeedApproval">
+                    <div className='Action_Bar__item'>
+                        <i className="fas fa-glasses"></i>
+                        <p>Need Approval ({openUserRequests ? openUserRequests.length : '0'})</p>
+                    </div>
+                </Link>}
 
-            <Link to="/UserManagement">
-                <div className='Action_Bar__item'>
-                    <i className="fas fa-users"></i>
-                    <p>User Management</p>
-                </div>
-            </Link>
+            {userRole !== 'ADMIN' ? null :
+                <Link to="/UserManagement">
+                    <div className='Action_Bar__item'>
+                        <i className="fas fa-users"></i>
+                        <p>User Management</p>
+                    </div>
+                </Link>}
 
             <div className='Action_Bar__item' onClick={() => logout()}>
                 <i className="fas fa-sign-out-alt"></i>
