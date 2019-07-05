@@ -1,0 +1,20 @@
+.New_User_Page {
+    font-family: 'Ubuntu', 'sans-serif';
+    font-size: 2vh;
+    text-align: center;
+    background-size: cover;
+    background-origin: content-box;
+    background-color: whitesmoke;
+    height: 100vh;
+}
+
+.New_User_Page{
+    flex-direction: column;
+}
+
+.New_User_Page form {
+    width: 80%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}

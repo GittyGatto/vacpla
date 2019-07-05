@@ -79,7 +79,7 @@ class VacationStore {
     _getVacationDayCount(vacationDays) {
         let count = 0;
         vacationDays.forEach(curr => {
-            count += eval(curr.vacationCount);
+            count += curr.vacationCount;
         });
         return count;
     }

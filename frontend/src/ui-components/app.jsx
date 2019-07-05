@@ -11,6 +11,7 @@ import {OpenRequestPage} from "./open-request/open-request-page";
 import {ApprovedRequestPage} from "./approved-request/approved-request-page";
 import {DeclinedRequestPage} from "./declined-request/declined-request-page";
 import {UserManagement} from "./user-managment/user-management-page";
+import {NewUserPage} from "./new-user/new-user-page";
 
 
 export default class App extends React.Component {
@@ -25,7 +26,8 @@ export default class App extends React.Component {
                     <Route path="/DeclinedRequest" component={DeclinedRequestPage}/>
                     <Route path="/NeedApproval" component={NeedApprovalPage}/>
                     <Route path="/ViewRequest/:uuid" component={ViewRequestPage}/>
-                    <Route path="/UserManagement/" component={UserManagement}/>
+                    <Route path="/UserManagement" component={UserManagement}/>
+                    <Route path="/NewUser" component={NewUserPage}/>
                 </Switch>
             </Router>
         </RestrictAccess>);

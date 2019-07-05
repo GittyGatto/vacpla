@@ -12,6 +12,7 @@ import openRequestStore from "./stores/open-request-store";
 import viewRequestStore from "./stores/view-request-store";
 import userManagementStore from "./stores/user-management-store";
 import messageStore from "./stores/message-store";
+import newUserStore from "./stores/new-user-store";
 
 dispatcher.addStore(appStore);
 dispatcher.addStore(loginStore);
@@ -22,6 +23,7 @@ dispatcher.addStore(openRequestStore);
 dispatcher.addStore(viewRequestStore);
 dispatcher.addStore(userManagementStore);
 dispatcher.addStore(messageStore);
+dispatcher.addStore(newUserStore);
 
 render(<AppContainer><App/></AppContainer>, document.querySelector("#app"));
 
