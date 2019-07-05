@@ -1,6 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: vacpla-deployment-config
+data:
+  ENVIRONMENT: arcusx
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
   name: vacpla-postgres-config
   labels:
     app: postgres
@@ -61,8 +68,11 @@ spec:
       - name: vacpla
         imagePullPolicy: Always
         image: docker-registry.arcusx.lan/freecoding/vacpla-webapp:1.0.0-SNAPSHOT
+        envFrom:
+          - configMapRef:
+                  name: vacpla-deployment-config
         ports:
-        - containerPort: 3001
+        - containerPort: 8888
 ---
 apiVersion: v1
 kind: Service
