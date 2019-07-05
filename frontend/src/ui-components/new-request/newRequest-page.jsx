@@ -37,7 +37,7 @@ export class NewRequestPage extends React.Component {
     componentDidMount() {
         dispatcher.subscribe(this._onChange);
         resetNewRequestPage();
-        setMessage("select vacation blyad", false);
+        setMessage("select vacation", false);
     }
 
     componentWillUnmount() {
