@@ -1,0 +1,98 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vacpla-postgres-config
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: vacpla
+  POSTGRES_USER: vacpla
+  POSTGRES_PASSWORD: asdfasdf
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: vacpla-database
+  labels:
+    app: vacpla-database
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: vacpla-database
+    spec:
+      containers:
+      - image: postgres:9.4.23
+        name: vacpla-database
+        ports:
+        - containerPort: 5432
+        envFrom:
+          - configMapRef:
+                  name: vacpla-postgres-config
+        volumeMounts:
+        - mountPath: "/var/lib/postgresql/data"
+          name: vacpla-database-storage
+      restartPolicy: Always
+      volumes:
+      - name: vacpla-database-storage
+        persistentVolumeClaim:
+          claimName: postgresdb-volume-claim
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vacpla-deployment
+  labels:
+    app: vacpla
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vacpla
+  template:
+    metadata:
+      labels:
+        app: vacpla
+    spec:
+      containers:
+      - name: vacpla
+        imagePullPolicy: Always
+        image: docker-registry.arcusx.lan/fcd/vacpla:1
+        ports:
+        - containerPort: 3001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vacpla-service
+spec:
+  selector:
+    app: vacpla
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8888
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: vacpla-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/enable-access-log: "false"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/satisfy: "any"
+spec:
+  rules:
+  - host: vacpla.kluster.arcusx.lan
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: vacpla-service
+          servicePort: 8080
+
