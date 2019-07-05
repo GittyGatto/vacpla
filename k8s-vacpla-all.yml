@@ -60,7 +60,7 @@ spec:
       containers:
       - name: vacpla
         imagePullPolicy: Always
-        image: docker-registry.arcusx.lan/fcd/vacpla:1
+        image: docker-registry.arcusx.lan/freecoding/vacpla-webapp:1.0.0-SNAPSHOT
         ports:
         - containerPort: 3001
 ---
