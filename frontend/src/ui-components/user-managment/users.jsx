@@ -29,7 +29,7 @@ export class Users extends React.Component {
             </tr>
             </thead>
             <tbody>
-            {users.length > 0 ? users.map((curr, index) => this._renderUser(curr, index)) : <p>Ups... no user found</p>}
+            {users.length > 0 ? users.map((curr, index) => this._renderUser(curr, index)) : <tr><td rowSpan={5}>Ups... no user found</td></tr>}
             </tbody>
         </Table>);
     }
