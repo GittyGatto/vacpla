@@ -1,8 +1,7 @@
 import xhr from 'xhr';
 import {dispatcher} from '../util/mini-flux'
 import Config from '../config';
-import loadVacation from "./load-vacation-action";
-import loadHolidays from "./load-holidays-action";
+import {appHistory} from "../ui-components/app-history";
 
 export default function login(userName, password) {
     xhr({
@@ -18,14 +17,12 @@ export default function login(userName, password) {
             dispatcher.dispatch({
                 type: "authenticationFailed",
             });
-        }
-        else {
+        } else {
             dispatcher.dispatch({
                 type: "authenticationSucceeded",
                 user: body
             });
-            loadVacation();
-            loadHolidays();
+            appHistory.push('/');
         }
     });
 }
