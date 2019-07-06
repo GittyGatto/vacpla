@@ -25,3 +25,6 @@ Content-Type: application/json
   "initLeave": "42"
 }
 ```
+
+## login data for dummy users
+_admin1, admin2 and user1 password is_ **'asdfasdf'**
