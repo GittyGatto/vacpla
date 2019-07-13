@@ -13,6 +13,7 @@ export class ActionBar extends React.Component {
             approvedRequests: [],
             declinedRequests: [],
             openUserRequests: [],
+            getUser: props.getUser,
         };
         this._onChange = this._onChange.bind(this);
     }
@@ -34,6 +35,7 @@ export class ActionBar extends React.Component {
     render() {
         const {openRequests, approvedRequests, declinedRequests, openUserRequests} = this.state;
         const userRole = appStore.getUser().role;
+        const userName = appStore.getUser().userName;
 
 
         return <div className='container'>
@@ -41,7 +43,7 @@ export class ActionBar extends React.Component {
             <Link to="/">
                 <div className='Action_Bar__item'>
                     <i className="fas fa-tachometer-alt"></i>
-                    <p>Dashboard</p>
+                    <p>{userName}'s Dashboard</p>
                 </div>
             </Link>
 
