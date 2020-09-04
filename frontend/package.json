@@ -23,7 +23,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "dates-between": "^1.1.0",
     "font-awesome": "4.7.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "notevil": "^1.1.0",
     "postcss": "^5.2.16",
     "postcss-cssnext": "^2.10.0",
