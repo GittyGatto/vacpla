@@ -8,7 +8,5 @@ create table comment  (
 
 
 insert into comment (vacation_request_id, user_id, comment_text, comment_date) VALUES
-(1, 1, 'brauch urlaub, schnell', '2018-10-31 15:36:38');
-insert into comment (vacation_request_id, user_id, comment_text, comment_date) VALUES
-(1, 2, 'sehr wohl der herr', '2018-11-01 10:12:10');
+(1, 1, 'brauch urlaub, schnell', '2021-06-17 15:36:38');
 

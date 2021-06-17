@@ -69,3 +69,31 @@ insert into holiday (holiday)
 VALUES ('2020-12-25');
 insert into holiday (holiday)
 VALUES ('2020-12-26');
+
+-- 2021 Hamburg
+insert into holiday (holiday)
+VALUES ('2021-01-01');
+insert into holiday (holiday)
+VALUES ('2021-04-02');
+insert into holiday (holiday)
+VALUES ('2021-04-05');
+insert into holiday (holiday)
+VALUES ('2021-05-01');
+insert into holiday (holiday)
+VALUES ('2021-05-13');
+insert into holiday (holiday)
+VALUES ('2021-05-24');
+insert into holiday (holiday)
+VALUES ('2021-10-03');
+insert into holiday (holiday)
+VALUES ('2021-10-31');
+insert into holiday (holiday)
+VALUES ('2021-12-25');
+insert into holiday (holiday)
+VALUES ('2021-12-26');
+
+
+
+
+
+
