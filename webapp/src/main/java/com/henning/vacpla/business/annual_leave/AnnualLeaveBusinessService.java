@@ -14,8 +14,8 @@ import java.util.List;
 @Service
 public class AnnualLeaveBusinessService {
 
-    private DateUtil dateUtil;
-    private AnnualLeaveRepository annualLeaveRepository;
+    private final DateUtil dateUtil;
+    private final AnnualLeaveRepository annualLeaveRepository;
 
     @Autowired
     public AnnualLeaveBusinessService(DateUtil dateUtil, AnnualLeaveRepository annualLeaveRepository) {
@@ -37,12 +37,10 @@ public class AnnualLeaveBusinessService {
     }
 
     public void setInitialAnnualLeave(UserEntity userEntity, Integer initLeave) {
-        List<AnnualLeaveEntity> leaveEntities = new ArrayList<>();
         AnnualLeaveEntity leaveEntity = new AnnualLeaveEntity();
         leaveEntity.setAnnual(dateUtil.getCurrentYear());
         leaveEntity.setUzer(userEntity);
         leaveEntity.setLeave(initLeave);
-        leaveEntities.add(leaveEntity);
         annualLeaveRepository.save(leaveEntity);
     }
 }
