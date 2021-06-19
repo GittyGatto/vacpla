@@ -11,8 +11,12 @@ import java.util.*;
 @Service
 public class RequestDtoBusinessService {
 
-    @Autowired
     private DateUtil dateUtil;
+
+    @Autowired
+    public RequestDtoBusinessService(DateUtil dateUtil) {
+        this.dateUtil = dateUtil;
+    }
 
     public HashMap<Integer, List<RequestDto>> fillRequestDtos(List<VacationRequestEntity> vacationRequestEntities) {
         HashMap<Integer, List<RequestDto>> vacationRequests = new HashMap<>();
@@ -35,15 +39,15 @@ public class RequestDtoBusinessService {
     public RequestDto fillRequestDto(VacationRequestEntity requestEntity) {
         RequestDto requestDto = new RequestDto();
         requestDto.setVacationRequestStatus(requestEntity.getVacationRequestStatus().toString());
-        requestDto.setRequested(dateUtil.sdf.format(requestEntity.getRequested()));
+        requestDto.setRequested(dateUtil.frontendSdf.format(requestEntity.getRequested()));
         if (requestEntity.getApproved() != null) {
             requestDto.setApproved(requestEntity.getApproved().toString());
             requestDto.setApprovedBy(requestEntity.getApprovedBy().getUserName());
         }
         requestDto.setOwner(requestEntity.getUzer().getUserName());
         requestDto.setUuid(requestEntity.getUuid());
-        requestDto.setFrom(dateUtil.sdf.format(requestEntity.getFrom()));
-        requestDto.setTo(dateUtil.sdf.format(requestEntity.getTo()));
+        requestDto.setFrom(dateUtil.frontendSdf.format(requestEntity.getFrom()));
+        requestDto.setTo(dateUtil.frontendSdf.format(requestEntity.getTo()));
         requestDto.setVacationCount(String.valueOf(requestEntity.getVacationCount()));
         requestDto.setCategory(requestEntity.getVacationCategory().toString());
         return requestDto;

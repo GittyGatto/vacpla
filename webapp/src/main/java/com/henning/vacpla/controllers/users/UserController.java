@@ -13,11 +13,14 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    @Autowired
     private UserService userService;
+    private UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    public UserController(UserService userService, UserRepository userRepository) {
+        this.userService = userService;
+        this.userRepository = userRepository;
+    }
 
     @RequestMapping(value = "/api/users", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody

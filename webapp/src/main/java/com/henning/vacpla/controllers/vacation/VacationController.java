@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class VacationController {
 
-    @Autowired
     private GetRequestsBusinessService getRequestsBusinessService;
+
+    @Autowired
+    public VacationController(GetRequestsBusinessService getRequestsBusinessService) {
+        this.getRequestsBusinessService = getRequestsBusinessService;
+    }
 
     @RequestMapping(value = "/api/vacation", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody

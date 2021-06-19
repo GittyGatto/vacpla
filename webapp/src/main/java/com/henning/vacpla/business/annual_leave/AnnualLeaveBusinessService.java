@@ -14,10 +14,15 @@ import java.util.List;
 @Service
 public class AnnualLeaveBusinessService {
 
-    @Autowired
     private DateUtil dateUtil;
-    @Autowired
     private AnnualLeaveRepository annualLeaveRepository;
+
+    @Autowired
+    public AnnualLeaveBusinessService(DateUtil dateUtil, AnnualLeaveRepository annualLeaveRepository) {
+        this.dateUtil = dateUtil;
+        this.annualLeaveRepository = annualLeaveRepository;
+    }
+
 
     public List<AnnualLeaveDto> getAnnualLeaveDtos(UserEntity userEntity) {
         List<AnnualLeaveDto> annualLeaveDtos = new ArrayList<>();

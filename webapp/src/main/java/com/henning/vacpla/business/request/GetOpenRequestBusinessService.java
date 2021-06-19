@@ -13,12 +13,17 @@ import java.util.List;
 @Service
 public class GetOpenRequestBusinessService {
 
-    @Autowired
     private UserRepository userRepository;
-    @Autowired
     private VacationRequestRepository vacationRequestRepository;
-    @Autowired
     private RequestDtoBusinessService requestDtoBusinessService;
+
+    @Autowired
+    public GetOpenRequestBusinessService(UserRepository userRepository, VacationRequestRepository vacationRequestRepository, RequestDtoBusinessService requestDtoBusinessService) {
+        this.userRepository = userRepository;
+        this.vacationRequestRepository = vacationRequestRepository;
+        this.requestDtoBusinessService = requestDtoBusinessService;
+    }
+
 
     public OpenRequestsDto getOpenRequests(String userName) {
         UserEntity userEntity = userRepository.findByUserName(userName).get();

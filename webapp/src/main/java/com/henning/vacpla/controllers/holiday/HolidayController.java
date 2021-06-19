@@ -15,8 +15,12 @@ import java.util.List;
 @RestController
 public class HolidayController {
 
-    @Autowired
     private GetHolidaysBusinessService getHolidaysBusinessService;
+
+    @Autowired
+    public HolidayController(GetHolidaysBusinessService getHolidaysBusinessService) {
+        this.getHolidaysBusinessService = getHolidaysBusinessService;
+    }
 
     @RequestMapping(value = "/api/holiday", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody

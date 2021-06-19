@@ -17,11 +17,15 @@ import java.io.IOException;
 
 @RestController
 public class LoginResource {
-    @Autowired
+
     private UserService userService;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public LoginResource(UserService userService, PasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @RequestMapping(value = "/api/login", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<User> login(@RequestBody() LoginRequest loginRequest, HttpServletRequest httpRequest) throws IOException {

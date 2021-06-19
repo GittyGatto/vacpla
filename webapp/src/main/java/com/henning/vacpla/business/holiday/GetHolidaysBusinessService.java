@@ -11,10 +11,15 @@ import java.util.List;
 
 @Service
 public class GetHolidaysBusinessService {
-    @Autowired
-    public HolidayRepository holidayRepository;
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+    private HolidayRepository holidayRepository;
+
+    @Autowired
+    public GetHolidaysBusinessService(HolidayRepository holidayRepository) {
+        this.holidayRepository = holidayRepository;
+    }
 
     public List<HolidayDto> getHolidays() {
         List<HolidayEntity> holidayEntities = holidayRepository.findAll();

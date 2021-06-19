@@ -15,8 +15,12 @@ import java.util.List;
 @RestController
 public class RolesController {
 
-    @Autowired
     private RoleService roleService;
+
+    @Autowired
+    public RolesController(RoleService roleService) {
+        this.roleService = roleService;
+    }
 
     @RequestMapping(value = "/api/roles", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody

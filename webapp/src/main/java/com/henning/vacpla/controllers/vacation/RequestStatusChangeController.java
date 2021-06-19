@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class RequestStatusChangeController {
 
-    @Autowired
     private ChangeRequestStatusBusinessService changeRequestStatusBusinessService;
+
+    @Autowired
+    public RequestStatusChangeController(ChangeRequestStatusBusinessService changeRequestStatusBusinessService) {
+        this.changeRequestStatusBusinessService = changeRequestStatusBusinessService;
+    }
 
     @RequestMapping(value = "/api/requestStatusChange", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody

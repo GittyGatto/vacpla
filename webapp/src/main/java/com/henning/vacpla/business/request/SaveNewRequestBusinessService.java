@@ -1,8 +1,8 @@
 package com.henning.vacpla.business.request;
 
+import com.henning.vacpla.business.request.dtos.OverviewDto;
 import com.henning.vacpla.business.user.UserService;
 import com.henning.vacpla.business.util.DateUtil;
-import com.henning.vacpla.business.request.dtos.OverviewDto;
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.vacation_request.VacationCategory;
 import com.henning.vacpla.domain.vacation_request.VacationRequestEntity;
@@ -18,14 +18,19 @@ import java.util.List;
 @Service
 public class SaveNewRequestBusinessService {
 
-    @Autowired
     private UserService userService;
-    @Autowired
     private VacationRequestRepository vacationRequestRepository;
-    @Autowired
     private DateUtil dateUtil;
-    @Autowired
     private OverviewDtoBusinessService overviewDtoBusinessService;
+
+    @Autowired
+    public SaveNewRequestBusinessService(UserService userService, VacationRequestRepository vacationRequestRepository, DateUtil dateUtil, OverviewDtoBusinessService overviewDtoBusinessService) {
+        this.userService = userService;
+        this.vacationRequestRepository = vacationRequestRepository;
+        this.dateUtil = dateUtil;
+        this.overviewDtoBusinessService = overviewDtoBusinessService;
+    }
+
 
     public OverviewDto saveNewRequest(String userName, String[] range, long vacationDays, String uuid) {
         UserEntity userEntity = userService.getUserEntity(userName);
@@ -34,8 +39,8 @@ public class SaveNewRequestBusinessService {
         vacRequest.setUzer(userEntity);
         vacRequest.setRequested(new Date());
         vacRequest.setVacationRequestStatus(VacationRequestStatus.REQUESTED);
-        vacRequest.setFrom(dateUtil.parseDate(range[0]));
-        vacRequest.setTo(dateUtil.parseDate(range[1]));
+        vacRequest.setFrom(dateUtil.parseFrontendDate(range[0]));
+        vacRequest.setTo(dateUtil.parseFrontendDate(range[1]));
         vacRequest.setVacationCount(vacationDays);
         vacRequest.setVacationCategory(VacationCategory.PAID);
         VacationRequestEntity savedEntity = vacationRequestRepository.save(vacRequest);

@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class OpenRequestController {
 
-    @Autowired
     private GetOpenRequestBusinessService getOpenRequestBusinessService;
+
+    @Autowired
+    public OpenRequestController(GetOpenRequestBusinessService getOpenRequestBusinessService) {
+        this.getOpenRequestBusinessService = getOpenRequestBusinessService;
+    }
 
     @RequestMapping(value = "/api/openRequests", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody

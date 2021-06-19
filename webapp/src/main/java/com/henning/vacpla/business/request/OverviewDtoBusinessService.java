@@ -12,10 +12,14 @@ import java.util.List;
 @Service
 public class OverviewDtoBusinessService {
 
-    @Autowired
     private AnnualLeaveBusinessService annualLeaveBusinessService;
-    @Autowired
     private RequestDtoBusinessService requestDtoBusinessService;
+
+    @Autowired
+    public OverviewDtoBusinessService(AnnualLeaveBusinessService annualLeaveBusinessService, RequestDtoBusinessService requestDtoBusinessService) {
+        this.annualLeaveBusinessService = annualLeaveBusinessService;
+        this.requestDtoBusinessService = requestDtoBusinessService;
+    }
 
     public OverviewDto fillOverviewDto(UserEntity userEntity, List<VacationRequestEntity> vacationRequestEntities) {
         OverviewDto overviewDto = new OverviewDto();

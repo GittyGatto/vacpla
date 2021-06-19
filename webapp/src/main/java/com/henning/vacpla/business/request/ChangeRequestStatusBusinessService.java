@@ -12,11 +12,16 @@ import java.util.Date;
 
 @Service
 public class ChangeRequestStatusBusinessService {
-    @Autowired
+
     private UserRepository userRepository;
+    private VacationRequestRepository vacationRequestRepository;
 
     @Autowired
-    private VacationRequestRepository vacationRequestRepository;
+    public ChangeRequestStatusBusinessService(UserRepository userRepository, VacationRequestRepository vacationRequestRepository) {
+        this.userRepository = userRepository;
+        this.vacationRequestRepository = vacationRequestRepository;
+    }
+
 
     public void changeRequestStatus(String userName, String uuid, String status) {
         UserEntity userEntity = userRepository.findByUserName(userName).get();

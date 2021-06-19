@@ -2,7 +2,6 @@ package com.henning.vacpla.controllers.registration;
 
 
 import com.henning.vacpla.business.user.UserService;
-import com.henning.vacpla.controllers.login.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +13,13 @@ import java.io.IOException;
 
 @RestController
 public class RegisterController {
-    @Autowired
+
     private UserService userService;
+
+    @Autowired
+    public RegisterController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/api/register", method = RequestMethod.POST, consumes = "application/json")
     public void registerNewUser(
