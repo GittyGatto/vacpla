@@ -53,4 +53,11 @@ public class UserEntity {
         this.vacationRequestEntityList = vacationRequestEntityList;
         this.annualLeaveEntityList = annualLeaveEntityList;
     }
+
+    public UserEntity(String userName, String password, Role role, Date entry) {
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+        this.entry = entry;
+    }
 }

@@ -23,17 +23,18 @@ import java.util.List;
 @Service
 public class UserService {
 
-    @Autowired
     private UserRepository userRepository;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private AnnualLeaveBusinessService annualLeaveBusinessService;
+    private DateUtil dateUtil;
 
     @Autowired
-    private DateUtil dateUtil;
+    public void UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AnnualLeaveBusinessService annualLeaveBusinessService, DateUtil dateUtil) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.annualLeaveBusinessService = annualLeaveBusinessService;
+        this.dateUtil = dateUtil;
+    }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public User loadUserByUsername(String name) throws UsernameNotFoundException {
@@ -52,7 +53,7 @@ public class UserService {
         Role role = Role.valueOf(roleString);
         Date entry = dateUtil.parseDate(registrationRequest.entry);
 
-        UserEntity user = new UserEntity(userName, encodedPassword, role, entry, null, null, null);
+        UserEntity user = new UserEntity(userName, encodedPassword, role, entry);
         UserEntity userEntity = userRepository.save(user);
 
         annualLeaveBusinessService.setInitialAnnualLeave(userEntity, initLeave);
