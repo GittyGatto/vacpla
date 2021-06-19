@@ -43,7 +43,7 @@ public class GetHolidaysBusinessServiceTest {
         List<HolidayEntity> holidayEntities = new ArrayList<>();
 
         HolidayEntity entity = new HolidayEntity();
-        entity.setId(1l);
+        entity.setId(1L);
         entity.setHoliday(dateUtil.parseDate(dBTestDate, DateUtil.dbSdf));
         holidayEntities.add(entity);
         return holidayEntities;
