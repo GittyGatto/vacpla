@@ -1,6 +1,6 @@
 package com.henning.vacpla.controllers.holiday;
 
-import com.henning.vacpla.business.holiday.GetHolidaysBuisnessService;
+import com.henning.vacpla.business.holiday.GetHolidaysBusinessService;
 import com.henning.vacpla.business.holiday.HolidayDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,11 +16,11 @@ import java.util.List;
 public class HolidayController {
 
     @Autowired
-    private GetHolidaysBuisnessService getHolidaysBuisnessService;
+    private GetHolidaysBusinessService getHolidaysBusinessService;
 
     @RequestMapping(value = "/api/holiday", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
     ResponseEntity<List<HolidayDto>> getHolidays() {
-        return new ResponseEntity<>(getHolidaysBuisnessService.getHolidays(), HttpStatus.OK);
+        return new ResponseEntity<>(getHolidaysBusinessService.getHolidays(), HttpStatus.OK);
     }
 }

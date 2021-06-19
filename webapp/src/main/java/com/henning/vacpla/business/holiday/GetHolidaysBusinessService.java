@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GetHolidaysBuisnessService {
+public class GetHolidaysBusinessService {
     @Autowired
     public HolidayRepository holidayRepository;
 
