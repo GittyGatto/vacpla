@@ -9,7 +9,7 @@ import java.util.Date;
 @Service
 public class DateUtil {
 
-    public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    public static final SimpleDateFormat sdf = new SimpleDateFormat("MM/d/yyyy");
 
     public Date parseDate(String date) {
         try {
@@ -23,7 +23,6 @@ public class DateUtil {
     public int getCurrentYear() {
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-        return Integer.valueOf(sdf.format(now));
+        return Integer.parseInt(sdf.format(now));
     }
-
 }
