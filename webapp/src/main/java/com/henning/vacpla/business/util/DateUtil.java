@@ -9,11 +9,30 @@ import java.util.Date;
 @Service
 public class DateUtil {
 
-    public static final SimpleDateFormat sdf = new SimpleDateFormat("MM/d/yyyy");
+    public static final SimpleDateFormat frontendSdf = new SimpleDateFormat("MM/d/yyyy");
+    public static final SimpleDateFormat dbSdf = new SimpleDateFormat("yyyy-MM-dd");
 
-    public Date parseDate(String date) {
+    public Date parseFrontendDate(String date) {
+        try {
+            return frontendSdf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Date parseDate(String date, SimpleDateFormat sdf) {
         try {
             return sdf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Date parseDbDate(String date) {
+        try {
+            return dbSdf.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }

@@ -51,7 +51,7 @@ public class UserService {
         String roleString = registrationRequest.role;
         Integer initLeave = Integer.valueOf(registrationRequest.initLeave);
         Role role = Role.valueOf(roleString);
-        Date entry = dateUtil.parseFrontendDate(registrationRequest.entry);
+        Date entry = dateUtil.parseDate(registrationRequest.entry, DateUtil.frontendSdf);
 
         UserEntity user = new UserEntity(userName, encodedPassword, role, entry);
         UserEntity userEntity = userRepository.save(user);

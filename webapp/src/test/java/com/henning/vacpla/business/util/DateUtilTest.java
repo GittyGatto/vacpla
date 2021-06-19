@@ -14,14 +14,23 @@ class DateUtilTest {
 
     private DateUtil dateUtil = new DateUtil();
 
-    private static final String dateString = "6/17/2019";
+    private static final String frontendDateString = "6/25/2021";
+    private static final String dBDateString = "2021-06-25";
 
     @Test
-    @DisplayName("omg 😱 parse string to date")
-    public void parseDateTest() throws ParseException {
-        Date result = dateUtil.parseDate(dateString);
-        Date expected = new SimpleDateFormat("yyyy-MM-dd").parse("2019-06-17");
-        assertEquals(expected, result, "failed to parse string to correct date");
+    @DisplayName("omg 😱 parse string from frontend to date")
+    public void parseFrontendDateTest() throws ParseException {
+        Date result = dateUtil.parseDate(frontendDateString, DateUtil.frontendSdf);
+        Date expected = new SimpleDateFormat("yyyy-MM-dd").parse("2021-06-25");
+        assertEquals(expected, result, "failed to parse string date from frontend");
+    }
+
+    @Test
+    @DisplayName("parse date string from database to date")
+    public void parseDbDateTest() throws ParseException {
+        Date result = dateUtil.parseDate(dBDateString, DateUtil.dbSdf);
+        Date expected = new SimpleDateFormat("yyyy-MM-dd").parse("2021-06-25");
+        assertEquals(expected, result, "failed to parse string date from DB");
     }
 
     @Test

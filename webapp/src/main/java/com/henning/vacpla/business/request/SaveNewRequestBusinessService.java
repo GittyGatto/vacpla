@@ -39,8 +39,8 @@ public class SaveNewRequestBusinessService {
         vacRequest.setUzer(userEntity);
         vacRequest.setRequested(new Date());
         vacRequest.setVacationRequestStatus(VacationRequestStatus.REQUESTED);
-        vacRequest.setFrom(dateUtil.parseFrontendDate(range[0]));
-        vacRequest.setTo(dateUtil.parseFrontendDate(range[1]));
+        vacRequest.setFrom(dateUtil.parseDate(range[0], DateUtil.frontendSdf));
+        vacRequest.setTo(dateUtil.parseDate(range[1], DateUtil.frontendSdf));
         vacRequest.setVacationCount(vacationDays);
         vacRequest.setVacationCategory(VacationCategory.PAID);
         VacationRequestEntity savedEntity = vacationRequestRepository.save(vacRequest);
