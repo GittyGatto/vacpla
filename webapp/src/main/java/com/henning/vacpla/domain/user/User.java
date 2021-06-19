@@ -2,8 +2,9 @@ package com.henning.vacpla.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.henning.vacpla.business.role.Role;
+import lombok.Data;
 
-
+@Data
 public class User {
     public final String userName;
     @JsonIgnore

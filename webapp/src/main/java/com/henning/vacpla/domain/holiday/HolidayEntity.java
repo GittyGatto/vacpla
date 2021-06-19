@@ -1,9 +1,12 @@
 package com.henning.vacpla.domain.holiday;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Data
 @Table(name = "holiday")
 public class HolidayEntity {
     @Id
@@ -13,8 +16,4 @@ public class HolidayEntity {
 
     @Column(name = "holiday")
     private Date holiday;
-
-    public Date getHoliday() {
-        return holiday;
-    }
 }

@@ -3,6 +3,7 @@ package com.henning.vacpla.domain.user;
 import com.henning.vacpla.business.role.Role;
 import com.henning.vacpla.domain.annual_leave.AnnualLeaveEntity;
 import com.henning.vacpla.domain.vacation_request.VacationRequestEntity;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
 
+@Data
 @Entity
 @Table(name = "uzer")
 public class UserEntity {
@@ -40,7 +42,7 @@ public class UserEntity {
     @OneToMany(cascade = ALL, mappedBy = "uzer")
     private List<AnnualLeaveEntity> annualLeaveEntityList;
 
-    public UserEntity (){};
+    public UserEntity (){}
 
     public UserEntity(String userName, String password, Role role, Date entry, Date exit, List<VacationRequestEntity> vacationRequestEntityList, List<AnnualLeaveEntity> annualLeaveEntityList) {
         this.userName = userName;
@@ -49,66 +51,6 @@ public class UserEntity {
         this.entry = entry;
         this.exit = exit;
         this.vacationRequestEntityList = vacationRequestEntityList;
-        this.annualLeaveEntityList = annualLeaveEntityList;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public Date getEntry() {
-        return entry;
-    }
-
-    public void setEntry(Date entry) {
-        this.entry = entry;
-    }
-
-    public Date getExit() {
-        return exit;
-    }
-
-    public void setExit(Date exit) {
-        this.exit = exit;
-    }
-
-    public List<VacationRequestEntity> getVacationRequestEntityList() {
-        return vacationRequestEntityList;
-    }
-
-    public void setVacationRequestEntityList(List<VacationRequestEntity> vacationRequestEntityList) {
-        this.vacationRequestEntityList = vacationRequestEntityList;
-    }
-
-    public List<AnnualLeaveEntity> getAnnualLeaveEntityList() {
-        return annualLeaveEntityList;
-    }
-
-    public void setAnnualLeaveEntityList(List<AnnualLeaveEntity> annualLeaveEntityList) {
         this.annualLeaveEntityList = annualLeaveEntityList;
     }
 }

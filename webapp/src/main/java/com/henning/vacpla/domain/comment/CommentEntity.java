@@ -3,11 +3,13 @@ package com.henning.vacpla.domain.comment;
 
 import com.henning.vacpla.domain.user.UserEntity;
 import com.henning.vacpla.domain.vacation_request.VacationRequestEntity;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
 
+@Data
 @Entity(name = "CommentEntity")
 @Table(name = "comment")
 public class CommentEntity {
@@ -29,51 +31,4 @@ public class CommentEntity {
 
     @Column(name = "comment_date")
     private Timestamp timestamp;
-
-    public CommentEntity(VacationRequestEntity vacationRequest, UserEntity userId, Date vacationDay, Timestamp timestamp) {
-        this.vacationRequest = vacationRequest;
-        this.userId = userId;
-        this.vacationDay = vacationDay;
-        this.timestamp = timestamp;
-    }
-
-    public long getVacationId() {
-        return vacationId;
-    }
-
-    public void setVacationId(long vacationId) {
-        this.vacationId = vacationId;
-    }
-
-    public VacationRequestEntity getVacationRequest() {
-        return vacationRequest;
-    }
-
-    public void setVacationRequest(VacationRequestEntity vacationRequest) {
-        this.vacationRequest = vacationRequest;
-    }
-
-    public UserEntity getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UserEntity userId) {
-        this.userId = userId;
-    }
-
-    public Date getVacationDay() {
-        return vacationDay;
-    }
-
-    public void setVacationDay(Date vacationDay) {
-        this.vacationDay = vacationDay;
-    }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
 }

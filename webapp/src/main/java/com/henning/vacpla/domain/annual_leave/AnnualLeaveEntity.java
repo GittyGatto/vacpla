@@ -1,9 +1,11 @@
 package com.henning.vacpla.domain.annual_leave;
 
 import com.henning.vacpla.domain.user.UserEntity;
+import lombok.Data;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "annual_leave")
 public class AnnualLeaveEntity {
@@ -21,39 +23,4 @@ public class AnnualLeaveEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity uzer;
-
-    public AnnualLeaveEntity() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public int getAnnual() {
-        return annual;
-    }
-
-    public void setAnnual(int annual) {
-        this.annual = annual;
-    }
-
-    public int getLeave() {
-        return leave;
-    }
-
-    public void setLeave(int leave) {
-        this.leave = leave;
-    }
-
-    public UserEntity getUzer() {
-        return uzer;
-    }
-
-    public void setUzer(UserEntity uzer) {
-        this.uzer = uzer;
-    }
 }
