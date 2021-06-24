@@ -35,7 +35,7 @@ public class GetHolidaysBusinessServiceTest {
         List<HolidayDto> holidays = getHolidaysBusinessService.getHolidays();
 
         assertEquals(1, holidays.size(), "holiday list is empty");
-        assertEquals("2021-12-24", holidays.get(0).holiday, "getHolidays is broken");
+        assertEquals("2021-12-24", holidays.get(0).getHoliday(), "getHolidays is broken");
     }
 
     private List<HolidayEntity> createTestHolidays() {
