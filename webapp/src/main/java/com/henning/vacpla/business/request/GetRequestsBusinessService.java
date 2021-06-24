@@ -18,11 +18,11 @@ import java.util.Optional;
 @Service
 public class GetRequestsBusinessService {
 
-    private VacationRequestRepository vacationRequestRepository;
-    private AnnualLeaveBusinessService annualLeaveBusinessService;
-    private UserService userService;
-    private OverviewDtoBusinessService overviewDtoBusinessService;
-    private RequestDtoBusinessService requestDtoBusinessService;
+    private final VacationRequestRepository vacationRequestRepository;
+    private final AnnualLeaveBusinessService annualLeaveBusinessService;
+    private final UserService userService;
+    private final OverviewDtoBusinessService overviewDtoBusinessService;
+    private final RequestDtoBusinessService requestDtoBusinessService;
 
     @Autowired
     public GetRequestsBusinessService(VacationRequestRepository vacationRequestRepository, AnnualLeaveBusinessService annualLeaveBusinessService, UserService userService, OverviewDtoBusinessService overviewDtoBusinessService, RequestDtoBusinessService requestDtoBusinessService) {

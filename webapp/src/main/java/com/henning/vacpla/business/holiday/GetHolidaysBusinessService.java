@@ -14,7 +14,7 @@ public class GetHolidaysBusinessService {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-    private HolidayRepository holidayRepository;
+    private final HolidayRepository holidayRepository;
 
     @Autowired
     public GetHolidaysBusinessService(HolidayRepository holidayRepository) {
@@ -37,7 +37,7 @@ public class GetHolidaysBusinessService {
 
     private HolidayDto toHolidayDto(HolidayEntity curr) {
         HolidayDto dto = new HolidayDto();
-        dto.holiday = sdf.format(curr.getHoliday());
+        dto.setHoliday(sdf.format(curr.getHoliday()));
         return dto;
     }
 }

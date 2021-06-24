@@ -13,8 +13,8 @@ import java.util.Date;
 @Service
 public class ChangeRequestStatusBusinessService {
 
-    private UserRepository userRepository;
-    private VacationRequestRepository vacationRequestRepository;
+    private final UserRepository userRepository;
+    private final VacationRequestRepository vacationRequestRepository;
 
     @Autowired
     public ChangeRequestStatusBusinessService(UserRepository userRepository, VacationRequestRepository vacationRequestRepository) {

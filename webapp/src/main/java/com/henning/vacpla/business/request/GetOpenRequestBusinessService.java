@@ -13,9 +13,9 @@ import java.util.List;
 @Service
 public class GetOpenRequestBusinessService {
 
-    private UserRepository userRepository;
-    private VacationRequestRepository vacationRequestRepository;
-    private RequestDtoBusinessService requestDtoBusinessService;
+    private final UserRepository userRepository;
+    private final VacationRequestRepository vacationRequestRepository;
+    private final RequestDtoBusinessService requestDtoBusinessService;
 
     @Autowired
     public GetOpenRequestBusinessService(UserRepository userRepository, VacationRequestRepository vacationRequestRepository, RequestDtoBusinessService requestDtoBusinessService) {
