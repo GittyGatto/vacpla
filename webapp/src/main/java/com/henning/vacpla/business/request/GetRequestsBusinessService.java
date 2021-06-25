@@ -11,6 +11,8 @@ import com.henning.vacpla.domain.vacation_request.VacationRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -40,14 +42,14 @@ public class GetRequestsBusinessService {
         return overviewDtoBusinessService.fillOverviewDto(userEntity, vacationRequestEntities);
     }
 
-    public ViewRequestDto getRequest(String userName, String uuid) {
-        VacationRequestEntity vacRequest = vacationRequestRepository.findByUuid(uuid).get();
+    public ViewRequestDto getRequest(String uuid) {
+        VacationRequestEntity vacRequest = vacationRequestRepository.findByUuid(uuid).orElseThrow(() -> new EntityNotFoundException(uuid));
         RequestDto requestDto = requestDtoBusinessService.fillRequestDto(vacRequest);
         ViewRequestDto viewRequestDto = new ViewRequestDto();
         viewRequestDto.setRequest(requestDto);
 
         UserEntity userEntity = vacRequest.getUzer();
-        List<VacationRequestEntity> vacRequests = vacationRequestRepository.findByUzer(Optional.of(userEntity)).get();
+        List<VacationRequestEntity> vacRequests = vacationRequestRepository.findByUzer(Optional.of(userEntity)).orElseGet(Collections::emptyList);
         HashMap<Integer, List<RequestDto>> contextRequests = requestDtoBusinessService.fillRequestDtos(vacRequests);
         viewRequestDto.setVacationRequests(contextRequests);
 

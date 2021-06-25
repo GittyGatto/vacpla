@@ -20,7 +20,7 @@ public class RequestController {
     @RequestMapping(value = "/api/viewRequest", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
     ResponseEntity<ViewRequestDto> getOpenRequests(@RequestBody ViewVacationRequestRequest viewRequest) {
-        return new ResponseEntity<>(getRequestsBusinessService.getRequest(viewRequest.userName, viewRequest.requestUuid), HttpStatus.OK);
+        return new ResponseEntity<>(getRequestsBusinessService.getRequest(viewRequest.requestUuid), HttpStatus.OK);
     }
 
 }

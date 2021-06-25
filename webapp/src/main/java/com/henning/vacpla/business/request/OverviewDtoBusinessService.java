@@ -12,8 +12,8 @@ import java.util.List;
 @Service
 public class OverviewDtoBusinessService {
 
-    private AnnualLeaveBusinessService annualLeaveBusinessService;
-    private RequestDtoBusinessService requestDtoBusinessService;
+    private final AnnualLeaveBusinessService annualLeaveBusinessService;
+    private final RequestDtoBusinessService requestDtoBusinessService;
 
     @Autowired
     public OverviewDtoBusinessService(AnnualLeaveBusinessService annualLeaveBusinessService, RequestDtoBusinessService requestDtoBusinessService) {

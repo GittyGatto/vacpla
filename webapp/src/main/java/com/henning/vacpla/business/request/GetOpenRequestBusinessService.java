@@ -8,6 +8,8 @@ import com.henning.vacpla.domain.vacation_request.VacationRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -26,8 +28,8 @@ public class GetOpenRequestBusinessService {
 
 
     public OpenRequestsDto getOpenRequests(String userName) {
-        UserEntity userEntity = userRepository.findByUserName(userName).get();
-        List<VacationRequestEntity> openRequests = vacationRequestRepository.findOpenRequests(userEntity.getId()).get();
+        UserEntity userEntity = userRepository.findByUserName(userName).orElseThrow(() -> new EntityNotFoundException(userName));
+        List<VacationRequestEntity> openRequests = vacationRequestRepository.findOpenRequests(userEntity.getId()).orElseGet(Collections::emptyList);
         return fillOpenRequestsDto(openRequests);
     }
 

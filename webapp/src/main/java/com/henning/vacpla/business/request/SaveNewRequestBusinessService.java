@@ -18,10 +18,10 @@ import java.util.List;
 @Service
 public class SaveNewRequestBusinessService {
 
-    private UserService userService;
-    private VacationRequestRepository vacationRequestRepository;
-    private DateUtil dateUtil;
-    private OverviewDtoBusinessService overviewDtoBusinessService;
+    private final UserService userService;
+    private final VacationRequestRepository vacationRequestRepository;
+    private final DateUtil dateUtil;
+    private final OverviewDtoBusinessService overviewDtoBusinessService;
 
     @Autowired
     public SaveNewRequestBusinessService(UserService userService, VacationRequestRepository vacationRequestRepository, DateUtil dateUtil, OverviewDtoBusinessService overviewDtoBusinessService) {

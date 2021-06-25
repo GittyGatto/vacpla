@@ -8,6 +8,7 @@ import com.henning.vacpla.domain.vacation_request.VacationRequestStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Date;
 
 @Service
@@ -24,8 +25,8 @@ public class ChangeRequestStatusBusinessService {
 
 
     public void changeRequestStatus(String userName, String uuid, String status) {
-        UserEntity userEntity = userRepository.findByUserName(userName).get();
-        VacationRequestEntity vacationRequest = vacationRequestRepository.findByUuid(uuid).get();
+        UserEntity userEntity = userRepository.findByUserName(userName).orElseThrow(() -> new EntityNotFoundException(userName));
+        VacationRequestEntity vacationRequest = vacationRequestRepository.findByUuid(uuid).orElseThrow(() -> new EntityNotFoundException(uuid));
 
         if (status.equals(VacationRequestStatus.NOT_APPROVED.toString())) {
             vacationRequest.setVacationRequestStatus(VacationRequestStatus.NOT_APPROVED);
